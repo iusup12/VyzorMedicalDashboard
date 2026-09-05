@@ -1,0 +1,183 @@
+﻿@model Vyzor.Application.DTO.Appointment.AppointmentEditDTO
+
+@using Vyzor.Application.DTO.Doctor
+
+@{
+    var doctor = ViewBag.Doctor as DoctorDetailsDTO;
+}
+
+<div class="doctor-content">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+
+                <form asp-action="Create" method="post">
+
+                    <input asp-for="DoctorId" type="hidden" />
+
+
+                    <div class="card booking-card">
+
+                        <div class="card-header">
+
+                            <div class="booking-header">
+
+                                <div class="card mb-0">
+
+                                    <div class="card-body">
+
+                                        <div class="d-flex align-items-center">
+
+                                            <span class="avatar avatar-xxxl avatar-rounded me-3">
+
+                                                <img src="~/assets/img/doctors/doctor-thumb-01.jpg"
+                                                     class="img-fluid" />
+
+                                            </span>
+
+
+                                            <div>
+
+                                                <h4 class="mb-1">
+                                                    @doctor?.FullName
+                                                </h4>
+
+
+                                                <p class="text-indigo fw-medium mb-2">
+
+                                                    @doctor?.SpecializationName
+
+                                                </p>
+
+
+                                                <p class="mb-0">
+
+                                                    <i class="isax isax-location me-2"></i>
+
+                                                    @doctor?.SpecializationName
+
+                                                </p>
+
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="card-body booking-body">
+
+
+                            <div class="card">
+
+                                <div class="card-body">
+
+
+                                    <h5 class="mb-4">
+                                        Appointment Information
+                                    </h5>
+
+
+                                    <div class="mb-3">
+
+
+                                        <label class="form-label">
+                                            Appointment Date
+                                        </label>
+
+
+                                        <input asp-for="AppointmentDate"
+                                               class="form-control"
+                                               type="datetime-local" />
+
+
+                                        <span asp-validation-for="AppointmentDate"
+                                              class="text-danger"></span>
+
+                                    </div>
+
+
+
+                                    <div class="mb-3">
+
+                                        <label class="form-label">
+                                            Reason for visit
+                                        </label>
+
+
+                                        <textarea asp-for="About"
+                                                  class="form-control"
+                                                  rows="4"
+                                                      placeholder="Describe your problem">
+                                        </textarea>
+
+
+                                            <span asp-validation-for="About"
+                                                  class="text-danger"></span>
+
+
+                                        </div>
+
+
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="card-footer">
+
+
+                                <div class="d-flex justify-content-end">
+
+
+                                    <button type="submit"
+                                            class="btn btn-primary-gradient rounded-pill">
+
+                                        Confirm Appointment
+
+                                        <i class="isax isax-arrow-right-3 ms-2"></i>
+
+                                    </button>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    @section Scripts {
+
+        <partial name="_ValidationScriptsPartial" />
+
+    }

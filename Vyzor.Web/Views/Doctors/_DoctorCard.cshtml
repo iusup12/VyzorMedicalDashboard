@@ -1,0 +1,154 @@
+﻿@model Vyzor.Application.DTO.Doctor.DoctorCardDTO
+
+@{
+    var doctorImage = string.IsNullOrWhiteSpace(Model.PhotoUrl)
+    ? "/assets/Doccure/img/doctor-grid/doctor-grid-01.jpg"
+    : Model.PhotoUrl;
+
+
+var roundedRating = (int)Math.Round(Model.Rating);
+
+
+}
+
+<div class="col-xxl-4 col-md-6">
+
+    
+    <div class="card">
+
+        <!-- Doctor Image -->
+        <div class="card-img card-img-hover">
+
+            <a asp-controller="Doctors"
+                   asp-action="Details"
+                   asp-route-id="@Model.Id">
+
+                <img src="@doctorImage"
+                     class="img-fluid"
+                     alt="@Model.FullName">
+
+            </a>
+
+            <div class="grid-overlay-item d-flex align-items-center justify-content-between">
+
+                <span class="badge bg-orange">
+
+                    <i class="fa-solid fa-star me-1"></i>
+
+                    @Model.Rating.ToString("9.0")
+
+                </span>
+
+                <a href="javascript:void(0)"
+                       class="fav-icon">
+
+                    <i class="fa fa-heart"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+        <!-- /Doctor Image -->
+        <!-- Doctor Information -->
+        <div class="card-body p-0">
+
+            <div class="d-flex active-bar active-bar-indigo align-items-center justify-content-between p-3">
+
+                <a href="#"
+                       class="text-indigo fw-medium fs-14">
+
+                    @Model.SpecializationName
+
+                </a>
+
+                <span class="badge bg-success-light d-inline-flex align-items-center">
+
+                    <i class="fa-solid fa-circle fs-5 me-1"></i>
+
+                    Available
+
+                </span>
+
+            </div>
+
+
+            <div class="p-3 pt-0">
+
+                <div class="doctor-info-detail mb-3 pb-3">
+
+                    <h3 class="mb-1">
+
+                        <a asp-controller="Doctors"
+                               asp-action="Details"
+                               asp-route-id="@Model.Id">
+
+                            @Model.FullName
+
+                        </a>
+
+                    </h3>
+
+                </div>
+
+
+                <!-- Rating -->
+                <div class="rating mb-3">
+
+                    @for (var i = 1; i <= 5; i++)
+                    {
+                        if (i <= roundedRating)
+                        {
+                            <i class="fas fa-star filled"></i>
+                        }
+                        else
+                        {
+                            <i class="fas fa-star"></i>
+                        }
+                    }
+
+                    <span class="ms-1">
+                        @Model.Rating.ToString("9.0")
+                    </span>
+
+                </div>
+                <!-- /Rating -->
+                <!-- Price and Booking -->
+                <div class="d-flex align-items-center justify-content-between">
+
+                    <div>
+
+                        <p class="mb-1">
+                            Consultation Fees
+                        </p>
+
+                        <h3 class="text-orange">
+                            @Model.AppointmentPrice.ToString("N0") &#8381;
+                        </h3>
+
+                    </div>
+
+
+                    <a asp-controller="Appointment"
+                           asp-action="Create"
+                           asp-route-doctorId="@Model.Id"
+                           class="btn btn-md btn-dark d-inline-flex align-items-center rounded-pill">
+
+                        <i class="isax isax-calendar-1 me-2"></i>
+
+                        Book Now
+
+                    </a>
+
+                </div>
+                <!-- /Price and Booking -->
+
+            </div>
+
+        </div>
+        <!-- /Doctor Information -->
+
+    </div>
+    
+
+</div>

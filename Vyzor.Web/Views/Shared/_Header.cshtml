@@ -1,0 +1,994 @@
+﻿<header class="header header-custom header-default inner-header header-fixed relative">
+
+    <div class="container">
+
+        <nav class="navbar navbar-expand-lg header-nav">
+
+            <!-- LOGO -->
+            <div class="navbar-header">
+
+                <a id="mobile_btn"
+                   href="javascript:void(0);">
+                    <i class="fa-solid fa-bars"></i>
+                </a>
+
+                <a class="navbar-brand logo"
+                   asp-controller="Home"
+                   asp-action="Index">
+
+                    <img src="~/assets/Doccure/img/logo.svg"
+                         alt="Vyzor"
+                         class="img-fluid">
+
+                </a>
+
+            </div>
+
+
+            <!-- MAIN MENU -->
+            <div class="header-menu">
+
+                <div class="main-menu-wrapper">
+
+                    <!-- MOBILE MENU HEADER -->
+                    <div class="menu-header">
+
+                        <a class="menu-logo"
+                           asp-controller="Home"
+                           asp-action="Index">
+
+                            <img src="~/assets/Doccure/img/logo.svg"
+                                 alt="Vyzor"
+                                 class="img-fluid">
+
+                        </a>
+
+                        <a id="menu_close"
+                           href="javascript:void(0);"
+                           class="menu-close">
+
+                            <i class="fas fa-times"></i>
+
+                        </a>
+
+                    </div>
+
+
+                    <ul class="main-nav">
+
+                        <!-- HOME -->
+                        <li class="has-submenu">
+
+                            <a class="main-menu"
+                               href="javascript:void(0);">
+
+                                Главная
+
+                                <span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+
+                            </a>
+
+                            <ul class="submenu mega-submenu">
+
+                                <li>
+
+                                    <div class="megamenu-wrapper">
+
+                                        <div class="row">
+
+                                            <div class="col">
+
+                                                <div class="single-demo">
+
+                                                    <div class="demo-img">
+
+                                                        <a asp-controller="Home"
+                                                           asp-action="Index"
+                                                           class="inner-demo-img">
+
+                                                            <img src="~/assets/Doccure/img/home/home.jpg"
+                                                                 alt="Главная"
+                                                                 class="img-fluid">
+
+                                                        </a>
+
+                                                    </div>
+
+                                                    <div class="demo-info">
+
+                                                        <a asp-controller="Home"
+                                                           asp-action="Index"
+                                                           class="inner-demo-img">
+
+                                                            Главная
+
+                                                        </a>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+
+                        <!-- DOCTORS -->
+                        <li class="has-submenu">
+
+                            <a class="main-menu"
+                               href="javascript:void(0);">
+
+                                Врачи
+
+                                <span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+
+                            </a>
+
+                            <ul class="submenu sub-menu-one">
+
+                                <li>
+
+                                    <div>
+
+                                        <div class="row">
+
+                                            <div class="col-lg-6">
+
+                                                <ul class="sub-menu-list">
+
+                                                    <li>
+                                                        <a asp-controller="Doctors"
+                                                           asp-action="Index">
+                                                            Все врачи
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a asp-controller="Doctors"
+                                                           asp-action="Index">
+                                                            Поиск врачей
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a asp-controller="Doctors"
+                                                           asp-action="Index">
+                                                            Список врачей
+                                                        </a>
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+
+                                            <div class="col-lg-6">
+
+                                                <div class="menu-img">
+
+                                                    <img src="~/assets/Doccure/img/home/menu-img-1.jpg"
+                                                         alt="Doctors"
+                                                         class="img-fluid">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+
+                        <!-- PATIENTS -->
+                        <li class="has-submenu">
+
+                            <a class="main-menu"
+                               href="javascript:void(0);">
+
+                                Пациенты
+
+                                <span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+
+                            </a>
+
+                            <ul class="submenu sub-menu-one sub-menu-two">
+
+                                <li>
+
+                                    <div>
+
+                                        <div class="row">
+
+                                            <div class="col-lg-4 sub-menu-left">
+
+                                                <ul class="sub-menu-list">
+
+                                                    <li>
+                                                        <a asp-controller="Profile"
+                                                           asp-action="Index">
+
+                                                            Профиль
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a asp-controller="Doctors"
+                                                           asp-action="Index">
+
+                                                            Врачи
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a asp-controller="Appointment"
+                                                           asp-action="MyAppointments">
+
+                                                            Мои записи
+
+                                                        </a>
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+
+
+                                            <div class="col-lg-4">
+
+                                                <ul class="sub-menu-list">
+
+                                                    <li>
+                                                        <a asp-controller="Appointment"
+                                                           asp-action="MyAppointments">
+
+                                                            Записи
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a asp-controller="Subscription"
+                                                           asp-action="Index">
+
+                                                            Подписка
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a asp-controller="Doctors"
+                                                           asp-action="Index">
+
+                                                            Поиск врача
+
+                                                        </a>
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+
+
+                                            <div class="col-lg-4">
+
+                                                <div class="menu-img">
+
+                                                    <img src="~/assets/Doccure/img/home/menu-img-2.jpg"
+                                                         alt="Patients"
+                                                         class="img-fluid">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+
+                        <!-- PAGES -->
+                        <li class="has-submenu megamenu">
+
+                            <a class="main-menu"
+                               href="javascript:void(0);">
+
+                                Страницы
+
+                                <span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+
+                            </a>
+
+                            <ul class="submenu mega-submenu">
+
+                                <li>
+
+                                    <div class="megamenu-wrapper megamenu-wrapper-one">
+
+                                        <div class="row">
+
+
+                                            <!-- COLUMN 1 -->
+                                            <div class="col-lg-3 sub-menu-left">
+
+                                                <ul class="sub-menu-list">
+
+                                                    <li>
+                                                        <a asp-controller="Home"
+                                                           asp-action="Index">
+                                                            Главная
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a asp-controller="Doctors"
+                                                           asp-action="Index">
+                                                            Врачи
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a asp-controller="Doctors"
+                                                           asp-action="Index">
+                                                            Специализации
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a asp-controller="Subscription"
+                                                           asp-action="Index">
+                                                            Тарифы
+                                                        </a>
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+
+
+                                            <!-- COLUMN 2 -->
+                                            <div class="col-lg-3 sub-menu-left">
+
+                                                <ul class="sub-menu-list">
+
+                                                    <li>
+                                                        <a asp-controller="Account"
+                                                           asp-action="Login">
+                                                            Вход
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a asp-controller="Account"
+                                                           asp-action="Register">
+                                                            Регистрация
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a asp-controller="Profile"
+                                                           asp-action="Index">
+                                                            Профиль
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a asp-controller="Appointment"
+                                                           asp-action="MyAppointments">
+                                                            Мои записи
+                                                        </a>
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+
+
+                                            <!-- COLUMN 3 -->
+                                            <div class="col-lg-3 sub-menu-left">
+
+                                                <ul class="sub-menu-list">
+
+                                                    <li>
+                                                        <a href="#">
+                                                            О системе
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#">
+                                                            Контакты
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#">
+                                                            FAQ
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#">
+                                                            Политика конфиденциальности
+                                                        </a>
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+
+
+                                            <!-- COLUMN 4 -->
+                                            <div class="col-lg-3">
+
+                                                <ul class="sub-menu-list">
+
+                                                    <li>
+                                                        <a href="#">
+                                                            Условия использования
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#">
+                                                            Помощь
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#">
+                                                            404
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#">
+                                                            500
+                                                        </a>
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+
+                        <!-- ADMIN -->
+                        <li class="has-submenu">
+
+                            <a class="main-menu"
+                               href="javascript:void(0);">
+
+                                Администрирование
+
+                                <span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+
+                            </a>
+
+                            <ul class="submenu sub-menu-one sub-menu-default">
+
+                                <li>
+
+                                    <div>
+
+                                        <div class="row">
+
+                                            <div class="col-lg-12">
+
+                                                <ul class="sub-menu-list">
+
+                                                    <li>
+                                                        <a href="/Admin/Dashboard">
+                                                            Панель администратора
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="/Admin/Doctors">
+                                                            Управление врачами
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="/Admin/Patients">
+                                                            Управление пациентами
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="/Admin/Appointments">
+                                                            Записи
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="/Admin/Reviews">
+                                                            Отзывы
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="/Admin/Users">
+                                                            Пользователи
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="/Admin/AuditLogs">
+                                                            Журнал действий
+                                                        </a>
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+                    </ul>
+
+
+                    <!-- HEADER ITEMS -->
+                    <div class="header-items">
+
+
+                        <!-- CONTACT -->
+                        <div class="about-popup-item border-0 pb-0">
+
+                            <h3 class="title">
+                                Контактная информация
+                            </h3>
+
+
+                            <div class="support-item mb-3">
+
+                                <div class="avatar avatar-lg bg-primary rounded-circle">
+
+                                    <i class="isax isax-messages-3"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <p class="title">
+                                        Общие вопросы
+                                    </p>
+
+                                    <h5 class="link">
+                                        info@vyzor.ru
+                                    </h5>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="support-item">
+
+                                <div class="avatar avatar-lg bg-primary rounded-circle">
+
+                                    <i class="isax isax-call-calling"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <p class="title">
+                                        Экстренная помощь
+                                    </p>
+
+                                    <h5 class="link">
+                                        +7 900 000 00 00
+                                    </h5>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- SOCIAL -->
+                        <div class="about-popup-item border-0 pb-0">
+
+                            <h3 class="title">
+                                Мы в социальных сетях
+                            </h3>
+
+                            <ul class="d-flex align-items-center gap-2 social-iyem">
+
+                                <li>
+                                    <a href="#"
+                                       class="social-icon">
+                                        <i class="fa-brands fa-facebook"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#"
+                                       class="social-icon">
+                                        <i class="fa-brands fa-x-twitter"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#"
+                                       class="social-icon">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#"
+                                       class="social-icon">
+                                        <i class="fa-brands fa-linkedin"></i>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+                        <!-- LOGOUT -->
+                        <div class="header-items-button">
+
+                            <a asp-controller="Account"
+                               asp-action="Logout"
+                               class="btn btn-primary btn-primary-gradient">
+
+                                <i class="isax isax-lock-1 me-2"></i>
+
+                                Выйти
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT HEADER -->
+            <ul class="nav header-navbar-rht">
+
+
+                <!-- SEARCH -->
+                <li class="search-item">
+
+                    <a tabindex="-1"
+                       data-bs-toggle="offcanvas"
+                       data-bs-target="#search_popup"
+                       aria-controls="search_popup"
+                       class="details-btn">
+
+                        <i class="isax isax-search-normal-1"></i>
+
+                    </a>
+
+                </li>
+
+
+                <!-- NOTIFICATIONS -->
+                <li class="noti-nav dropdown">
+
+                    <a data-bs-toggle="dropdown"
+                       aria-label="Notification"
+                       class="details-btn">
+
+                        <i class="isax isax-notification-bing"></i>
+
+                        <span class="badge"></span>
+
+                    </a>
+
+
+                    <div class="dropdown-menu notifications dropdown-menu-end">
+
+                        <div class="topnav-dropdown-header">
+
+                            <span class="notification-title">
+                                Уведомления
+                            </span>
+
+                        </div>
+
+
+                        <div class="noti-content">
+
+                            <ul class="notification-list">
+
+                                <li class="notification-message">
+
+                                    <a href="#">
+
+                                        <div class="notify-block d-flex">
+
+                                            <span class="avatar">
+
+                                                <img src="~/assets/Doccure/img/clients/client-01.jpg"
+                                                     alt="User"
+                                                     class="avatar-img">
+
+                                            </span>
+
+                                            <div class="media-body">
+
+                                                <h6>
+                                                    Новая запись
+
+                                                    <span class="notification-time">
+                                                        недавно
+                                                    </span>
+
+                                                </h6>
+
+                                                <p class="noti-details">
+
+                                                    Ваша запись к врачу успешно создана.
+
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+                                    </a>
+
+                                </li>
+
+
+                                <li class="notification-message">
+
+                                    <a href="#">
+
+                                        <div class="notify-block d-flex">
+
+                                            <span class="avatar">
+
+                                                <img src="~/assets/Doccure/img/clients/client-02.jpg"
+                                                     alt="Doctor"
+                                                     class="avatar-img">
+
+                                            </span>
+
+                                            <div class="media-body">
+
+                                                <h6>
+                                                    Напоминание
+                                                </h6>
+
+                                                <p class="noti-details">
+
+                                                    Не забудьте посетить врача.
+
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+                                    </a>
+
+                                </li>
+
+
+                                <li class="notification-message">
+
+                                    <a href="#">
+
+                                        <div class="notify-block d-flex">
+
+                                            <span class="avatar">
+
+                                                <img src="~/assets/Doccure/img/clients/client-03.jpg"
+                                                     alt="Notification"
+                                                     class="avatar-img">
+
+                                            </span>
+
+                                            <div class="media-body">
+
+                                                <h6>
+                                                    Новое сообщение
+                                                </h6>
+
+                                                <p class="noti-details">
+
+                                                    У вас новое уведомление.
+
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+                                    </a>
+
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+
+                <!-- SIDE MENU -->
+                <li>
+
+                    <a data-bs-toggle="offcanvas"
+                       data-bs-target="#support_item2"
+                       class="details-btn">
+
+                        
+
+                    </a>
+
+                </li>
+
+
+                <!-- USER -->
+                <li class="dropdown has-arrow logged-item">
+
+                    <a data-bs-toggle="dropdown">
+
+                        <span class="user-img">
+
+                            <img src="~/assets/Doccure/img/doctors-dashboard/profile-06.jpg"
+                                 alt="User"
+                                 class="rounded-circle">
+
+                        </span>
+
+                    </a>
+
+
+                    <div class="dropdown-menu dropdown-menu-end">
+
+                        <div class="user-header">
+
+                            <div class="avatar">
+
+                                <img src="~/assets/Doccure/img/doctors-dashboard/profile-06.jpg"
+                                     alt="User"
+                                     class="avatar-img rounded-circle">
+
+                            </div>
+
+
+                            <div class="user-text">
+
+                                @if (User.Identity?.IsAuthenticated == true)
+                                {
+                                    <h6>
+                                        @User.Identity.Name
+                                    </h6>
+                                }
+                                else
+                                {
+                                    <h6>
+                                        Гость
+                                    </h6>
+                                }
+
+                                <p class="text-muted mb-0">
+
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        @:Администратор
+                                    }
+                                    else if (User.IsInRole("Doctor"))
+                                    {
+                                        @:Врач
+                                    }
+                                    else if (User.IsInRole("Patient"))
+                                    {
+                                        @:Пациент
+                                    }
+                                    else
+                                    {
+                                        @:Пользователь
+                                    }
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <<a asp-controller="Dashboard" asp-action="Index">
+                            <span>Dashboard</span>
+                        </a>
+
+                        <a class="dropdown-item"
+                           asp-controller="Profile"
+                           asp-action="Index">
+
+                            Профиль
+
+                        </a>
+
+
+                        <a class="dropdown-item"
+                           asp-controller="Appointment"
+                           asp-action="MyAppointments">
+
+                            Мои записи
+
+                        </a>
+
+
+                        <a class="dropdown-item"
+                           asp-controller="Account"
+                           asp-action="Logout">
+
+                            Выйти
+
+                        </a>
+
+                    </div>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>

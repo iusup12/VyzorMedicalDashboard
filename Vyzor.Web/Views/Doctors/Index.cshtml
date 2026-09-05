@@ -1,0 +1,1160 @@
+﻿ @using System.Linq
+@model IEnumerable<Vyzor.Application.DTO.Doctor.DoctorCardDTO>
+
+@{
+    ViewData["Title"] = "Doctors";
+}
+
+<!-- Main Wrapper -->
+<div class="main-wrapper">
+
+    <!-- Theme -->
+    <div class="header-theme header-theme-two">
+        <button type="button"
+                id="dark-mode-toggle"
+                class="theme-toggle moon"
+                aria-label="dark mode">
+            <i class="isax isax-moon5"></i>
+        </button>
+
+        <button type="button"
+                id="light-mode-toggle"
+                class="theme-toggle sun"
+                aria-label="light mode">
+            <i class="isax isax-sun-15"></i>
+        </button>
+    </div>
+    <!-- /Theme -->
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar overflow-visible">
+
+        <div class="container">
+
+            <div class="row align-items-center inner-banner">
+
+                <div class="col-md-12 col-12 text-center">
+
+                    <nav aria-label="breadcrumb"
+                         class="page-breadcrumb">
+
+                        <ol class="breadcrumb">
+
+                            <li class="breadcrumb-item">
+                                <a href="/" aria-label="home">
+                                    <i class="isax isax-home-15"></i>
+                                </a>
+                            </li>
+
+                            <li class="breadcrumb-item">
+                                Doctor
+                            </li>
+
+                            <li class="breadcrumb-item active">
+                                Doctor Grid
+                            </li>
+
+                        </ol>
+
+                        <h2 class="breadcrumb-title">
+                            Doctor Grid
+                        </h2>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+
+            <!-- Search -->
+            <div class="bg-primary-gradient rounded-pill doctors-search-box">
+
+                <div class="search-box-one rounded-pill">
+
+                    <form method="get"
+                          action="/Doctors/Index">
+
+                        <div class="search-input search-line">
+
+                            <i class="isax isax-hospital5 bficon"></i>
+
+                            <div class="mb-0">
+
+                                <input type="text"
+                                       class="form-control"
+                                       name="Search"
+                                       placeholder="Search for Doctors, Hospitals, Clinics">
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="search-input search-map-line">
+
+                            <i class="isax isax-location5"></i>
+
+                            <div class="mb-0">
+
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="Location">
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="search-input search-calendar-line">
+
+                            <i class="isax isax-calendar-tick5"></i>
+
+                            <div class="mb-0">
+
+                                <input type="text"
+                                       class="form-control datetimepicker"
+                                       placeholder="Date">
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-search-btn">
+
+                            <button class="btn btn-primary d-inline-flex align-items-center rounded-pill"
+                                    type="submit">
+
+                                <i class="isax isax-search-normal-15 me-2"></i>
+
+                                Search
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+            <!-- /Search -->
+
+        </div>
+
+
+        <div class="breadcrumb-bg">
+
+            <img src="/assets/Doccure/img/bg/breadcrumb-bg-01.png"
+                 alt="img"
+                 class="breadcrumb-bg-01">
+
+            <img src="/assets/Doccure/img/bg/breadcrumb-bg-02.png"
+                 alt="img"
+                 class="breadcrumb-bg-02">
+
+            <img src="/assets/Doccure/img/bg/breadcrumb-icon.png"
+                 alt="img"
+                 class="breadcrumb-bg-03">
+
+            <img src="/assets/Doccure/img/bg/breadcrumb-icon.png"
+                 alt="img"
+                 class="breadcrumb-bg-04">
+
+        </div>
+
+    </div>
+    <!-- /Breadcrumb -->
+    <!-- Doctors Content -->
+    <div class="content mt-5">
+
+        <div class="container">
+
+            <!-- Header -->
+            <div class="row align-items-center">
+
+                <div class="col-md-6">
+
+                    <div class="mb-4">
+
+                        <h3 class="main-title">
+
+                            Showing
+
+                            <span class="text-secondary">
+                                @Model.Count()
+                            </span>
+
+                            Doctors For You
+
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="d-flex align-items-center justify-content-end mb-4">
+
+
+                        <!-- Availability -->
+                        <div class="doctor-filter-availability me-2">
+
+                            <p>
+                                Availability
+                            </p>
+
+                            <div class="status-toggle status-tog">
+
+                                <input type="checkbox"
+                                       id="status_6"
+                                       class="check">
+
+                                <label for="status_6"
+                                       class="checktoggle">
+                                    checkbox
+                                </label>
+
+                            </div>
+
+                        </div>
+                        <!-- /Availability -->
+                        <!-- Sort -->
+                        <div class="dropdown header-dropdown me-2">
+
+                            <a class="dropdown-toggle sort-dropdown"
+                               data-bs-toggle="dropdown"
+                               href="javascript:void(0);"
+                               aria-expanded="false">
+
+                                <span>
+                                    Sort By
+                                </span>
+
+                                Price (Low to High)
+
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end">
+
+                                <a href="javascript:void(0);"
+                                   class="dropdown-item">
+
+                                    Price (Low to High)
+
+                                </a>
+
+                                <a href="javascript:void(0);"
+                                   class="dropdown-item">
+
+                                    Price (High to Low)
+
+                                </a>
+
+                            </div>
+
+                        </div>
+                        <!-- /Sort -->
+                        <!-- Grid -->
+                        <a href="#"
+                           class="btn btn-sm head-icon active me-2">
+
+                            <i class="isax isax-grid-7"></i>
+
+                        </a>
+
+
+                        <!-- List -->
+                        <a href="#"
+                           class="btn btn-sm head-icon me-2">
+
+                            <i class="isax isax-row-vertical"></i>
+
+                        </a>
+
+
+                        <!-- Map -->
+                        <a href="#"
+                           class="btn btn-sm head-icon">
+
+                            <i class="isax isax-location"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /Header -->
+            <!-- Doctors -->
+            <div class="row">
+
+                @if (Model.Any())
+                {
+
+                    @foreach (var doctor in Model)
+                    {
+
+                        <div class="col-xxl-4 col-md-6">
+
+                            <div class="card">
+
+                                <!-- Doctor Image -->
+                                <div class="card-img card-img-hover">
+
+                                    <a href="/Doctors/Details/@doctor.Id">
+
+                                        <img src="@(string.IsNullOrWhiteSpace(doctor.PhotoUrl)
+                                                                                                                                                                         ? "/assets/Doccure/img/doctor-grid/doctor-grid-01.jpg"
+                                                                                                                                                                         : doctor.PhotoUrl)"
+                                             alt="@doctor.FullName">
+
+                                    </a>
+
+
+                                    <div class="grid-overlay-item d-flex align-items-center justify-content-between">
+
+                                        <span class="badge bg-orange">
+
+                                            <i class="fa-solid fa-star me-1"></i>
+
+                                            @doctor.Rating.ToString("0.0")
+
+                                        </span>
+
+
+                                        <a href="javascript:void(0)"
+                                           class="fav-icon">
+
+                                            <i class="fa fa-heart"></i>
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+                                <!-- /Doctor Image -->
+
+
+                                <div class="card-body p-0">
+
+
+                                    <!-- Specialization / Availability -->
+                                    <div class="d-flex active-bar align-items-center justify-content-between p-3">
+
+                                        <a href="javascript:void(0)"
+                                           class="text-indigo fw-medium fs-14">
+
+                                            @doctor.SpecializationName
+
+                                        </a>
+
+
+                                        <span class="badge bg-success-light d-inline-flex align-items-center">
+
+                                            <i class="fa-solid fa-circle fs-5 me-1"></i>
+
+                                            Available
+
+                                        </span>
+
+                                    </div>
+                                    <!-- /Specialization / Availability -->
+
+
+                                    <div class="p-3 pt-0">
+
+
+                                        <!-- Doctor Information -->
+                                        <div class="doctor-info-detail mb-3 pb-3">
+
+                                            <h3 class="mb-1">
+
+                                                <a href="/Doctors/Details/@doctor.Id">
+
+                                                    @doctor.FullName
+
+                                                </a>
+
+                                            </h3>
+
+
+                                            <div class="d-flex align-items-center">
+
+                                                <p class="d-flex align-items-center mb-0 fs-14">
+
+                                                    <i class="isax isax-location me-2"></i>
+
+                                                    Minneapolis, MN
+
+                                                </p>
+
+
+                                                <i class="fa-solid fa-circle fs-5 text-primary mx-2 me-1"></i>
+
+
+                                                <span class="fs-14 fw-medium">
+
+                                                    30 Min
+
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- /Doctor Information -->
+                                        <!-- Price / Booking -->
+                                        <div class="d-flex align-items-center justify-content-between">
+
+                                            <div>
+
+                                                <p class="mb-1">
+                                                    Consultation Fees
+                                                </p>
+
+                                                <h3 class="text-orange">
+                                                    @doctor.AppointmentPrice.ToString("N0")
+                                                    <span class="currency-rub">₽</span>
+                                                </h3>
+                                            </div>
+
+
+                                            <a href="/Appointment/Create?doctorId=@doctor.Id"
+                                               class="btn btn-md btn-dark d-inline-flex align-items-center rounded-pill">
+
+                                                <i class="isax isax-calendar-1 me-2"></i>
+
+                                                Book Now
+
+                                            </a>
+
+                                        </div>
+                                        <!-- /Price / Booking -->
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    }
+
+                }
+                else
+                {
+
+                    <div class="col-md-12">
+
+                        <div class="text-center py-5">
+
+                            <h3>
+                                No doctors found
+                            </h3>
+
+                            <p class="text-muted">
+                                There are currently no available doctors.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                }
+
+
+                <!-- Load More -->
+                <div class="col-md-12">
+
+                    <div class="text-center mb-4">
+
+                        <a href="javascript:void(0);"
+                           class="btn btn-md btn-primary-gradient d-inline-flex align-items-center rounded-pill">
+
+                            <i class="isax isax-d-cube-scan5 me-2"></i>
+
+                            Load More
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /Doctors -->
+
+        </div>
+
+    </div>
+    <!-- /Doctors Content -->
+    <!-- Footer Section -->
+    <footer class="footer inner-footer">
+
+        <div class="footer-top">
+
+            <div class="container">
+
+                <div class="row">
+
+
+                    <div class="col-xl-8">
+
+                        <div class="row">
+
+
+                            <!-- Company -->
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+
+                                <div class="footer-widget footer-menu">
+
+                                    <h6 class="footer-title">
+                                        Company
+                                    </h6>
+
+                                    <ul>
+
+                                        <li>
+                                            <a href="#">
+                                                About
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/Doctors">
+                                                Features
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#">
+                                                Works
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#">
+                                                Careers
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#">
+                                                Locations
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                            <!-- /Company -->
+                            <!-- Treatments -->
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+
+                                <div class="footer-widget footer-menu">
+
+                                    <h6 class="footer-title">
+                                        Treatments
+                                    </h6>
+
+                                    <ul>
+
+                                        <li><a href="#">Dental</a></li>
+                                        <li><a href="#">Cardiac</a></li>
+                                        <li><a href="#">Spinal Cord</a></li>
+                                        <li><a href="#">Hair Growth</a></li>
+                                        <li><a href="#">Anemia & Disorder</a></li>
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                            <!-- /Treatments -->
+                            <!-- Specialities -->
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+
+                                <div class="footer-widget footer-menu">
+
+                                    <h6 class="footer-title">
+                                        Specialities
+                                    </h6>
+
+                                    <ul>
+
+                                        <li><a href="#">Transplant</a></li>
+                                        <li><a href="#">Cardiologist</a></li>
+                                        <li><a href="#">Oncology</a></li>
+                                        <li><a href="#">Pediatrics</a></li>
+                                        <li><a href="#">Gynacology</a></li>
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                            <!-- /Specialities -->
+                            <!-- Utilities -->
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+
+                                <div class="footer-widget footer-menu">
+
+                                    <h6 class="footer-title">
+                                        Utilites
+                                    </h6>
+
+                                    <ul>
+
+                                        <li><a href="#">Pricing</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                        <li><a href="#">Request A Quote</a></li>
+                                        <li><a href="#">Premium Membership</a></li>
+                                        <li><a href="#">Integrations</a></li>
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                            <!-- /Utilities -->
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Newsletter -->
+                    <div class="col-xl-4 col-md-7">
+
+                        <div class="footer-widget">
+
+                            <h6 class="footer-title">
+                                Newsletter
+                            </h6>
+
+                            <p class="mb-2 text-dark">
+                                Subscribe & Stay Updated from the Doccure
+                            </p>
+
+
+                            <div class="subscribe-input">
+
+                                <form action="#">
+
+                                    <input type="email"
+                                           class="form-control"
+                                           placeholder="Enter Email Address">
+
+
+                                    <button type="submit"
+                                            class="btn btn-md btn-primary-gradient d-inline-flex align-items-center">
+
+                                        <i class="isax isax-send-25 me-1"></i>
+
+                                        Send
+
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+
+                            <!-- Social -->
+                            <div class="social-icon">
+
+                                <h6 class="mb-3 footer-title">
+                                    Connect With Us
+                                </h6>
+
+                                <ul>
+
+                                    <li>
+                                        <a href="#"
+                                           aria-label="facebook">
+
+                                            <i class="fa-brands fa-facebook"></i>
+
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#"
+                                           aria-label="twitter">
+
+                                            <i class="fa-brands fa-x-twitter"></i>
+
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#"
+                                           aria-label="instagram">
+
+                                            <i class="fa-brands fa-instagram"></i>
+
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#"
+                                           aria-label="linkedin">
+
+                                            <i class="fa-brands fa-linkedin"></i>
+
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#"
+                                           aria-label="pinterest">
+
+                                            <i class="fa-brands fa-pinterest"></i>
+
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                            <!-- /Social -->
+
+                        </div>
+
+                    </div>
+                    <!-- /Newsletter -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <div class="copyright">
+
+
+                    <div class="copyright-text mb-0">
+
+                        <p class="mb-0">
+                            Copyright © 2026 Doccure. All Rights Reserved
+                        </p>
+
+                    </div>
+
+
+                    <!-- Copyright Menu -->
+                    <div class="copyright-menu">
+
+                        <ul class="policy-menu mb-0">
+
+                            <li>
+                                <a href="#">
+                                    Legal Notice
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    Privacy Policy
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    Refund Policy
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                    <!-- /Copyright Menu -->
+                    <!-- Payment -->
+                    <ul class="payment-method">
+
+                        <li>
+                            <a href="#">
+                                <img src="/assets/Doccure/img/icons/card-01.svg"
+                                     alt="Img">
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <img src="/assets/Doccure/img/icons/card-02.svg"
+                                     alt="Img">
+                            </a>    
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <img src="/assets/Doccure/img/icons/card-03.svg"
+                                     alt="Img">
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <img src="/assets/Doccure/img/icons/card-04.svg"
+                                     alt="Img">
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <img src="/assets/Doccure/img/icons/card-05.svg"
+                                     alt="Img">
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <img src="/assets/Doccure/img/icons/card-06.svg"
+                                     alt="Img">
+                            </a>
+                        </li>
+
+                    </ul>
+                    <!-- /Payment -->
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /Footer Bottom -->
+
+    </footer>
+    <!-- /Footer Section -->
+    <!-- Cursor -->
+    <div class="mouse-cursor cursor-outer"></div>
+
+    <div class="mouse-cursor cursor-inner"></div>
+    <!-- /Cursor -->
+
+</div>
+<!-- /Main Wrapper -->
+<!-- Search Offcanvas -->
+<div class="offcanvas offcanvas-top search_popup"
+     tabindex="-1"
+     id="search_popup">
+
+    <div class="offcanvas-header">
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close">
+
+            <i class="isax isax-close-circle"></i>
+
+        </button>
+
+    </div>
+
+
+    <div class="offcanvas-body">
+
+        <div class="support-item-three w-50">
+
+            <input type="text"
+                   class="inpts"
+                   placeholder="Search Your Keywords">
+
+            <a href="#"
+               class="submit btn">
+
+                <i class="isax isax-arrow-right-1"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- /Search Offcanvas -->
+<!-- Support Offcanvas -->
+<div class="offcanvas offcanvas-offset offcanvas-end support_popup"
+     tabindex="-1"
+     id="support_item">
+
+    <div class="offcanvas-header">
+
+        <a href="/">
+
+            <img src="/assets/Doccure/img/logo.svg"
+                 alt="logo"
+                 class="img-fluid logo">
+
+        </a>
+
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close">
+
+            <i class="isax isax-close-circle"></i>
+
+        </button>
+
+    </div>
+
+
+    <div class="offcanvas-body">
+
+
+        <!-- About -->
+        <div class="about-popup-item">
+
+            <h3 class="title">
+                About Doccure
+            </h3>
+
+            <p>
+                Modern healthcare platform designed to simplify the way
+                patients connect with doctors, clinics & medical services.
+            </p>
+
+
+            <div class="about-img d-flex align-items-center gap-2 justify-content-between">
+
+                <a href="/assets/Doccure/img/banner/about-img-1.jpg"
+                   data-fancybox="gallery">
+
+                    <img src="/assets/Doccure/img/banner/about-img-1.jpg"
+                         alt="about-img-1"
+                         class="img-fluid">
+
+                </a>
+
+
+                <a href="/assets/Doccure/img/banner/about-img-2.jpg"
+                   data-fancybox="gallery">
+
+                    <img src="/assets/Doccure/img/banner/about-img-2.jpg"
+                         alt="about-img-2"
+                         class="img-fluid">
+
+                </a>
+
+
+                <a href="/assets/Doccure/img/banner/about-img-3.jpg"
+                   data-fancybox="gallery">
+
+                    <img src="/assets/Doccure/img/banner/about-img-3.jpg"
+                         alt="about-img-3"
+                         class="img-fluid">
+
+                </a>
+
+            </div>
+
+        </div>
+        <!-- /About -->
+        <!-- Locations -->
+        <div class="about-popup-item">
+
+            <h3 class="title">
+                Our Locations
+            </h3>
+
+
+            <div class="loction-item mb-3">
+
+                <h4 class="title">
+                    California
+                </h4>
+
+                <p class="location">
+                    1250 Sunset, Los Angeles, CA
+                </p>
+
+            </div>
+
+
+            <div class="loction-item">
+
+                <h4 class="title">
+                    Los Angeles
+                </h4>
+
+                <p class="location">
+                    669 Boulevard, Los Angeles
+                </p>
+
+            </div>
+
+        </div>
+        <!-- /Locations -->
+        <!-- Contact -->
+        <div class="about-popup-item">
+
+            <h3 class="title">
+                Contact Information
+            </h3>
+
+
+            <div class="support-item mb-3">
+
+                <div class="avatar avatar-lg bg-primary rounded-circle">
+
+                    <i class="isax isax-messages-3"></i>
+
+                </div>
+
+
+                <div>
+
+                    <p class="title">
+                        General Inquiries
+                    </p>
+
+                    <h5 class="link">
+                        info@example.com
+                    </h5>
+
+                </div>
+
+            </div>
+
+
+            <div class="support-item">
+
+                <div class="avatar avatar-lg bg-primary rounded-circle">
+
+                    <i class="isax isax-call-calling"></i>
+
+                </div>
+
+
+                <div>
+
+                    <p class="title">
+                        Emergency Cases
+                    </p>
+
+                    <h5 class="link">
+                        +1 24565 89856
+                    </h5>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /Contact -->
+        <!-- Social -->
+        <div class="about-popup-item border-0">
+
+            <h3 class="title">
+                Follow Us
+            </h3>
+
+
+            <ul class="d-flex align-items-center gap-2 social-iyem">
+
+                <li>
+                    <a href="#"
+                       class="social-icon"
+                       aria-label="facebook">
+
+                        <i class="fa-brands fa-facebook"></i>
+
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#"
+                       class="social-icon"
+                       aria-label="twitter">
+
+                        <i class="fa-brands fa-x-twitter"></i>
+
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#"
+                       class="social-icon"
+                       aria-label="instagram">
+
+                        <i class="fa-brands fa-instagram"></i>
+
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#"
+                       class="social-icon"
+                       aria-label="linkedin">
+
+                        <i class="fa-brands fa-linkedin"></i>
+
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+        <!-- /Social -->
+
+    </div>
+
+
+    <img src="/assets/Doccure/img/bg/offcanvas-bg.png"
+         alt="element"
+         class="element-01">
+
+</div>
+<!-- /Support Offcanvas -->
+@section Styles {
+
+    <link rel="stylesheet"
+          href="~/assets/Doccure/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="~/assets/Doccure/plugins/fontawesome/css/fontawesome.min.css" />
+
+    <link rel="stylesheet"
+          href="~/assets/Doccure/plugins/fontawesome/css/all.min.css" />
+
+    <link rel="stylesheet"
+          href="~/assets/Doccure/css/iconsax.css" />
+
+    <link rel="stylesheet"
+          href="~/assets/Doccure/css/bootstrap-datetimepicker.min.css" />
+
+    <link rel="stylesheet"
+          href="~/assets/Doccure/css/feather.css" />
+
+    <link rel="stylesheet"
+          href="~/assets/Doccure/css/style.min.css" />
+
+}
+
+
+@section Scripts {
+
+    <script src="~/assets/Doccure/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/assets/Doccure/js/feather.min.js"></script>
+
+    <script src="~/assets/Doccure/js/fancybox-vanilla.js"></script>
+
+    <script src="~/assets/Doccure/js/script.min.js"></script>
+
+}

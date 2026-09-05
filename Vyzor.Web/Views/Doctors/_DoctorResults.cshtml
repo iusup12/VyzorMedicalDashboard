@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Vyzor.Application.DTO.Doctor.DoctorCardDTO>
+
+
+<div class="row">
+
+    @if (Model != null && Model.Any())
+    {
+        foreach (var doctor in Model)
+        {
+            var doctorImage = string.IsNullOrWhiteSpace(doctor.PhotoUrl)
+                ? "/assets/Doccure/img/doctor-grid/doctor-grid-01.jpg"
+                : doctor.PhotoUrl;
+
+
+            <div class="col-xl-4 col-md-6">
+                <div class="card">
+
+                    <div class="card-img card-img-hover">
+
+                        <a asp-controller="Doctors"
+                           asp-action="Details"
+                           asp-route-id="@doctor.Id">
+
+                            <img src="@doctorImage"
+                                 class="img-fluid"
+                                 alt="@doctor.FullName">
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+                        <div class="doctor-info-detail">
+
+                            <h5 class="mb-1">
+
+                                <a asp-controller="Doctors"
+                                   asp-action="Details"
+                                   asp-route-id="@doctor.Id">
+
+                                    @doctor.FullName
+
+                                </a>
+
+                            </h5>
+
+
+                            <p class="text-muted mb-2">
+                                @doctor.SpecializationName
+                            </p>
+
+
+                            <div class="d-flex align-items-center mb-2">
+
+                                <span class="text-warning me-1">
+                                    ★
+                                </span>
+
+                                <span>
+                                    @doctor.Rating.ToString("0.0")
+                                </span>
+
+                            </div>
+
+
+                            <div class="d-flex justify-content-between align-items-center">
+
+
+                                <span>
+                                    @doctor.AppointmentPrice.ToString("0.00") €
+                                </span>
+
+
+                                <a asp-controller="Appointment"
+                                   asp-action="Create"
+                                   asp-route-doctorId="@doctor.Id"
+                                   class="btn btn-md btn-dark rounded-pill">
+
+                                    Записаться
+
+                                </a>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+    }
+    else
+    {
+
+        <div class="col-12">
+
+            <div class="alert alert-info">
+
+                Врачи по заданным параметрам не найдены.
+
+            </div>
+
+        </div>
+
+    }
+
+</div>

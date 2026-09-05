@@ -1,0 +1,31 @@
+﻿<header class="app-header">
+    <div class="main-header-container container-fluid">
+        <div class="header-content-left">
+            <button class="header-element btn btn-icon" type="button" id="sidebar-toggle">
+                <i class="ri-menu-line fs-20"></i>
+            </button>
+            <div class="header-element search-element">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="ri-search-line"></i></span>
+                    <input type="text" class="form-control" placeholder="Search..." />
+                </div>
+            </div>
+        </div>
+        <div class="header-content-right">
+            <button class="header-element btn btn-icon"><i class="ri-sun-line fs-18"></i></button>
+            <button class="header-element btn btn-icon position-relative"><i class="ri-notification-3-line fs-18"></i><span class="badge bg-danger rounded-pill position-absolute top-0 end-0">3</span></button>
+            <button class="header-element btn btn-icon"><i class="ri-settings-4-line fs-18"></i></button>
+            <div class="dropdown">
+                <button class="btn d-flex align-items-center" data-bs-toggle="dropdown">
+                    <span class="avatar avatar-sm me-2">SA</span>
+                    <span class="d-none d-md-block text-start"><span class="d-block fw-semibold">System Admin</span><span class="d-block fs-11 text-muted">Administrator</span></span>
+                    <i class="ri-arrow-down-s-line ms-2"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

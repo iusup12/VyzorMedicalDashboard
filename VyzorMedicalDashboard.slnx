@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Элементы решения/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="DatabaseSeeder/DatabaseSeeder.csproj" Id="3e3c0a51-0bd2-4ed5-8ead-1dce834dc3de" />
+  <Project Path="Vyzor.Application/Vyzor.Application.csproj" />
+  <Project Path="Vyzor.Domain/Vyzor.Domain.csproj" />
+  <Project Path="Vyzor.Infrastructure/Vyzor.Infrastructure.csproj" />
+  <Project Path="Vyzor.Web/Vyzor.Web.csproj" />
+</Solution>

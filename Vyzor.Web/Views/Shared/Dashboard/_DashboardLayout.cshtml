@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en"
+      dir="ltr"
+      data-theme-mode="light"
+      data-header-styles="transparent"
+      data-vertical-style="doublemenu"
+      data-nav-layout="vertical"
+      data-menu-styles="transparent"
+      data-page-style="flat"
+      data-width="fullwidth"
+      data-menu-position="fixed"
+      data-header-position="fixed">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vyzor Sales Dashboard</title>
+
+    <link rel="stylesheet" href="~/assets/Vyzor/assets/css/a6c4c1eb729589a7.css" />
+    <link rel="stylesheet" href="~/assets/Vyzor/assets/css/d65e9a48ba074f6d.css" />
+    <link rel="stylesheet" href="~/assets/Vyzor/assets/css/a1b03c27987e709e.css" />
+    <link rel="stylesheet" href="~/assets/Vyzor/assets/css/ba13e12616712fb9.css" />
+    <link rel="stylesheet" href="~/assets/Vyzor/assets/css/8a2d62cb74ecbf5a.css" />
+    <link rel="stylesheet" href="~/assets/Vyzor/assets/css/61e7a423d1677b99.css" />
+    <link rel="stylesheet" href="~/assets/Vyzor/assets/css/b1a654e386b8cc0d.css" />
+    <link rel="stylesheet" href="~/assets/Vyzor/assets/css/d1e5fbf3eb116c5b.css" />
+    <link rel="stylesheet" href="~/assets/Vyzor/assets/css/5f32b1c65908a9ab.css" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" />
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <div class="page">
+        <partial name="~/Views/Shared/Dashboard/_DashboardSidebar.cshtml" />
+
+        <div class="main-content app-content">
+            <partial name="~/Views/Shared/Dashboard/_DashboardHeader.cshtml" />
+
+            <main class="container-fluid p-4">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <script src="~/assets/Vyzor/assets/js/loader.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
