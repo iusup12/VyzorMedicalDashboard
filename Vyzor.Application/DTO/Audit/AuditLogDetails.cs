@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Vyzor.Domain.Enums;
 
-namespace Vyzor.Application.DTO.Audit;
+namespace Vyzor.Application.DTOs.Audit;
 
-public class AuditLogDetailsDTO
+public class AuditLogDto
 {
-    public string Id { get; set; } = string.Empty;
-
-    public string UserName { get; set; } = string.Empty;
-
-    public string Action { get; set; } = string.Empty;
-
+    public int Id { get; set; }
+    public string? UserId { get; set; }
+    public AuditAction Action { get; set; }
     public string EntityName { get; set; } = string.Empty;
-
-    public string? OldValues { get; set; }
-
-    public string? NewValues { get; set; }
-
-    public DateTime CreatedAt { get; set; }
+    public string? EntityId { get; set; }
+    public string? Details { get; set; }
+    public string? IpAddress { get; set; }
+    public string? UserAgent { get; set; }
+    public DateTime CreatedAtUtc { get; set; }
 }

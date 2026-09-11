@@ -27,8 +27,8 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<Review> Reviews => Set<Review>();
 
     public DbSet<SubscriptionPlan> SubscriptionPlans => Set<SubscriptionPlan>();
+    public DbSet<SubscriptionFeature> SubscriptionFeatures => Set<SubscriptionFeature>();
     public DbSet<UserSubscription> UserSubscriptions => Set<UserSubscription>();
-
     public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -45,8 +45,8 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
         ConfigureReview(modelBuilder);
 
         ConfigureSubscriptionPlan(modelBuilder);
+        ConfigureSubscriptionFeature(modelBuilder);
         ConfigureUserSubscription(modelBuilder);
-
         ConfigureAuditLog(modelBuilder);
     }
 
@@ -205,13 +205,29 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
                 .IsRequired()
                 .HasMaxLength(100);
 
+            entity.Property(x => x.Slug)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            entity.HasIndex(x => x.Slug)
+                .IsUnique();
+
+            entity.Property(x => x.Price)
+                .HasPrecision(18, 2);
+
             entity.Property(x => x.DiscountPercent)
                 .HasPrecision(5, 2);
 
-            entity.Property(x => x.MonthlyPrice)
-                .HasPrecision(18, 2);
+            entity.Property(x => x.IsActive)
+                .HasDefaultValue(true);
+
+            entity.HasMany(x => x.Features)
+                .WithOne(x => x.SubscriptionPlan)
+                .HasForeignKey(x => x.SubscriptionPlanId)
+                .OnDelete(DeleteBehavior.Cascade);
         });
     }
+
 
     private static void ConfigureUserSubscription(ModelBuilder modelBuilder)
     {
@@ -221,12 +237,35 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
 
             entity.HasIndex(x => x.UserId);
             entity.HasIndex(x => x.Status);
-            entity.HasIndex(x => x.EndDate);
+            entity.HasIndex(x => x.EndsAtUtc);
+
+            entity.Property(x => x.UserId)
+                .IsRequired();
 
             entity.HasOne(x => x.SubscriptionPlan)
-                .WithMany()
+                .WithMany(x => x.UserSubscriptions)
                 .HasForeignKey(x => x.SubscriptionPlanId)
                 .OnDelete(DeleteBehavior.Restrict);
+        });
+    }
+    private static void ConfigureSubscriptionFeature(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<SubscriptionFeature>(entity =>
+        {
+            entity.HasKey(x => x.Id);
+
+            entity.Property(x => x.Code)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            entity.Property(x => x.Description)
+                .HasMaxLength(500);
+
+            entity.HasIndex(x => new
+            {
+                x.SubscriptionPlanId,
+                x.Code
+            }).IsUnique();
         });
     }
 
@@ -238,19 +277,13 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
 
             entity.HasIndex(x => x.UserId);
             entity.HasIndex(x => x.Action);
-            entity.HasIndex(x => x.CreatedAt);
+            entity.HasIndex(x => x.CreatedAtUtc);
 
             entity.Property(x => x.EntityName)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            entity.Property(x => x.Description)
-                .HasMaxLength(2000);
-
-            entity.Property(x => x.OldValues)
-                .HasMaxLength(4000);
-
-            entity.Property(x => x.NewValues)
+            entity.Property(x => x.Details)
                 .HasMaxLength(4000);
         });
     }

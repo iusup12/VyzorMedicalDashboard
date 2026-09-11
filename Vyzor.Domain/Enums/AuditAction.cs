@@ -26,9 +26,10 @@ public enum AuditAction
     ReviewUpdated = 41,
     ReviewDeleted = 42,
 
-    SubscriptionActivated = 50,
-    SubscriptionRenewed = 51,
-    SubscriptionCancelled = 52,
+    SubscriptionPlanCreated = 50,
+    SubscriptionPlanUpdated = 51,
+    SubscriptionPlanDeleted = 52,
+    SubscriptionRenewed = 53,
 
     UserRoleChanged = 60
 }

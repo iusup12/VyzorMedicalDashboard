@@ -1,6 +1,8 @@
-﻿namespace Vyzor.Application.DTO.Filters;
+﻿using Vyzor.Application.Common;
 
-public class DoctorCatalogFilterDTO
+namespace Vyzor.Application.DTO.Filters;
+
+public class DoctorCatalogFilterDTO : PagedRequest
 {
     public string? Search { get; set; }
 
@@ -15,8 +17,4 @@ public class DoctorCatalogFilterDTO
     public double? MinRating { get; set; }
 
     public string? Sort { get; set; }
-
-    public int Page { get; set; } = 1;
-
-    public int PageSize { get; set; } = 6;
 }

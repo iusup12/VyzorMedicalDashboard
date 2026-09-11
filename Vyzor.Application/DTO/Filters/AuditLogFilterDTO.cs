@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Vyzor.Application.Common;
+using Vyzor.Domain.Enums;
 
 namespace Vyzor.Application.DTO.Filters;
 
-public class AuditLogFilterDTO
+public class AuditLogFilterDTO : PagedRequest
 {
-    public string? UserName { get; set; }
+    [StringLength(450)]
+    public string? UserId { get; set; }
 
-    public string? Action { get; set; }
-
-    public DateTime? FromDate { get; set; }
-
-    public DateTime? ToDate { get; set; }
-
-    public int Page { get; set; } = 1;
+    public AuditAction? Action { get; set; }
+    public DateTime? FromUtc { get; set; }
+    public DateTime? ToUtc { get; set; }
 }

@@ -27,6 +27,8 @@ public class DatabaseSeeder
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly ILogger<DatabaseSeeder> _logger;
 
+    public int SubscriptionPlanId { get; private set; }
+
     public DatabaseSeeder(
         AppDbContext dbContext,
         RoleManager<IdentityRole> roleManager,
@@ -240,7 +242,8 @@ public class DatabaseSeeder
                     "/assets/doccure/img/doctor-grid/doctor-grid-01.jpg",
                 SpecializationId = specializations[0].Id,
                 SpecializationName = specializations[0].Name,
-                IsActive = true
+                IsActive = true,
+                rating = 7,
             };
 
             _dbContext.Doctors.Add(john);
@@ -277,7 +280,8 @@ public class DatabaseSeeder
                     "/assets/doccure/img/doctor-grid/doctor-grid-02.jpg",
                 SpecializationId = specializations[1].Id,
                 SpecializationName = specializations[1].Name,
-                IsActive = true
+                IsActive = true,
+                rating = 6,
             };
 
             _dbContext.Doctors.Add(sarah);
@@ -377,14 +381,14 @@ public class DatabaseSeeder
                 {
                     Name = "Base",
                     DiscountPercent = 7,
-                    MonthlyPrice = 9.99m
+                    Price = 9.99m
                 },
 
                 new SubscriptionPlan
                 {
                     Name = "Premium",
                     DiscountPercent = 10,
-                    MonthlyPrice = 19.99m
+                    Price = 19.99m
                 });
 
             await _dbContext.SaveChangesAsync(
@@ -415,9 +419,9 @@ public class DatabaseSeeder
             new UserSubscription
             {
                 UserId = userId,
-                SubscriptionPlanId = planId,
-                StartDate = DateTime.UtcNow,
-                EndDate = DateTime.UtcNow.AddMonths(1),
+                SubscriptionPlanId = SubscriptionPlanId,
+                StartsAtUtc = DateTime.UtcNow.AddDays(-3),
+                EndsAtUtc = DateTime.UtcNow.AddDays(27),
                 Status = SubscriptionStatus.Active
             });
 
@@ -438,20 +442,31 @@ public class DatabaseSeeder
             return;
         }
 
-        _dbContext.AuditLogs.Add(
-            new AuditLog
-            {
-                UserId = users.Admin.Id,
-                Action = AuditAction.Register,
-                EntityName = "DatabaseSeeder",
-                Description = "Initial seed completed",
-                CreatedAt = DateTime.UtcNow
-            });
-
-        await _dbContext.SaveChangesAsync(
-            cancellationToken);
+        _dbContext.AuditLogs.AddRange(
+             new AuditLog
+             {
+                 UserId = users.Patient.Id,
+                 Action = AuditAction.Register,
+                 EntityName = nameof(ApplicationUser),
+                 EntityId = users.Patient.Id,
+                 Details = "Demo Patient account created by seed."
+             },
+             new AuditLog
+             {
+                 UserId = users.Doctor.Id,
+                 Action = AuditAction.AppointmentUpdated,
+                 EntityName = nameof(Appointment),
+                 Details = "Demo Doctor action for dashboard."
+             },
+             new AuditLog
+             {
+                 UserId = users.Admin.Id,
+                 Action = AuditAction.UserRoleChanged,
+                 EntityName = nameof(ApplicationUser),
+                 EntityId = users.Doctor.Id,
+                 Details = "Demo admin role audit entry."
+             });
     }
-
     private static void EnsureSuccess(
         IdentityResult result)
     {

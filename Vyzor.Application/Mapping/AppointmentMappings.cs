@@ -59,4 +59,5 @@ public static class AppointmentMappings
         a.Status = dto.Status;
         a.UpdatedAtUtc = DateTime.UtcNow;
     }
+
 }

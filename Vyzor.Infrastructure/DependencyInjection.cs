@@ -34,12 +34,12 @@ public static class DependencyInjection
         services.AddSingleton<IMongoClient>(
             new MongoClient(mongoConnectionString!));
 
-        services.AddScoped<IAuditLogService, AuditLogService>();
+        services.AddScoped<IAuditService, AuditService>();
         services.AddScoped<IDoctorService, DoctorService>();
         services.AddScoped<IPatientService, PatientService>();
         services.AddScoped<IAppointmentService, AppointmentService>();
         services.AddScoped<IReviewService, ReviewService>();
-        services.AddScoped<ISubscriptionPlanService, SubscriptionPlanService>();
+        services.AddScoped<ISubscriptionService, SubscriptionService>();
         services.AddScoped<ISpecializationService, SpecializationService>();
 
         services.AddScoped<ITechnicalLogService, TechnicalLogService>();

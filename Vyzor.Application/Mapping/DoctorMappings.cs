@@ -40,7 +40,8 @@ public static class DoctorMappings
             Id = doctor.Id,
             SpecializationName = doctor.Specialization != null
                 ? doctor.Specialization.Name
-                : string.Empty
+                : string.Empty,
+            Clinic=doctor.Clinic
         };
     }
 

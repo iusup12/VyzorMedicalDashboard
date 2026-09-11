@@ -37,7 +37,7 @@ public string FullName { get; set; } = string.Empty;
     public string? ImageUrl { get; set; }
     public string SpecializationName { get; set; } = string.Empty;
 
-
+    public string? Clinic { get; set; }
 
     public bool IsActive { get; set; }
 }

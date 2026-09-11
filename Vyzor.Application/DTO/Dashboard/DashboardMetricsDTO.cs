@@ -11,7 +11,7 @@ public class DashboardMetricsDTO
 
     public int TotalAppointments { get; set; }
 
-    public int ActiveSubscriptions { get; set; }
+    public int ActiveSubscriptionsCount { get; set; }
 
-    public decimal Revenue { get; set; }
+    public int AuditLogsCount { get; set; }
 }

@@ -13,25 +13,15 @@ public static class AuditMappings
     {
         return new AuditLogDTO
         {
-            Id = auditLog.UserId,
-            UserName = auditLog.UserName,
-            Action = auditLog.Action.ToString(),
-            EntityName = auditLog.EntityName
-        };
-    }
-
-    public static AuditLogDetailsDTO ToDetailsDto(this AuditLog auditLog)
-    {
-        return new AuditLogDetailsDTO
-        {
-            Id = auditLog.UserId,
-            UserName = auditLog.UserName,
-            Action = auditLog.Action.ToString(),
+            Id = auditLog.Id,
+            UserId = auditLog.UserId,
+            Action = auditLog.Action,
             EntityName = auditLog.EntityName,
-            OldValues = null,
-            NewValues = auditLog.Description,
-            CreatedAt = DateTime.MinValue
+            EntityId = auditLog.EntityId,
+            Details = auditLog.Details,
+            IpAddress = auditLog.IpAddress,
+            UserAgent = auditLog.UserAgent,
+            CreatedAtUtc = auditLog.CreatedAtUtc
         };
     }
 }
-

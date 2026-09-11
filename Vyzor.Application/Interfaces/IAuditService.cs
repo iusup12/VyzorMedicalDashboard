@@ -2,20 +2,14 @@
 
 using Vyzor.Application.Common;
 using Vyzor.Application.DTO.Audit;
+using Vyzor.Application.DTO;
 using Vyzor.Application.DTO.Filters;
 using Vyzor.Domain.Enums;
 
 namespace Vyzor.Application.Interfaces;
 
-public interface IAuditLogService
+public interface IAuditService
 {
-    Task<PagedResult<AuditLogDTO>> GetLogsAsync(
-        AuditLogFilterDTO filter,
-        CancellationToken cancellationToken = default);
-
-    Task<AuditLogDetailsDTO?> GetByIdAsync(
-        int id);
-
     Task LogAsync(
         AuditAction action,
         string entityName,
@@ -25,5 +19,8 @@ public interface IAuditLogService
         string? ipAddress = null,
         string? userAgent = null,
         CancellationToken cancellationToken = default);
-}
 
+    Task<PagedResult<AuditLogDTO>> GetLogsAsync(
+        AuditLogFilterDTO filter,
+        CancellationToken cancellationToken = default);
+}

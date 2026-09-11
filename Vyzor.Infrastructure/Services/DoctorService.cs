@@ -140,7 +140,7 @@ public class DoctorService : IDoctorService
 
                 PhotoUrl = x.ImageUrl,
 
-
+                
                 Rating = x.rating,
 
 
@@ -172,11 +172,12 @@ public class DoctorService : IDoctorService
             {
 
                 Id = x.Id,
-
+                Clinic=x.Clinic,
                 FullName = x.FullName,
 
 
                 About = x.About,
+
 
 
                 Education = x.Education,
@@ -233,7 +234,7 @@ public class DoctorService : IDoctorService
             {
 
                 Id = x.Id,
-
+                Clinic = x.Clinic,
 
                 FullName =
                     x.FullName,
@@ -283,7 +284,100 @@ public class DoctorService : IDoctorService
     }
 
 
+    public async Task<PagedResult<DoctorCardDTO>> GetCatalogPagedAsync(
+    DoctorCatalogFilterDTO filter,
+    CancellationToken cancellationToken = default)
+    {
+        var query = _context.Doctors
+            .AsNoTracking()
+            .Where(x => x.IsActive);
 
+        // Поиск
+        if (!string.IsNullOrWhiteSpace(filter.Search))
+        {
+            query = query.Where(x =>
+                x.FullName.Contains(filter.Search));
+        }
+
+        // Специализация
+        if (filter.SpecializationId.HasValue)
+        {
+            query = query.Where(x =>
+                x.SpecializationId == filter.SpecializationId.Value);
+        }
+
+        // Цена от
+        if (filter.MinPrice.HasValue)
+        {
+            query = query.Where(x =>
+                x.AppointmentPrice >= filter.MinPrice.Value);
+        }
+
+        // Цена до
+        if (filter.MaxPrice.HasValue)
+        {
+            query = query.Where(x =>
+                x.AppointmentPrice <= filter.MaxPrice.Value);
+        }
+
+        // Рейтинг
+        if (filter.MinRating.HasValue)
+        {
+            query = query.Where(x =>
+                x.rating >= filter.MinRating.Value);
+        }
+
+        // Сортировка
+        query = filter.Sort?.ToLower() switch
+        {
+            "price_asc" =>
+                query.OrderBy(x => x.AppointmentPrice),
+
+            "price_desc" =>
+                query.OrderByDescending(x => x.AppointmentPrice),
+
+            "rating" =>
+                query.OrderByDescending(x => x.rating),
+
+            "name" =>
+                query.OrderBy(x => x.FullName),
+
+            _ =>
+                query.OrderBy(x => x.FullName)
+        };
+
+        var totalCount = await query.CountAsync(cancellationToken);
+
+        var pageNumber = Paging.PageNumber(filter);
+        var pageSize = Paging.PageSize(filter);
+
+        var items = await query
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .Select(x => new DoctorCardDTO
+            {
+                Id = x.Id,
+
+                FullName = x.FullName,
+
+                SpecializationName =
+                    x.Specialization != null
+                        ? x.Specialization.Name
+                        : "",
+
+                PhotoUrl = x.ImageUrl,
+
+                Rating = x.rating,
+
+                AppointmentPrice = x.AppointmentPrice
+            })
+            .ToListAsync(cancellationToken);
+
+        return Paging.Result(
+            items,
+            filter,
+            totalCount);
+    }
 
 
     public async Task<DoctorEditDTO?> GetForEditAsync(

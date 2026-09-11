@@ -39,6 +39,7 @@ public class Doctor : Entity
 
 
     public decimal AppointmentPrice { get; set; }
+    public string Clinic {get; set; }
 
 
     

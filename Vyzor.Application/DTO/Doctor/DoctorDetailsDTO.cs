@@ -21,4 +21,5 @@ public class DoctorDetailsDTO
     public string PhotoUrl { get; set; } = string.Empty;
 
     public double Rating { get; set; }
+    public string? Clinic { get; set; }
 }

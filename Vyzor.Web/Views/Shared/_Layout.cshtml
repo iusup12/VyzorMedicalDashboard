@@ -15,11 +15,13 @@
           content="Vyzor Medical - medical center and online appointment system" />
 
     <link rel="shortcut icon"
-          href="~/assets/img/favicon.png"
+          href="~/assets/Doccure/img/favicon.png"
           type="image/x-icon" />
 
+    <!-- Doccure Theme Settings -->
+    <script src="~/assets/Doccure/js/theme-script.js"></script>
 
-    <!-- Doccure styles -->
+    <!-- Doccure CSS -->
     <link rel="stylesheet"
           href="~/assets/Doccure/css/bootstrap.min.css" />
 
@@ -29,27 +31,25 @@
     <link rel="stylesheet"
           href="~/assets/Doccure/plugins/fontawesome/css/all.min.css" />
 
+    <link rel="stylesheet"
+          href="~/assets/Doccure/css/iconsax.css" />
 
     <link rel="stylesheet"
-          href="~/assets/Doccure/css/feather.css" />
+          href="~/assets/Doccure/plugins/ion-rangeslider/css/ion.rangeSlider.css" />
 
     <link rel="stylesheet"
-          href="~/assets/Doccure/css/select2.min.css" />
+          href="~/assets/Doccure/plugins/ion-rangeslider/css/ion.rangeSlider.min.css" />
 
     <link rel="stylesheet"
           href="~/assets/Doccure/css/bootstrap-datetimepicker.min.css" />
 
     <link rel="stylesheet"
-          href="~/assets/Doccure/css/owl.carousel.min.css" />
+          href="~/assets/Doccure/css/feather.css" />
 
     <link rel="stylesheet"
-          href="~/assets/Doccure/css/owl.theme.default.min.css" />
+          href="~/assets/Doccure/css/style.min.css" />
 
-    <link rel="stylesheet"
-          href="~/assets/Doccure/css/aos.css" />
-
-    <link rel="stylesheet"
-          href="~/assets/Doccure/css/style.css" />
+    <!-- Vyzor custom fixes -->
     <link rel="stylesheet"
           href="~/assets/Doccure/css/icon-fix.css" />
 
@@ -58,39 +58,26 @@
 
 <body>
 
-    <!-- Main wrapper -->
+    <!-- Main Wrapper -->
     <div class="main-wrapper">
-        @await Html.PartialAsync("~/Views/Shared/_Header.cshtml")
-      
- 
-     
-        <!-- Main content -->
+
         <main role="main">
             @RenderBody()
         </main>
 
-       
-        
-
     </div>
-    <!-- /Main wrapper -->
+    <!-- /Main Wrapper -->
     <!-- Doccure JavaScript -->
-    <script src="~/assets/Doccure/js/jquery-3.7.1.min.js"></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/assets/Doccure/js/bootstrap.bundle.min.js"></script>
+
     <script src="~/assets/Doccure/js/feather.min.js"></script>
-    <script src="~/assets/Doccure/js/select2.min.js"></script>
-    <script src="~/assets/Doccure/js/moment.min.js"></script>
-    <script src="~/assets/Doccure/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="~/assets/Doccure/js/owl.carousel.min.js"></script>
-    <script src="~/assets/Doccure/js/slick.js"></script>
-    <script src="~/assets/Doccure/js/aos.js"></script>
-    <script src="~/assets/Doccure/js/counter.js"></script>
-    <script src="~/assets/Doccure/js/backToTop.js"></script>
-    <script src="~/assets/Doccure/js/script.js"></script>
 
+    <script src="~/assets/Doccure/js/fancybox-vanilla.js"></script>
 
-
-
+    <script src="~/assets/Doccure/js/script.min.js"></script>
 
     <!-- Page-specific scripts -->
     @await RenderSectionAsync("Scripts", required: false)

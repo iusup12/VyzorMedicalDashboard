@@ -303,46 +303,38 @@ namespace Vyzor.Infrastructure.Migrations
                     b.Property<int>("Action")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("character varying(2000)");
+                    b.Property<string>("Details")
+                        .HasMaxLength(4000)
+                        .HasColumnType("character varying(4000)");
+
+                    b.Property<string>("EntityId")
+                        .HasColumnType("text");
 
                     b.Property<string>("EntityName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.Property<string>("NewValues")
-                        .HasMaxLength(4000)
-                        .HasColumnType("character varying(4000)");
-
-                    b.Property<string>("OldValues")
-                        .HasMaxLength(4000)
-                        .HasColumnType("character varying(4000)");
+                    b.Property<string>("IpAddress")
+                        .HasColumnType("text");
 
                     b.Property<DateTime?>("UpdatedAtUtc")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
+                    b.Property<string>("UserAgent")
                         .HasColumnType("text");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
+                    b.Property<string>("UserId")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Action");
 
-                    b.HasIndex("CreatedAt");
+                    b.HasIndex("CreatedAtUtc");
 
                     b.HasIndex("UserId");
 
@@ -365,6 +357,10 @@ namespace Vyzor.Infrastructure.Migrations
                     b.Property<decimal>("AppointmentPrice")
                         .HasPrecision(18, 2)
                         .HasColumnType("numeric(18,2)");
+
+                    b.Property<string>("Clinic")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("timestamp with time zone");
@@ -499,6 +495,44 @@ namespace Vyzor.Infrastructure.Migrations
                     b.ToTable("Patients");
                 });
 
+            modelBuilder.Entity("Vyzor.Domain.Entities.SubscriptionFeature", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("SubscriptionPlanId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("UpdatedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubscriptionPlanId", "Code")
+                        .IsUnique();
+
+                    b.ToTable("SubscriptionFeatures");
+                });
+
             modelBuilder.Entity("Vyzor.Domain.Entities.SubscriptionPlan", b =>
                 {
                     b.Property<int>("Id")
@@ -510,15 +544,31 @@ namespace Vyzor.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
                     b.Property<decimal>("DiscountPercent")
                         .HasPrecision(5, 2)
                         .HasColumnType("numeric(5,2)");
 
-                    b.Property<decimal>("MonthlyPrice")
+                    b.Property<int>("DurationDays")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<decimal>("Price")
                         .HasPrecision(18, 2)
                         .HasColumnType("numeric(18,2)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Slug")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
@@ -527,6 +577,9 @@ namespace Vyzor.Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Slug")
+                        .IsUnique();
 
                     b.ToTable("SubscriptionPlans");
                 });
@@ -542,13 +595,13 @@ namespace Vyzor.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime>("EndsAtUtc")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int?>("PatientId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime>("StartsAtUtc")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("Status")
@@ -566,7 +619,7 @@ namespace Vyzor.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EndDate");
+                    b.HasIndex("EndsAtUtc");
 
                     b.HasIndex("PatientId");
 
@@ -760,6 +813,17 @@ namespace Vyzor.Infrastructure.Migrations
                     b.Navigation("Doctor");
                 });
 
+            modelBuilder.Entity("Vyzor.Domain.Entities.SubscriptionFeature", b =>
+                {
+                    b.HasOne("Vyzor.Domain.Entities.SubscriptionPlan", "SubscriptionPlan")
+                        .WithMany("Features")
+                        .HasForeignKey("SubscriptionPlanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SubscriptionPlan");
+                });
+
             modelBuilder.Entity("Vyzor.Domain.Entities.UserSubscription", b =>
                 {
                     b.HasOne("Vyzor.Domain.Entities.Patient", null)
@@ -767,7 +831,7 @@ namespace Vyzor.Infrastructure.Migrations
                         .HasForeignKey("PatientId");
 
                     b.HasOne("Vyzor.Domain.Entities.SubscriptionPlan", "SubscriptionPlan")
-                        .WithMany()
+                        .WithMany("UserSubscriptions")
                         .HasForeignKey("SubscriptionPlanId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -796,6 +860,13 @@ namespace Vyzor.Infrastructure.Migrations
                     b.Navigation("Reviews");
 
                     b.Navigation("Subscriptions");
+                });
+
+            modelBuilder.Entity("Vyzor.Domain.Entities.SubscriptionPlan", b =>
+                {
+                    b.Navigation("Features");
+
+                    b.Navigation("UserSubscriptions");
                 });
 #pragma warning restore 612, 618
         }

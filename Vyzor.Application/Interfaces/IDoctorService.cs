@@ -14,7 +14,9 @@ public interface IDoctorService
 
     Task<IEnumerable<DoctorCardDTO>> GetCatalogAsync(
         CancellationToken cancellationToken = default);
-
+    Task<PagedResult<DoctorCardDTO>> GetCatalogPagedAsync(
+    DoctorCatalogFilterDTO filter,
+    CancellationToken cancellationToken = default);
 
     Task<DoctorDetailsDTO?> GetDetailsAsync(
         int id,
