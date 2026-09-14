@@ -1,11 +1,6 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using Vyzor.Application.DTO.Doctor;
 using Vyzor.Domain.Entities;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
 
 namespace Vyzor.Application.Mappings;
 
@@ -16,9 +11,17 @@ public static class DoctorMappings
         return new DoctorCardDTO
         {
             Id = doctor.Id,
+            FullName = doctor.FullName,
+
             SpecializationName = doctor.Specialization != null
                 ? doctor.Specialization.Name
-                : string.Empty
+                : string.Empty,
+
+            PhotoUrl = doctor.ImageUrl,
+
+            Rating = doctor.Rating,
+
+            AppointmentPrice = doctor.AppointmentPrice
         };
     }
 
@@ -27,9 +30,16 @@ public static class DoctorMappings
         return new DoctorListItemDTO
         {
             Id = doctor.Id,
+            FullName = doctor.FullName,
+
             SpecializationName = doctor.Specialization != null
                 ? doctor.Specialization.Name
-                : string.Empty
+                : string.Empty,
+
+        
+            Rating = doctor.Rating,
+
+            AppointmentPrice = doctor.AppointmentPrice
         };
     }
 
@@ -38,10 +48,27 @@ public static class DoctorMappings
         return new DoctorDetailsDTO
         {
             Id = doctor.Id,
+
+            FullName = doctor.FullName,
+
             SpecializationName = doctor.Specialization != null
                 ? doctor.Specialization.Name
                 : string.Empty,
-            Clinic=doctor.Clinic
+
+            PhotoUrl = doctor.ImageUrl,
+
+            Rating = doctor.Rating,
+
+            AppointmentPrice = doctor.AppointmentPrice,
+
+            Clinic = doctor.Clinic,
+
+            About = doctor.About,
+
+            ExperienceYears = doctor.ExperienceYears,
+
+            Education = doctor.Education,
+
         };
     }
 
@@ -50,6 +77,7 @@ public static class DoctorMappings
         return new DoctorEditDTO
         {
             Id = doctor.Id,
+
             SpecializationId = doctor.SpecializationId
         };
     }

@@ -213,6 +213,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Doctors}/{action=Index}/{id?}");
 
+
 // ------------------------------------------------------------
 // Appointment SignalR Hub
 // ------------------------------------------------------------

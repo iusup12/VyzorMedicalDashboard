@@ -6,7 +6,7 @@ public class DoctorCatalogFilterDTO : PagedRequest
 {
     public string? Search { get; set; }
 
-    public int? SpecializationId { get; set; }
+    public List<int> SpecializationIds { get; set; } = new();
 
     public bool? Available { get; set; }
 

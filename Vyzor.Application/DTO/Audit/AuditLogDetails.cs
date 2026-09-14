@@ -1,6 +1,6 @@
 ﻿using Vyzor.Domain.Enums;
 
-namespace Vyzor.Application.DTOs.Audit;
+namespace Vyzor.Application.DTO.Audit;
 
 public class AuditLogDto
 {

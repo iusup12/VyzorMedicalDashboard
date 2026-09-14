@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\assets\Doccure\fonts\" />
     <Folder Include="wwwroot\assets\Vyzor\Новая папка\" />
   </ItemGroup>
 

@@ -4,7 +4,7 @@ using Vyzor.Application.Common;
 using Vyzor.Application.Common;
 using Vyzor.Application.DTO.Audit;
 using Vyzor.Application.DTO.Filters;
-using Vyzor.Application.DTOs.Audit;
+using Vyzor.Application.DTO.Audit;
 using Vyzor.Application.Interfaces;
 using Vyzor.Application.Mapping;
 using Vyzor.Domain.Entities;

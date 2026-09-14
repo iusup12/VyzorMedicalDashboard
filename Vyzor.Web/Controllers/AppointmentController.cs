@@ -1,36 +1,41 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Vyzor.Application.DTO.Appointment;
 using Vyzor.Application.Interfaces;
+using Vyzor.Domain.Enums;
+using Vyzor.Infrastructure.Data;
 
 namespace Vyzor.Web.Controllers;
 
+[Authorize]
 public class AppointmentController : Controller
 {
     private readonly IAppointmentService _appointmentService;
     private readonly IDoctorService _doctorService;
+    private readonly AppDbContext _context;
 
     public AppointmentController(
         IAppointmentService appointmentService,
-        IDoctorService doctorService)
+        IDoctorService doctorService,
+        AppDbContext context)
     {
         _appointmentService = appointmentService;
         _doctorService = doctorService;
+        _context = context;
     }
 
-
-    // =========================================================
-    // BOOKING PAGE
-    // GET: /Appointment/Create?doctorId=1
-    // =========================================================
-
+    // GET: /Appointment/Create?doctorId=5
     [HttpGet]
-    public async Task<IActionResult> Create(int doctorId)
+    public async Task<IActionResult> Create(
+        int doctorId,
+        CancellationToken cancellationToken)
     {
         if (doctorId <= 0)
         {
-            return NotFound();
+            return BadRequest();
         }
-
 
         var doctor = await _doctorService.GetDetailsAsync(doctorId);
 
@@ -39,123 +44,77 @@ public class AppointmentController : Controller
             return NotFound();
         }
 
+        ViewBag.Doctor = doctor;
 
         var model = new AppointmentEditDTO
         {
             DoctorId = doctorId,
-            AppointmentDate = DateTime.Now.AddDays(1)
+            AppointmentDate = DateTime.Now,
+            Status = AppointmentStatus.Scheduled
         };
-
-
-        ViewBag.Doctor = doctor;
 
         return View(model);
     }
 
-
-
-    // =========================================================
-    // CREATE APPOINTMENT
     // POST: /Appointment/Create
-    // =========================================================
-
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
-        AppointmentEditDTO dto)
+        AppointmentEditDTO model,
+        CancellationToken cancellationToken)
     {
         if (!ModelState.IsValid)
         {
-            var doctor = await _doctorService.GetDetailsAsync(dto.DoctorId);
+            var doctor = await _doctorService.GetDetailsAsync(
+                model.DoctorId);
 
             ViewBag.Doctor = doctor;
 
-            return View(dto);
+            return View(model);
         }
 
+        var userId = User.FindFirstValue(
+            ClaimTypes.NameIdentifier);
 
-        await _appointmentService.CreateAsync(dto);
+        if (string.IsNullOrEmpty(userId))
+        {
+            return Challenge();
+        }
 
+        var patient = await _context.Patients
+            .AsNoTracking()
+            .FirstOrDefaultAsync(
+                x => x.UserId == userId,
+                cancellationToken);
+
+        if (patient == null)
+        {
+            ModelState.AddModelError(
+                string.Empty,
+                "Профиль пациента не найден.");
+
+            var doctor = await _doctorService.GetDetailsAsync(
+                model.DoctorId);
+
+            ViewBag.Doctor = doctor;
+
+            return View(model);
+        }
+
+        model.PatientId = patient.Id;
+        model.Status = AppointmentStatus.Scheduled;
+
+        
+        model.AppointmentDate = DateTime.SpecifyKind(
+            model.AppointmentDate,
+            DateTimeKind.Local);
+
+        model.AppointmentDate = model.AppointmentDate.ToUniversalTime();
+
+        await _appointmentService.CreateAsync(model, cancellationToken);
 
         return RedirectToAction(
-            nameof(Confirmation));
-    }
-
-
-
-    // =========================================================
-    // CONFIRMATION PAGE
-    // GET: /Appointment/Confirmation
-    // =========================================================
-
-    [HttpGet]
-    public IActionResult Confirmation()
-    {
-        return View();
-    }
-
-
-
-    // =========================================================
-    // DETAILS
-    // GET: /Appointment/Details/1
-    // =========================================================
-
-    [HttpGet]
-    public async Task<IActionResult> Details(int id)
-    {
-        if (id <= 0)
-        {
-            return NotFound();
-        }
-
-
-        var appointment =
-            await _appointmentService.GetByIdAsync(id);
-
-
-        if (appointment == null)
-        {
-            return NotFound();
-        }
-
-
-        return View(appointment);
-    }
-
-
-
-    // =========================================================
-    // USER APPOINTMENTS
-    // GET: /Appointment/MyAppointments
-    // =========================================================
-
-    [HttpGet]
-    public async Task<IActionResult> MyAppointments(
-        string userId)
-    {
-        var appointments =
-            await _appointmentService
-                .GetUserAppointmentsAsync(userId);
-
-
-        return View(appointments);
-    }
-
-
-
-    // =========================================================
-    // CANCEL / DELETE
-    // =========================================================
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Delete(int id)
-    {
-        await _appointmentService.DeleteAsync(id);
-
-
-        return RedirectToAction(
-            nameof(MyAppointments));
+            "Index",
+            "Profile");
     }
 }

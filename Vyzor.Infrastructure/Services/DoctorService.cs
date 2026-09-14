@@ -7,6 +7,7 @@ using Vyzor.Application.Interfaces;
 using Vyzor.Domain.Entities;
 using Vyzor.Infrastructure.Data;
 
+
 namespace Vyzor.Infrastructure.Services;
 
 public class DoctorService : IDoctorService
@@ -21,56 +22,41 @@ public class DoctorService : IDoctorService
 
 
     public async Task<PagedResult<DoctorListItemDTO>> GetPagedAsync(
-        AdminDoctorFilterDTO filter,
-        CancellationToken cancellationToken = default)
+    AdminDoctorFilterDTO filter,
+    CancellationToken cancellationToken = default)
     {
-
         var query = _context.Doctors
-            .Include(x => x.Specialization)
+            .AsNoTracking()
             .AsQueryable();
 
-
-        // Поиск
         if (!string.IsNullOrWhiteSpace(filter.Search))
         {
             query = query.Where(x =>
                 x.FullName.Contains(filter.Search));
         }
 
-
-        // Фильтр специализации
         if (filter.SpecializationId.HasValue)
         {
             query = query.Where(x =>
                 x.SpecializationId == filter.SpecializationId.Value);
         }
 
-
-        // Активность
         if (filter.IsActive.HasValue)
         {
             query = query.Where(x =>
                 x.IsActive == filter.IsActive.Value);
         }
 
-
         var totalCount = await query
             .CountAsync(cancellationToken);
 
-
-
-        int pageSize = 10;
-
+        var pageNumber = Paging.PageNumber(filter);
+        var pageSize = Paging.PageSize(filter);
 
         var items = await query
             .OrderBy(x => x.FullName)
-
-            .Skip(
-                (filter.Page - 1) * pageSize
-            )
-
+            .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
-
             .Select(x => new DoctorListItemDTO
             {
                 Id = x.Id,
@@ -79,37 +65,21 @@ public class DoctorService : IDoctorService
 
                 SpecializationName =
                     x.Specialization != null
-                    ? x.Specialization.Name
-                    : "",
+                        ? x.Specialization.Name
+                        : "",
 
+                AppointmentPrice = x.AppointmentPrice,
 
-                AppointmentPrice =
-                    x.AppointmentPrice,
+                Rating = x.Rating,
 
-
-                Rating =
-                    x.rating,
-
-
-                IsActive =
-                    x.IsActive
-
+                IsActive = x.IsActive
             })
-
             .ToListAsync(cancellationToken);
 
-
-
-        return new PagedResult<DoctorListItemDTO>
-        {
-            Items = items,
-
-            TotalCount = totalCount,
-
-            PageNumber = filter.Page,
-
-            PageSize = pageSize
-        };
+        return Paging.Result(
+            items,
+            filter,
+            totalCount);
     }
 
 
@@ -141,7 +111,7 @@ public class DoctorService : IDoctorService
                 PhotoUrl = x.ImageUrl,
 
                 
-                Rating = x.rating,
+                Rating = x.Rating,
 
 
                 AppointmentPrice =
@@ -206,7 +176,7 @@ public class DoctorService : IDoctorService
 
 
                 Rating =
-                    x.rating
+                    x.Rating
 
             })
 
@@ -300,12 +270,12 @@ public class DoctorService : IDoctorService
         }
 
         // Специализация
-        if (filter.SpecializationId.HasValue)
+        
+        if (filter.SpecializationIds.Count > 0)
         {
             query = query.Where(x =>
-                x.SpecializationId == filter.SpecializationId.Value);
+                filter.SpecializationIds.Contains(x.SpecializationId));
         }
-
         // Цена от
         if (filter.MinPrice.HasValue)
         {
@@ -324,7 +294,7 @@ public class DoctorService : IDoctorService
         if (filter.MinRating.HasValue)
         {
             query = query.Where(x =>
-                x.rating >= filter.MinRating.Value);
+                x.Rating >= filter.MinRating.Value);
         }
 
         // Сортировка
@@ -337,7 +307,7 @@ public class DoctorService : IDoctorService
                 query.OrderByDescending(x => x.AppointmentPrice),
 
             "rating" =>
-                query.OrderByDescending(x => x.rating),
+                query.OrderByDescending(x => x.Rating),
 
             "name" =>
                 query.OrderBy(x => x.FullName),
@@ -367,7 +337,7 @@ public class DoctorService : IDoctorService
 
                 PhotoUrl = x.ImageUrl,
 
-                Rating = x.rating,
+                Rating = x.Rating,
 
                 AppointmentPrice = x.AppointmentPrice
             })

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Vyzor.Application.Common;
 
 namespace Vyzor.Application.DTO.Filters;
 
-public class AdminDoctorFilterDTO
+public class AdminDoctorFilterDTO:PagedRequest
 {
     public string? Search { get; set; }
 

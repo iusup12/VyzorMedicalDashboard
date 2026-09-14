@@ -1,0 +1,2485 @@
+﻿@model Vyzor.Web.Models.Account.LoginViewModel
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+	<title>Vyzor - Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Vyzor medical appointment and healthcare management system.">
+	<meta name="keywords" content="Vyzor, medical dashboard, doctor appointment, healthcare">
+	<meta name="author" content="Vyzor">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="~/assets/Doccure/img/favicon.png" type="image/x-icon">
+
+	<!-- Apple Touch Icon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="~/assets/Doccure/img/apple-touch-icon.png">
+
+	<!-- Theme Settings Js -->
+	<script src="~/assets/Doccure/js/theme-script.js"></script>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="~/assets/Doccure/css/bootstrap.min.css">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="~/assets/Doccure/plugins/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" href="~/assets/Doccure/plugins/fontawesome/css/all.min.css">
+
+	<!-- Iconsax CSS-->
+	<link rel="stylesheet" href="~/assets/Doccure/css/iconsax.css">
+
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="~/assets/Doccure/css/feather.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="~/assets/Doccure/css/style.min.css">
+
+</head>
+
+<body class="account-page">
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
+
+		<div class="header-theme header-theme-two">
+
+			<button type="button"
+					id="dark-mode-toggle"
+					class="theme-toggle moon"
+					aria-label="dark mode">
+
+				<i class="isax isax-moon5"></i>
+
+			</button>
+
+			<button type="button"
+					id="light-mode-toggle"
+					class="theme-toggle sun"
+					aria-label="light mode">
+
+				<i class="isax isax-sun-15"></i>
+
+			</button>
+
+		</div>
+
+		<!-- Header -->
+		<header class="header header-default">
+
+			<div class="container">
+
+				<nav class="navbar navbar-expand-lg header-nav">
+
+					<div class="navbar-header">
+
+						<a id="mobile_btn" href="#">
+							<i class="fa-solid fa-bars"></i>
+						</a>
+
+						<a asp-controller="Home"
+						   asp-action="Index"
+						   class="navbar-brand logo">
+
+							<img src="~/assets/Doccure/img/logo.svg"
+								 class="img-fluid"
+								 alt="Logo">
+
+						</a>
+
+					</div>
+
+					<div class="header-menu">
+
+						<div class="main-menu-wrapper">
+
+							<div class="menu-header">
+
+								<a asp-controller="Home"
+								   asp-action="Index"
+								   class="menu-logo">
+
+									<img src="~/assets/Doccure/img/logo.svg"
+										 class="img-fluid"
+										 alt="Logo">
+
+								</a>
+
+								<a id="menu_close"
+								   class="menu-close"
+								   href="#">
+
+									<i class="fas fa-times"></i>
+
+								</a>
+
+							</div>
+
+							<ul class="main-nav">
+
+								<!-- Home -->
+								<li class="has-submenu megamenu">
+
+									<a href="#"
+									   class="main-menu">
+
+										Home
+
+										<span>
+											<i class="fa-solid fa-chevron-down"></i>
+										</span>
+
+									</a>
+
+									<ul class="submenu mega-submenu">
+
+										<li>
+
+											<div class="megamenu-wrapper">
+
+												<div class="row">
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a asp-controller="Home"
+																   asp-action="Index"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a asp-controller="Home"
+																   asp-action="Index"
+																   class="inner-demo-img">
+
+																	General Home 1
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-2.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-01.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-2.html"
+																   class="inner-demo-img">
+
+																	General Home 2
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-3.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-02.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-3.html"
+																   class="inner-demo-img">
+
+																	Dental
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-4.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-03.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-4.html"
+																   class="inner-demo-img">
+
+																	Pediatrics
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-5.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-04.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-5.html"
+																   class="inner-demo-img">
+
+																	ENT
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-6.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-05.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-6.html"
+																   class="inner-demo-img">
+
+																	Veterinary
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-7.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-06.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-7.html"
+																   class="inner-demo-img">
+
+																	Cardiology
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-8.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-07.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-8.html"
+																   class="inner-demo-img">
+
+																	Eye Care
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-9.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-08.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-9.html"
+																   class="inner-demo-img">
+
+																	Home Care
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-10.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-09.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-10.html"
+																   class="inner-demo-img">
+
+																	Fertility
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-11.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-10.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-11.html"
+																   class="inner-demo-img">
+
+																	Cosmetic Surgery
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-12.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-11.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-12.html"
+																   class="inner-demo-img">
+
+																	Laboratory
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-13.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-12.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-13.html"
+																   class="inner-demo-img">
+
+																	Pharmacy
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-14.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-14.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-14.html"
+																   class="inner-demo-img">
+
+																	Dermatology
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<a href="index-15.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-15.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-15.html"
+																   class="inner-demo-img">
+
+																	Mental Health
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<span class="new-badge">New</span>
+
+																<a href="index-16.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-18.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-16.html"
+																   class="inner-demo-img">
+
+																	Nutrition
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<span class="new-badge">New</span>
+
+																<a href="index-17.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-19.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-17.html"
+																   class="inner-demo-img">
+
+																	Healing & Wellness
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="col">
+
+														<div class="single-demo">
+
+															<div class="demo-img">
+
+																<span class="new-badge">New</span>
+
+																<a href="index-18.html"
+																   class="inner-demo-img">
+
+																	<img src="~/assets/Doccure/img/home/home-17.jpg"
+																		 class="img-fluid"
+																		 alt="img">
+
+																</a>
+
+															</div>
+
+															<div class="demo-info">
+
+																<a href="index-18.html"
+																   class="inner-demo-img">
+
+																	Physiotherapy
+
+																</a>
+
+															</div>
+
+														</div>
+
+													</div>
+
+												</div>
+
+											</div>
+
+										</li>
+
+									</ul>
+
+								</li>
+
+								<!-- Doctors -->
+								<li class="has-submenu">
+
+									<a href="#"
+									   class="main-menu">
+
+										Doctors
+
+										<span>
+											<i class="fa-solid fa-chevron-down"></i>
+										</span>
+
+									</a>
+
+									<ul class="submenu sub-menu-one">
+
+										<li>
+
+											<div class="row">
+
+												<div class="col-lg-6">
+
+													<ul class="sub-menu-list">
+
+														<li>
+															<a href="doctor-dashboard.html">
+																Doctor Dashboard
+															</a>
+														</li>
+
+														<li>
+															<a href="appointments.html">
+																Appointments
+															</a>
+														</li>
+
+														<li>
+															<a href="available-timings.html">
+																Available Timing
+															</a>
+														</li>
+
+														<li>
+															<a href="my-patients.html">
+																Patients List
+															</a>
+														</li>
+
+														<li>
+															<a href="chat-doctor.html">
+																Chat
+															</a>
+														</li>
+
+														<li>
+															<a href="invoices.html">
+																Invoices
+															</a>
+														</li>
+
+														<li>
+															<a href="doctor-profile-settings.html">
+																Profile Settings
+															</a>
+														</li>
+
+													</ul>
+
+												</div>
+
+												<div class="col-lg-6">
+
+													<div class="menu-img">
+
+														<img src="~/assets/Doccure/img/home/menu-img-1.jpg"
+															 alt="listing"
+															 class="img-fluid">
+
+													</div>
+
+												</div>
+
+											</div>
+
+										</li>
+
+									</ul>
+
+								</li>
+
+								<!-- Patients -->
+								<li class="has-submenu">
+
+									<a href="#"
+									   class="main-menu">
+
+										Patients
+
+										<span>
+											<i class="fa-solid fa-chevron-down"></i>
+										</span>
+
+									</a>
+
+									<ul class="submenu sub-menu-one sub-menu-two">
+
+										<li>
+
+											<div class="row">
+
+												<div class="col-lg-4 sub-menu-left">
+
+													<ul class="sub-menu-list">
+
+														<li>
+															<a href="patient-dashboard.html">
+																Patient Dashboard
+															</a>
+														</li>
+
+														<li>
+															<a href="map-grid.html">
+																Doctors Grid
+															</a>
+														</li>
+
+														<li>
+															<a href="map-list.html">
+																Doctors List
+															</a>
+														</li>
+
+														<li>
+															<a href="map-list-availability.html">
+																Doctors Availability
+															</a>
+														</li>
+
+														<li>
+															<a href="booking.html">
+																Booking
+															</a>
+														</li>
+
+														<li>
+															<a href="booking-1.html">
+																Booking 1
+															</a>
+														</li>
+
+														<li>
+															<a href="booking-2.html">
+																Booking 2
+															</a>
+														</li>
+
+														<li>
+															<a href="booking-popup.html">
+																Booking Popup
+															</a>
+														</li>
+
+													</ul>
+
+												</div>
+
+												<div class="col-lg-4">
+
+													<ul class="sub-menu-list">
+
+														<li>
+															<a href="search.html">
+																Search Doctor 1
+															</a>
+														</li>
+
+														<li>
+															<a href="search-2.html">
+																Search Doctor 2
+															</a>
+														</li>
+
+														<li>
+															<a href="doctor-profile.html">
+																Doctor Profile 1
+															</a>
+														</li>
+
+														<li>
+															<a href="doctor-profile-2.html">
+																Doctor Profile 2
+															</a>
+														</li>
+
+														<li>
+															<a href="checkout.html">
+																Checkout
+															</a>
+														</li>
+
+														<li>
+															<a href="favourites.html">
+																Favourites
+															</a>
+														</li>
+
+														<li>
+															<a href="chat.html">
+																Chat
+															</a>
+														</li>
+
+														<li>
+															<a href="profile-settings.html">
+																Profile Settings
+															</a>
+														</li>
+
+													</ul>
+
+												</div>
+
+												<div class="col-lg-4">
+
+													<div class="menu-img">
+
+														<img src="~/assets/Doccure/img/home/menu-img-2.jpg"
+															 alt="listing"
+															 class="img-fluid">
+
+													</div>
+
+												</div>
+
+											</div>
+
+										</li>
+
+									</ul>
+
+								</li>
+
+								<!-- Pharmacy -->
+								<li class="has-submenu">
+
+									<a href="#"
+									   class="main-menu">
+
+										Pharmacy
+
+										<span>
+											<i class="fa-solid fa-chevron-down"></i>
+										</span>
+
+									</a>
+
+									<ul class="submenu sub-menu-one sub-menu-three">
+
+										<li>
+
+											<div class="row">
+
+												<div class="col-lg-6">
+
+													<ul class="sub-menu-list">
+
+														<li>
+															<a href="index-13.html">
+																Pharmacy
+															</a>
+														</li>
+
+														<li>
+															<a href="pharmacy-details.html">
+																Pharmacy Details
+															</a>
+														</li>
+
+														<li>
+															<a href="pharmacy-search.html">
+																Pharmacy Search
+															</a>
+														</li>
+
+														<li>
+															<a href="product-all.html">
+																Product
+															</a>
+														</li>
+
+														<li>
+															<a href="product-description.html">
+																Product Description
+															</a>
+														</li>
+
+														<li>
+															<a href="cart.html">
+																Cart
+															</a>
+														</li>
+
+														<li>
+															<a href="product-checkout.html">
+																Product Checkout
+															</a>
+														</li>
+
+														<li>
+															<a href="payment-success.html">
+																Payment Success
+															</a>
+														</li>
+
+														<li>
+															<a href="pharmacy-register.html">
+																Pharmacy Register
+															</a>
+														</li>
+
+													</ul>
+
+												</div>
+
+												<div class="col-lg-6">
+
+													<div class="menu-img">
+
+														<img src="~/assets/Doccure/img/home/menu-img-3.jpg"
+															 alt="listing"
+															 class="img-fluid">
+
+													</div>
+
+												</div>
+
+											</div>
+
+										</li>
+
+									</ul>
+
+								</li>
+
+								<!-- Pages -->
+								<li class="has-submenu megamenu active">
+
+									<a href="#"
+									   class="main-menu">
+
+										Pages
+
+										<span>
+											<i class="fa-solid fa-chevron-down"></i>
+										</span>
+
+									</a>
+
+									<ul class="submenu mega-submenu">
+
+										<li>
+
+											<div class="megamenu-wrapper megamenu-wrapper-one">
+
+												<div class="row">
+
+													<div class="col-lg-3 sub-menu-left">
+
+														<ul class="sub-menu-list">
+
+															<li>
+																<a href="about-us.html">
+																	About Us
+																</a>
+															</li>
+
+															<li>
+																<a href="contact-us.html">
+																	Contact Us
+																</a>
+															</li>
+
+															<li>
+																<a href="hospitals.html">
+																	Hospitals
+																</a>
+															</li>
+
+															<li>
+																<a href="speciality.html">
+																	Speciality
+																</a>
+															</li>
+
+															<li>
+																<a href="clinic.html">
+																	Clinic
+																</a>
+															</li>
+
+															<li>
+																<a href="blank-page.html">
+																	Starter Page
+																</a>
+															</li>
+
+															<li>
+																<a href="pricing.html">
+																	Pricing Plan
+																</a>
+															</li>
+
+															<li>
+																<a href="faq.html">
+																	FAQ
+																</a>
+															</li>
+
+														</ul>
+
+													</div>
+
+													<div class="col-lg-3 sub-menu-left">
+
+														<ul class="sub-menu-list">
+
+															<li>
+																<a href="login-email.html">
+																	Login Email
+																</a>
+															</li>
+
+															<li>
+																<a href="login-phone.html">
+																	Login Phone
+																</a>
+															</li>
+
+															<li>
+																<a href="doctor-signup.html">
+																	Doctor Signup
+																</a>
+															</li>
+
+															<li>
+																<a href="patient-signup.html">
+																	Patient Signup
+																</a>
+															</li>
+
+															<li>
+																<a href="forgot-password.html">
+																	Forgot Password 1
+																</a>
+															</li>
+
+															<li>
+																<a href="forgot-password2.html">
+																	Forgot Password 2
+																</a>
+															</li>
+
+															<li>
+																<a href="login-email-otp.html">
+																	Email OTP
+																</a>
+															</li>
+
+															<li>
+																<a href="login-phone-otp.html">
+																	Phone OTP
+																</a>
+															</li>
+
+														</ul>
+
+													</div>
+
+													<div class="col-lg-3 sub-menu-left">
+
+														<ul class="sub-menu-list">
+
+															<li>
+																<a href="maintenance.html">
+																	Maintenance
+																</a>
+															</li>
+
+															<li>
+																<a href="coming-soon.html">
+																	Coming Soon
+																</a>
+															</li>
+
+															<li>
+																<a href="terms-condition.html">
+																	Terms & Condition
+																</a>
+															</li>
+
+															<li>
+																<a href="privacy-policy.html">
+																	Privacy Policy
+																</a>
+															</li>
+
+															<li>
+																<a href="components.html">
+																	Components
+																</a>
+															</li>
+
+															<li>
+																<a href="invoices.html">
+																	Invoices
+																</a>
+															</li>
+
+															<li>
+																<a href="invoice-view.html">
+																	Invoice View
+																</a>
+															</li>
+
+														</ul>
+
+													</div>
+
+													<div class="col-lg-3">
+
+														<ul class="sub-menu-list">
+
+															<li>
+																<a href="voice-call.html">
+																	Voice Call
+																</a>
+															</li>
+
+															<li>
+																<a href="video-call.html">
+																	Video Call
+																</a>
+															</li>
+
+															<li>
+																<a href="error-404.html">
+																	404 Error
+																</a>
+															</li>
+
+															<li>
+																<a href="error-500.html">
+																	500 Error
+																</a>
+															</li>
+
+														</ul>
+
+													</div>
+
+												</div>
+
+											</div>
+
+										</li>
+
+									</ul>
+
+								</li>
+
+								<!-- Blog -->
+								<li class="has-submenu">
+
+									<a href="#"
+									   class="main-menu">
+
+										Blog
+
+										<span>
+											<i class="fa-solid fa-chevron-down"></i>
+										</span>
+
+									</a>
+
+									<ul class="submenu sub-menu-one sub-menu-default">
+
+										<li>
+											<a href="blog-list.html">
+												Blog List
+											</a>
+										</li>
+
+										<li>
+											<a href="blog-grid.html">
+												Blog Grid
+											</a>
+										</li>
+
+										<li>
+											<a href="blog-details.html">
+												Blog Details
+											</a>
+										</li>
+
+									</ul>
+
+								</li>
+
+								<!-- Admin -->
+								<li class="has-submenu">
+
+									<a href="#"
+									   class="main-menu">
+
+										Admin
+
+										<span>
+											<i class="fa-solid fa-chevron-down"></i>
+										</span>
+
+									</a>
+
+									<ul class="submenu sub-menu-one sub-menu-default">
+
+										<li>
+											<a href="admin/index.html"
+											   target="_blank">
+												Admin
+											</a>
+										</li>
+
+										<li>
+											<a href="pharmacy/index.html"
+											   target="_blank">
+												Pharmacy Admin
+											</a>
+										</li>
+
+									</ul>
+
+								</li>
+
+							</ul>
+
+							<div class="header-items">
+
+								<!-- Contact Information -->
+								<div class="about-popup-item border-0 pb-0">
+
+									<h3 class="title">
+										Contact Information
+									</h3>
+
+									<div class="support-item mb-3">
+
+										<div class="avatar avatar-lg bg-primary rounded-circle">
+
+											<i class="isax isax-messages-3"></i>
+
+										</div>
+
+										<div>
+
+											<p class="title">
+												General Inquiries
+											</p>
+
+											<h5 class="link">
+												info@example.com
+											</h5>
+
+										</div>
+
+									</div>
+
+									<div class="support-item">
+
+										<div class="avatar avatar-lg bg-primary rounded-circle">
+
+											<i class="isax isax-call-calling"></i>
+
+										</div>
+
+										<div>
+
+											<p class="title">
+												Emergency Cases
+											</p>
+
+											<h5 class="link">
+												+1 24565 89856
+											</h5>
+
+										</div>
+
+									</div>
+
+								</div>
+
+								<!-- Follow Us -->
+								<div class="about-popup-item border-0 pb-0">
+
+									<h3 class="title">
+										Follow Us
+									</h3>
+
+									<ul class="d-flex align-items-center gap-2 social-iyem">
+
+										<li>
+											<a href="#"
+											   class="social-icon"
+											   aria-label="facebook">
+
+												<i class="fa-brands fa-facebook"></i>
+
+											</a>
+										</li>
+
+										<li>
+											<a href="#"
+											   class="social-icon"
+											   aria-label="twitter">
+
+												<i class="fa-brands fa-x-twitter"></i>
+
+											</a>
+										</li>
+
+										<li>
+											<a href="#"
+											   class="social-icon"
+											   aria-label="instagram">
+
+												<i class="fa-brands fa-instagram"></i>
+
+											</a>
+										</li>
+
+										<li>
+											<a href="#"
+											   class="social-icon"
+											   aria-label="linkedin">
+
+												<i class="fa-brands fa-linkedin"></i>
+
+											</a>
+										</li>
+
+									</ul>
+
+								</div>
+
+								<!-- Header Buttons -->
+								<div class="header-items-button">
+
+									<a asp-controller="Account"
+									   asp-action="Login"
+									   class="btn btn-primary btn-primary-gradient">
+
+										<i class="isax isax-lock-1 me-2"></i>
+
+										Sign In
+
+									</a>
+
+									<a asp-controller="Account"
+									   asp-action="Register"
+									   class="btn btn-dark">
+
+										<i class="isax isax-user-tick4 me-2"></i>
+
+										Sign Up
+
+									</a>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<ul class="nav header-navbar-rht">
+
+						<li>
+
+							<a asp-controller="Account"
+							   asp-action="Login"
+							   class="btn btn-md btn-primary-gradient">
+
+								<i class="isax isax-lock-1 me-2"></i>
+
+								<span>
+									Sign In
+								</span>
+
+							</a>
+
+						</li>
+
+						<li>
+
+							<a asp-controller="Account"
+							   asp-action="Register"
+							   class="btn btn-md btn-dark">
+
+								<i class="isax isax-user-tick me-2"></i>
+
+								<span>
+									Register
+								</span>
+
+							</a>
+
+						</li>
+
+						<li>
+
+							<a href="#"
+							   class="details-btn"
+							   data-bs-toggle="offcanvas"
+							   data-bs-target="#support_item"
+							   aria-label="about">
+
+								<i class="isax isax-menu5"></i>
+
+							</a>
+
+						</li>
+
+					</ul>
+
+				</nav>
+
+			</div>
+
+		</header>
+
+		<!-- /Header -->
+		<!-- Page Content -->
+
+		<div class="content">
+
+			<div class="container-fluid">
+
+				<div class="row">
+
+					<div class="col-md-8 offset-md-2">
+
+						<!-- Login Tab Content -->
+
+						<div class="account-content">
+
+							<div class="row align-items-center justify-content-center">
+
+								<div class="col-md-7 col-lg-6 login-left">
+
+									<img src="~/assets/Doccure/img/login-banner.png"
+										 class="img-fluid"
+										 alt="Vyzor Login">
+
+								</div>
+
+								<div class="col-md-12 col-lg-6 login-right">
+
+									<div class="login-header">
+
+										<h3>
+											Login
+											<span>Vyzor</span>
+										</h3>
+
+									</div>
+
+
+									<!-- Login Form -->
+
+									<form asp-controller="Account"
+										  asp-action="Login"
+										  method="post">
+
+										@Html.AntiForgeryToken()
+
+										<input asp-for="ReturnUrl"
+											   type="hidden" />
+
+
+										<!-- Validation Summary -->
+
+										<div asp-validation-summary="ModelOnly"
+											 class="text-danger mb-3">
+										</div>
+
+
+										<!-- Email -->
+
+										<div class="mb-3">
+
+											<label asp-for="Email"
+												   class="form-label">
+
+												E-mail
+
+											</label>
+
+											<input asp-for="Email"
+												   type="email"
+												   class="form-control"
+												   placeholder="Enter your email"
+												   autocomplete="email">
+
+											<span asp-validation-for="Email"
+												  class="text-danger">
+											</span>
+
+										</div>
+
+
+										<!-- Password -->
+
+										<div class="mb-3">
+
+											<div class="form-group-flex">
+
+												<label asp-for="Password"
+													   class="form-label">
+
+													Password
+
+												</label>
+
+												<a href="#"
+												   class="forgot-link">
+
+													Forgot password?
+
+												</a>
+
+											</div>
+
+											<div class="pass-group">
+
+												<input asp-for="Password"
+													   type="password"
+													   class="form-control pass-input"
+													   placeholder="Enter your password"
+													   autocomplete="current-password">
+
+												<span class="feather-eye-off toggle-password"></span>
+
+											</div>
+
+											<span asp-validation-for="Password"
+												  class="text-danger">
+											</span>
+
+										</div>
+
+
+										<!-- Remember Me -->
+
+										<div class="mb-3 form-check-box">
+
+											<div class="form-group-flex">
+
+												<div class="form-check mb-0">
+
+													<input asp-for="RememberMe"
+														   class="form-check-input">
+
+													<label asp-for="RememberMe"
+														   class="form-check-label">
+
+														Remember Me
+
+													</label>
+
+												</div>
+
+											</div>
+
+										</div>
+
+
+										<!-- Submit -->
+
+										<div class="mb-3">
+
+											<button class="btn btn-primary-gradient w-100"
+													type="submit">
+
+												Sign in
+
+											</button>
+
+										</div>
+
+
+										<!-- Or -->
+
+										<div class="login-or">
+
+											<span class="or-line"></span>
+
+											<span class="span-or">
+												or
+											</span>
+
+										</div>
+
+
+										<!-- Social Login -->
+
+										<div class="social-login-btn">
+
+											<a href="javascript:void(0);"
+											   class="btn w-100">
+
+												<img src="~/assets/Doccure/img/icons/google-icon.svg"
+													 alt="google-icon">
+
+												Sign in With Google
+
+											</a>
+
+											<a href="javascript:void(0);"
+											   class="btn w-100">
+
+												<img src="~/assets/Doccure/img/icons/facebook-icon.svg"
+													 alt="fb-icon">
+
+												Sign in With Facebook
+
+											</a>
+
+										</div>
+
+
+										<!-- Register -->
+
+										<div class="account-signup">
+
+											<p>
+
+												Don't have an account?
+
+												<a asp-controller="Account"
+												   asp-action="Register"
+												   asp-route-returnUrl="@Model.ReturnUrl">
+
+													Sign up
+
+												</a>
+
+											</p>
+
+										</div>
+
+									</form>
+
+									<!-- /Login Form -->
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- /Login Tab Content -->
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- /Page Content -->
+		<!-- Footer Section -->
+
+		<footer class="footer inner-footer">
+
+			<div class="footer-top">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-xl-8">
+
+							<div class="row">
+
+								<div class="col-lg-3 col-md-3 col-sm-6">
+
+									<div class="footer-widget footer-menu">
+
+										<h6 class="footer-title">
+											Company
+										</h6>
+
+										<ul>
+
+											<li>
+												<a href="about-us.html">
+													About
+												</a>
+											</li>
+
+											<li>
+												<a href="search.html">
+													Features
+												</a>
+											</li>
+
+											<li>
+												<a href="#">
+													Works
+												</a>
+											</li>
+
+											<li>
+												<a href="#">
+													Careers
+												</a>
+											</li>
+
+											<li>
+												<a href="contact-us.html">
+													Locations
+												</a>
+											</li>
+
+										</ul>
+
+									</div>
+
+								</div>
+
+								<div class="col-lg-3 col-md-3 col-sm-6">
+
+									<div class="footer-widget footer-menu">
+
+										<h6 class="footer-title">
+											Treatments
+										</h6>
+
+										<ul>
+
+											<li>
+												<a href="search.html">
+													Dental
+												</a>
+											</li>
+
+											<li>
+												<a href="search.html">
+													Cardiac
+												</a>
+											</li>
+
+											<li>
+												<a href="search.html">
+													Spinal Cord
+												</a>
+											</li>
+
+											<li>
+												<a href="search.html">
+													Hair Growth
+												</a>
+											</li>
+
+											<li>
+												<a href="search.html">
+													Anemia & Disorder
+												</a>
+											</li>
+
+										</ul>
+
+									</div>
+
+								</div>
+
+								<div class="col-lg-3 col-md-3 col-sm-6">
+
+									<div class="footer-widget footer-menu">
+
+										<h6 class="footer-title">
+											Specialities
+										</h6>
+
+										<ul>
+
+											<li>
+												<a href="search.html">
+													Transplant
+												</a>
+											</li>
+
+											<li>
+												<a href="search.html">
+													Cardiologist
+												</a>
+											</li>
+
+											<li>
+												<a href="search.html">
+													Oncology
+												</a>
+											</li>
+
+											<li>
+												<a href="search.html">
+													Pediatrics
+												</a>
+											</li>
+
+											<li>
+												<a href="search.html">
+													Gynacology
+												</a>
+											</li>
+
+										</ul>
+
+									</div>
+
+								</div>
+
+								<div class="col-lg-3 col-md-3 col-sm-6">
+
+									<div class="footer-widget footer-menu">
+
+										<h6 class="footer-title">
+											Utilites
+										</h6>
+
+										<ul>
+
+											<li>
+												<a href="pricing.html">
+													Pricing
+												</a>
+											</li>
+
+											<li>
+												<a href="contact-us.html">
+													Contact
+												</a>
+											</li>
+
+											<li>
+												<a href="contact-us.html">
+													Request A Quote
+												</a>
+											</li>
+
+											<li>
+												<a href="#">
+													Premium Membership
+												</a>
+											</li>
+
+											<li>
+												<a href="#">
+													Integrations
+												</a>
+											</li>
+
+										</ul>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="col-xl-4 col-md-7">
+
+							<div class="footer-widget">
+
+								<h6 class="footer-title">
+									Newsletter
+								</h6>
+
+								<p class="mb-2 text-dark">
+									Subscribe & Stay Updated from the Doccure
+								</p>
+
+								<div class="subscribe-input">
+
+									<form action="#">
+
+										<input type="email"
+											   class="form-control"
+											   placeholder="Enter Email Address">
+
+										<button type="submit"
+												class="btn btn-md btn-primary-gradient d-inline-flex align-items-center">
+
+											<i class="isax isax-send-25 me-1"></i>
+
+											Send
+
+										</button>
+
+									</form>
+
+								</div>
+
+								<div class="social-icon">
+
+									<h6 class="mb-3 footer-title">
+										Connect With Us
+									</h6>
+
+									<ul>
+
+										<li>
+											<a href="#"
+											   aria-label="facebook">
+
+												<i class="fa-brands fa-facebook"></i>
+
+											</a>
+										</li>
+
+										<li>
+											<a href="#"
+											   aria-label="twitter">
+
+												<i class="fa-brands fa-x-twitter"></i>
+
+											</a>
+										</li>
+
+										<li>
+											<a href="#"
+											   aria-label="instagram">
+
+												<i class="fa-brands fa-instagram"></i>
+
+											</a>
+										</li>
+
+										<li>
+											<a href="#"
+											   aria-label="linkedin">
+
+												<i class="fa-brands fa-linkedin"></i>
+
+											</a>
+										</li>
+
+										<li>
+											<a href="#"
+											   aria-label="pinterest">
+
+												<i class="fa-brands fa-pinterest"></i>
+
+											</a>
+										</li>
+
+									</ul>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+			<div class="footer-bottom">
+
+				<div class="container">
+
+					<div class="copyright">
+
+						<div class="copyright-text mb-0">
+
+							<p class="mb-0">
+								Copyright © 2026 Vyzor. All Rights Reserved
+							</p>
+
+						</div>
+
+						<div class="copyright-menu">
+
+							<ul class="policy-menu mb-0">
+
+								<li>
+									<a href="#">
+										Legal Notice
+									</a>
+								</li>
+
+								<li>
+									<a href="privacy-policy.html">
+										Privacy Policy
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										Refund Policy
+									</a>
+								</li>
+
+							</ul>
+
+						</div>
+
+						<ul class="payment-method">
+
+							<li>
+								<a href="#">
+									<img src="~/assets/Doccure/img/icons/card-01.svg"
+										 alt="Img">
+								</a>
+							</li>
+
+							<li>
+								<a href="#">
+									<img src="~/assets/Doccure/img/icons/card-02.svg"
+										 alt="Img">
+								</a>
+							</li>
+
+							<li>
+								<a href="#">
+									<img src="~/assets/Doccure/img/icons/card-03.svg"
+										 alt="Img">
+								</a>
+							</li>
+
+							<li>
+								<a href="#">
+									<img src="~/assets/Doccure/img/icons/card-04.svg"
+										 alt="Img">
+								</a>
+							</li>
+
+							<li>
+								<a href="#">
+									<img src="~/assets/Doccure/img/icons/card-05.svg"
+										 alt="Img">
+								</a>
+							</li>
+
+							<li>
+								<a href="#">
+									<img src="~/assets/Doccure/img/icons/card-06.svg"
+										 alt="Img">
+								</a>
+							</li>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</footer>
+
+		<!-- /Footer Section -->
+
+	</div>
+
+	<!-- /Main Wrapper -->
+	<!-- Start Offcanvas -->
+
+	<div class="offcanvas offcanvas-offset offcanvas-end support_popup"
+		 tabindex="-1"
+		 id="support_item">
+
+		<div class="offcanvas-header">
+
+			<a asp-controller="Home"
+			   asp-action="Index">
+
+				<img src="~/assets/Doccure/img/logo.svg"
+					 alt="logo"
+					 class="img-fluid logo">
+
+			</a>
+
+			<button type="button"
+					class="btn-close"
+					data-bs-dismiss="offcanvas"
+					aria-label="Close">
+
+				<i class="isax isax-close-circle"></i>
+
+			</button>
+
+		</div>
+
+
+		<div class="offcanvas-body">
+
+			<!-- Item 1 -->
+
+			<div class="about-popup-item">
+
+				<h3 class="title">
+					About Vyzor
+				</h3>
+
+				<p>
+					Modern healthcare platform designed to simplify
+					the way patients connect with doctors, clinics
+					and medical services.
+				</p>
+
+				<div class="about-img d-flex align-items-center gap-2 justify-content-between">
+
+					<a href="~/assets/Doccure/img/banner/about-img-1.jpg"
+					   data-fancybox="gallery">
+
+						<img src="~/assets/Doccure/img/banner/about-img-1.jpg"
+							 alt="about-img-1"
+							 class="img-fluid">
+
+					</a>
+
+					<a href="~/assets/Doccure/img/banner/about-img-2.jpg"
+					   data-fancybox="gallery">
+
+						<img src="~/assets/Doccure/img/banner/about-img-2.jpg"
+							 alt="about-img-2"
+							 class="img-fluid">
+
+					</a>
+
+					<a href="~/assets/Doccure/img/banner/about-img-3.jpg"
+					   data-fancybox="gallery">
+
+						<img src="~/assets/Doccure/img/banner/about-img-3.jpg"
+							 alt="about-img-3"
+							 class="img-fluid">
+
+					</a>
+
+				</div>
+
+			</div>
+
+
+			<!-- Item 2 -->
+
+			<div class="about-popup-item">
+
+				<h3 class="title">
+					Our Locations
+				</h3>
+
+				<div class="loction-item mb-3">
+
+					<h4 class="title">
+						California
+					</h4>
+
+					<p class="location">
+						1250 Sunset, Los Angeles, CA
+					</p>
+
+				</div>
+
+				<div class="loction-item">
+
+					<h4 class="title">
+						Los Angeles
+					</h4>
+
+					<p class="location">
+						669 Boulevard, Los Angeles
+					</p>
+
+				</div>
+
+			</div>
+
+
+			<!-- Item 3 -->
+
+			<div class="about-popup-item">
+
+				<h3 class="title">
+					Contact Information
+				</h3>
+
+				<div class="support-item mb-3">
+
+					<div class="avatar avatar-lg bg-primary rounded-circle">
+
+						<i class="isax isax-messages-3"></i>
+
+					</div>
+
+					<div>
+
+						<p class="title">
+							General Inquiries
+						</p>
+
+						<h5 class="link">
+
+							<a href="#">
+								info@example.com
+							</a>
+
+						</h5>
+
+					</div>
+
+				</div>
+
+				<div class="support-item">
+
+					<div class="avatar avatar-lg bg-primary rounded-circle">
+
+						<i class="isax isax-call-calling"></i>
+
+					</div>
+
+					<div>
+
+						<p class="title">
+							Emergency Cases
+						</p>
+
+						<h5 class="link">
+
+							<a href="#">
+								+1 24565 89856
+							</a>
+
+						</h5>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+			<!-- Item 4 -->
+
+			<div class="about-popup-item border-0">
+
+				<h3 class="title">
+					Follow Us
+				</h3>
+
+				<ul class="d-flex align-items-center gap-2 social-iyem">
+
+					<li>
+
+						<a href="#"
+						   class="social-icon"
+						   aria-label="facebook">
+
+							<i class="fa-brands fa-facebook"></i>
+
+						</a>
+
+					</li>
+
+					<li>
+
+						<a href="#"
+						   class="social-icon"
+						   aria-label="twitter">
+
+							<i class="fa-brands fa-x-twitter"></i>
+
+						</a>
+
+					</li>
+
+					<li>
+
+						<a href="#"
+						   class="social-icon"
+						   aria-label="instagram">
+
+							<i class="fa-brands fa-instagram"></i>
+
+						</a>
+
+					</li>
+
+					<li>
+
+						<a href="#"
+						   class="social-icon"
+						   aria-label="linkedin">
+
+							<i class="fa-brands fa-linkedin"></i>
+
+						</a>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+		<img src="~/assets/Doccure/img/bg/offcanvas-bg.png"
+			 alt="element"
+			 class="element-01">
+
+	</div>
+
+	<!-- End Offcanvas -->
+	<!-- Bootstrap Core JS -->
+
+	<script src="~/assets/Doccure/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Fancybox JS -->
+
+	<script src="~/assets/Doccure/js/fancybox-vanilla.js"></script>
+
+	<!-- Custom JS -->
+
+	<script src="~/assets/Doccure/js/script.min.js"></script>
+
+</body>
+
+</html>

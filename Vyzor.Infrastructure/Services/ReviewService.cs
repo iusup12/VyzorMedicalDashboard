@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 
 using Microsoft.EntityFrameworkCore;
-using Vyzor.Application.DTO;
 using Vyzor.Application.DTO.Review;
 using Vyzor.Application.Interfaces;
 using Vyzor.Domain.Entities;

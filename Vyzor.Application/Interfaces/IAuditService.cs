@@ -1,10 +1,10 @@
 ﻿
 
 using Vyzor.Application.Common;
-using Vyzor.Application.DTO.Audit;
 using Vyzor.Application.DTO;
-using Vyzor.Application.DTO.Filters;
 using Vyzor.Domain.Enums;
+using Vyzor.Application.DTO.Audit;
+using Vyzor.Application.DTO.Filters;
 
 namespace Vyzor.Application.Interfaces;
 

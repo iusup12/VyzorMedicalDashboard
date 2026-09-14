@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using Vyzor.Application.Common;
-
 using Vyzor.Application.DTO.Subscription;
 
 namespace Vyzor.Application.Interfaces;

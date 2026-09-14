@@ -4,7 +4,7 @@ using System.Text;
 
 using System.ComponentModel.DataAnnotations;
 
-namespace Vyzor.Application.DTO;
+namespace Vyzor.Application.DTO.Review;
 
 public class ReviewEditDTO
 {

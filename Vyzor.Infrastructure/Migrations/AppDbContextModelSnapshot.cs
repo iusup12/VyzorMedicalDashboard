@@ -391,6 +391,9 @@ namespace Vyzor.Infrastructure.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("text");
 
+                    b.Property<int>("Rating")
+                        .HasColumnType("integer");
+
                     b.Property<int>("SpecializationId")
                         .HasColumnType("integer");
 

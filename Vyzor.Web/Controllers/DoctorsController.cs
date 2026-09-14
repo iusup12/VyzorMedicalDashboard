@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
+using Vyzor.Application.DTO.Filters;
 using Vyzor.Application.Interfaces;
 
 namespace Vyzor.Web.Controllers;
@@ -12,48 +14,52 @@ public class DoctorsController : Controller
         _doctorService = doctorService;
     }
 
-
-    // =========================================================
-    // DOCTORS GRID
-    // GET: /Doctors
-    // =========================================================
-
     public async Task<IActionResult> Index(
+        [FromQuery] DoctorCatalogFilterDTO filter,
         CancellationToken cancellationToken)
     {
-        var doctors = await _doctorService.GetCatalogAsync(
+        filter.PageSize = filter.PageSize <= 0 ? 12 : filter.PageSize;
+
+        var doctors = await _doctorService.GetCatalogPagedAsync(
+            filter,
             cancellationToken);
+
+        if (IsAjaxRequest())
+        {
+            return PartialView("_DoctorResults", doctors);
+        }
 
         return View(doctors);
     }
 
-
-    // =========================================================
-    // DOCTOR DETAILS
-    // GET: /Doctors/Details/1
-    // =========================================================
-
+    [HttpGet]
     public async Task<IActionResult> Details(
         int id,
         CancellationToken cancellationToken)
     {
         if (id <= 0)
         {
-            return NotFound();
+            return RedirectToAction(nameof(Index));
         }
-
 
         var doctor = await _doctorService.GetDetailsAsync(
             id,
             cancellationToken);
 
-
-        if (doctor == null)
+        if (doctor is null)
         {
             return NotFound();
         }
 
-
         return View(doctor);
     }
+
+    private bool IsAjaxRequest()
+    {
+        return string.Equals(
+            Request.Headers["X-Requested-With"].ToString(),
+            "XMLHttpRequest",
+            StringComparison.OrdinalIgnoreCase);
+    }
 }
+

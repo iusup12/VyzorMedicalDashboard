@@ -1,6 +1,5 @@
 ﻿using Vyzor.Application.DTO.Doctor;
 
-
 namespace Vyzor.Application.DTO.Appointment;
 
 

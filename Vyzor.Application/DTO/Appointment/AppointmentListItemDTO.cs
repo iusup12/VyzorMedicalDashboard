@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 using Vyzor.Domain.Enums;
 
 namespace Vyzor.Application.DTO.Appointment;

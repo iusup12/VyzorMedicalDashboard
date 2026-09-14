@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 using Vyzor.Application.DTO.Appointment;
 using Vyzor.Domain.Entities;
 

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+using Vyzor.Application.Common;
 using Vyzor.Domain.Enums;
 
 namespace Vyzor.Application.DTO.Filters;
 
-public class AppointmentFilterDTO
+public class AppointmentFilterDTO : PagedRequest
 {
     public int? DoctorId { get; set; }
 
@@ -17,6 +15,4 @@ public class AppointmentFilterDTO
     public DateTime? FromDate { get; set; }
 
     public DateTime? ToDate { get; set; }
-
-    public int Page { get; set; } = 1;
 }

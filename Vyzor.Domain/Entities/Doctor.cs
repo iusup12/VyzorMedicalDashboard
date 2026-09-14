@@ -13,7 +13,7 @@ public class Doctor : Entity
     public string About { get; set; } = string.Empty;
 
     public int ExperienceYears { get; set; }
-    public int rating;
+    public int Rating { get; set; }
 
 
     public string ImageUrl { get; set; } = string.Empty;

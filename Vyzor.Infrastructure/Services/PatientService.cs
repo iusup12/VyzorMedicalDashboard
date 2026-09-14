@@ -1,11 +1,11 @@
 ﻿using Vyzor.Application.Common;
 using Microsoft.EntityFrameworkCore;
 using Vyzor.Application.Common;
-using Vyzor.Application.DTO.Filters;
-using Vyzor.Application.DTO.Patient;
 using Vyzor.Application.Interfaces;
 using Vyzor.Domain.Entities;
 using Vyzor.Infrastructure.Data;
+using Vyzor.Application.DTO.Filters;
+using Vyzor.Application.DTO.Patient;
 
 
 namespace Vyzor.Infrastructure.Services;

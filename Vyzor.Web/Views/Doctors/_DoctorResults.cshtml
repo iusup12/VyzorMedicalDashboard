@@ -1,90 +1,207 @@
-﻿@model IEnumerable<Vyzor.Application.DTO.Doctor.DoctorCardDTO>
+﻿@model Vyzor.Application.Common.PagedResult<Vyzor.Application.DTO.Doctor.DoctorCardDTO>
 
+<div class="row" data-doctor-results>
 
-<div class="row">
-
-    @if (Model != null && Model.Any())
+    @if (Model != null && Model.Items.Any())
     {
-        foreach (var doctor in Model)
+        foreach (var doctor in Model.Items)
         {
-            var doctorImage = string.IsNullOrWhiteSpace(doctor.PhotoUrl)
-                ? "/assets/Doccure/img/doctor-grid/doctor-grid-01.jpg"
-                : doctor.PhotoUrl;
+            <div class="col-lg-12">
 
+                <div class="card doctor-list-card">
 
-            <div class="col-xl-4 col-md-6">
-                <div class="card">
+                    <div class="d-md-flex">
 
-                    <div class="card-img card-img-hover">
+                        <!-- Doctor image -->
+                        <div class="card-img card-img-hover">
 
-                        <a asp-controller="Doctors"
-                           asp-action="Details"
-                           asp-route-id="@doctor.Id">
+                            <a asp-controller="Doctors"
+                               asp-action="Details"
+                               asp-route-id="@doctor.Id">
 
-                            <img src="@doctorImage"
-                                 class="img-fluid"
-                                 alt="@doctor.FullName">
+                                <img src="@doctor.PhotoUrl"
+                                     alt="@doctor.FullName">
 
-                        </a>
+                            </a>
 
-                    </div>
+                            <div class="grid-overlay-item d-flex align-items-center justify-content-between">
 
-
-                    <div class="card-body">
-
-                        <div class="doctor-info-detail">
-
-                            <h5 class="mb-1">
-
-                                <a asp-controller="Doctors"
-                                   asp-action="Details"
-                                   asp-route-id="@doctor.Id">
-
-                                    @doctor.FullName
-
-                                </a>
-
-                            </h5>
-
-
-                            <p class="text-muted mb-2">
-                                @doctor.SpecializationName
-                            </p>
-
-
-                            <div class="d-flex align-items-center mb-2">
-
-                                <span class="text-warning me-1">
-                                    ★
-                                </span>
-
-                                <span>
+                                <span class="badge bg-orange">
+                                    <i class="fa-solid fa-star me-1"></i>
                                     @doctor.Rating.ToString("0.0")
                                 </span>
 
-                            </div>
+                                <a href="javascript:void(0)"
+                                   class="fav-icon">
 
-
-                            <div class="d-flex justify-content-between align-items-center">
-
-
-                                <span>
-                                    @doctor.AppointmentPrice.ToString("0.00") €
-                                </span>
-
-
-                                <a asp-controller="Appointment"
-                                   asp-action="Create"
-                                   asp-route-doctorId="@doctor.Id"
-                                   class="btn btn-md btn-dark rounded-pill">
-
-                                    Записаться
+                                    <i class="fa fa-heart"></i>
 
                                 </a>
 
+                            </div>
+
+                        </div>
+
+
+                        <!-- Doctor information -->
+                        <div class="card-body p-0">
+
+                            <!-- Specialization -->
+                            <div class="d-flex align-items-center justify-content-between border-bottom p-3">
+
+                                <a asp-controller="Doctors"
+                                   asp-action="Index"
+                                   class="text-teal fw-medium fs-14">
+
+                                    @doctor.SpecializationName
+
+                                </a>
+
+                                <span class="badge bg-success-light d-inline-flex align-items-center">
+
+                                    <i class="fa-solid fa-circle fs-5 me-1"></i>
+
+                                    Available
+
+                                </span>
 
                             </div>
 
+
+                            <div class="p-3">
+
+                                <!-- Doctor details -->
+                                <div class="doctor-info-detail pb-3">
+
+                                    <div class="row align-items-center gy-3">
+
+                                        <!-- Left information -->
+                                        <div class="col-sm-6">
+
+                                            <div>
+
+                                                <h6 class="d-flex align-items-center mb-1">
+
+                                                    <a asp-controller="Doctors"
+                                                       asp-action="Details"
+                                                       asp-route-id="@doctor.Id">
+
+                                                        @doctor.FullName
+
+                                                    </a>
+
+                                                    <i class="isax isax-tick-circle5 text-success ms-2"></i>
+
+                                                </h6>
+
+
+                                                <p class="mb-2">
+                                                    @doctor.SpecializationName
+                                                </p>
+
+
+                                                <p class="d-flex align-items-center mb-0 fs-14">
+
+                                                    <i class="isax isax-hospital5 me-2"></i>
+
+                                                    Vyzor Medical Center
+
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <!-- Right information -->
+                                        <div class="col-sm-6">
+
+                                            <div>
+
+                                                <p class="d-flex align-items-center mb-0 fs-14 mb-2">
+
+                                                    <i class="isax isax-star-1 text-dark me-2"></i>
+
+                                                    Rating:
+                                                    @doctor.Rating.ToString("0.0")
+
+                                                </p>
+
+
+                                                <p class="d-flex align-items-center mb-0 fs-14 mb-2">
+
+                                                    <i class="isax isax-d-cube-scan5 text-dark me-2"></i>
+
+                                                    @doctor.SpecializationName
+
+                                                </p>
+
+
+                                                <p class="d-flex align-items-center mb-0 fs-14">
+
+                                                    <i class="isax isax-archive-14 text-dark me-2"></i>
+
+                                                    Medical consultation
+
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Price + appointment -->
+                                <div class="d-flex align-items-center justify-content-between flex-wrap row-gap-3 mt-3">
+
+                                    <div class="d-flex align-items-center flex-wrap row-gap-3">
+
+                                        <div class="me-3">
+
+                                            <p class="mb-1">
+                                                Consultation Fees
+                                            </p>
+
+                                            <h3 class="text-orange">
+
+                                                @doctor.AppointmentPrice.ToString("N0")
+                                                <span class="currency-rub">₽</span>
+
+                                            </h3>
+
+                                        </div>
+
+
+                                        <p class="mb-0">
+
+                                            Consultation with
+                                            <br>
+
+                                            @doctor.FullName
+
+                                        </p>
+
+                                    </div>
+
+
+                                    <!-- Booking -->
+                                    <a asp-controller="Appointment"
+                                       asp-action="Create"
+                                       asp-route-doctorId="@doctor.Id"
+                                       class="btn btn-md btn-primary-gradient d-inline-flex align-items-center rounded-pill">
+
+                                        <i class="isax isax-calendar-1 me-2"></i>
+
+                                        Book Appointment
+
+                                    </a>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
@@ -97,17 +214,13 @@
     }
     else
     {
-
         <div class="col-12">
 
             <div class="alert alert-info">
-
                 Врачи по заданным параметрам не найдены.
-
             </div>
 
         </div>
-
     }
 
 </div>

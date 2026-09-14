@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Vyzor.Application.DTO;
 using Vyzor.Application.DTO.Review;
+
 public interface IReviewService
 {
     Task<IEnumerable<ReviewListItemDTO>> GetByDoctorAsync(int doctorId);
