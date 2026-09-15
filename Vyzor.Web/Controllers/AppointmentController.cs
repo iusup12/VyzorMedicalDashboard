@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +27,7 @@ public class AppointmentController : Controller
         _context = context;
     }
 
-    // GET: /Appointment/Create?doctorId=5
+    
     [HttpGet]
     public async Task<IActionResult> Create(
         int doctorId,
@@ -73,6 +74,7 @@ public class AppointmentController : Controller
             return View(model);
         }
 
+        // Получаем ID текущего авторизованного пользователя
         var userId = User.FindFirstValue(
             ClaimTypes.NameIdentifier);
 
@@ -81,6 +83,7 @@ public class AppointmentController : Controller
             return Challenge();
         }
 
+        // Находим пациента, связанного с текущим пользователем
         var patient = await _context.Patients
             .AsNoTracking()
             .FirstOrDefaultAsync(
@@ -101,20 +104,26 @@ public class AppointmentController : Controller
             return View(model);
         }
 
+  
         model.PatientId = patient.Id;
+
         model.Status = AppointmentStatus.Scheduled;
 
-        
         model.AppointmentDate = DateTime.SpecifyKind(
             model.AppointmentDate,
             DateTimeKind.Local);
 
-        model.AppointmentDate = model.AppointmentDate.ToUniversalTime();
+        model.AppointmentDate =
+            model.AppointmentDate.ToUniversalTime();
 
-        await _appointmentService.CreateAsync(model, cancellationToken);
+        await _appointmentService.CreateAsync(
+            model,
+            userId,
+            cancellationToken);
 
         return RedirectToAction(
             "Index",
             "Profile");
     }
 }
+

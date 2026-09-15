@@ -19,7 +19,8 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<Doctor> Doctors => Set<Doctor>();
     public DbSet<Patient> Patients => Set<Patient>();
     public DbSet<DoctorSchedule> DoctorSchedules => Set<DoctorSchedule>();
-
+    public DbSet<SupportChat> SupportChats => Set<SupportChat>();
+    public DbSet<SupportChatMessage> SupportChatMessages => Set<SupportChatMessage>();
     public DbSet<Specialization> Specializations => Set<Specialization>();
 
     public DbSet<Appointment> Appointments => Set<Appointment>();
@@ -43,6 +44,8 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
         ConfigureAppointment(modelBuilder);
 
         ConfigureReview(modelBuilder);
+        ConfigureSupportChat(modelBuilder);
+        ConfigureSupportChatMessage(modelBuilder);
 
         ConfigureSubscriptionPlan(modelBuilder);
         ConfigureSubscriptionFeature(modelBuilder);
@@ -67,6 +70,61 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
                 .IsUnique();
         });
     }
+    private static void ConfigureSupportChat(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<SupportChat>(entity =>
+    {
+        entity.HasKey(x => x.Id);
+
+        entity.HasIndex(x => x.PatientId);
+
+        entity.HasIndex(x => x.LastMessageAtUtc);
+
+        entity.Property(x => x.CreatedAtUtc)
+            .IsRequired();
+
+        entity.Property(x => x.IsClosed)
+            .HasDefaultValue(false);
+
+        entity.HasOne(x => x.Patient)
+            .WithMany()
+            .HasForeignKey(x => x.PatientId)
+            .OnDelete(DeleteBehavior.Cascade);
+    });
+}
+
+private static void ConfigureSupportChatMessage(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<SupportChatMessage>(entity =>
+    {
+        entity.HasKey(x => x.Id);
+
+        entity.HasIndex(x => x.SupportChatId);
+
+        entity.HasIndex(x => x.CreatedAtUtc);
+
+        entity.HasIndex(x => x.SenderUserId);
+
+        entity.Property(x => x.SenderUserId)
+            .IsRequired()
+            .HasMaxLength(450);
+
+        entity.Property(x => x.Message)
+            .IsRequired()
+            .HasMaxLength(4000);
+
+        entity.Property(x => x.CreatedAtUtc)
+            .IsRequired();
+
+        entity.Property(x => x.IsFromSupport)
+            .IsRequired();
+
+        entity.HasOne(x => x.SupportChat)
+            .WithMany(x => x.Messages)
+            .HasForeignKey(x => x.SupportChatId)
+            .OnDelete(DeleteBehavior.Cascade);
+    });
+}
 
     private static void ConfigureDoctor(ModelBuilder modelBuilder)
     {

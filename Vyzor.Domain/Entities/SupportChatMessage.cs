@@ -1,6 +1,8 @@
-﻿namespace Vyzor.Application.DTO;
+﻿using System;
+using Vyzor.Domain.Common;
+namespace Vyzor.Domain.Entities;
 
-public class ChatMessageDTO
+public class SupportChatMessage
 {
     public int Id { get; set; }
 
@@ -10,7 +12,9 @@ public class ChatMessageDTO
 
     public string Message { get; set; } = string.Empty;
 
-    public DateTime CreatedAtUtc { get; set; }
+    public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
 
     public bool IsFromSupport { get; set; }
+
+    public SupportChat SupportChat { get; set; } = null!;
 }

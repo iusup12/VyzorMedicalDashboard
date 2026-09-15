@@ -43,15 +43,11 @@ builder.Services.AddSignalR();
 
 builder.Services.AddResponseCompression();
 
-// ------------------------------------------------------------
-// Infrastructure
-// ------------------------------------------------------------
+
 
 builder.Services.AddInfrastructure(builder.Configuration);
 
-// ------------------------------------------------------------
-// Authentication / Identity
-// ------------------------------------------------------------
+
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -59,8 +55,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LoginPath = "/Account/Login";
     options.LogoutPath = "/Account/Logout";
 
-    // Для AJAX-запросов не делаем обычный redirect
-    // на страницу Login.
+    
     options.Events.OnRedirectToLogin = context =>
     {
         if (IsAjaxRequest(context.Request))
@@ -99,9 +94,6 @@ builder.Services.ConfigureApplicationCookie(options =>
     };
 });
 
-// ------------------------------------------------------------
-// Authorization
-// ------------------------------------------------------------
 
 builder.Services.AddAuthorization(options =>
 {
@@ -130,15 +122,11 @@ builder.Services.AddAuthorization(options =>
             AppRoles.Admin));
 });
 
-// ------------------------------------------------------------
-// Build
-// ------------------------------------------------------------
+
 
 var app = builder.Build();
 
-// ------------------------------------------------------------
-// Localization configuration
-// ------------------------------------------------------------
+
 
 var supportedCultures = new[]
 {
@@ -162,9 +150,7 @@ localizationOptions.RequestCultureProviders =
     new AcceptLanguageHeaderRequestCultureProvider()
 ];
 
-// ------------------------------------------------------------
-// Error handling
-// ------------------------------------------------------------
+
 
 app.UseExceptionHandler("/Errors/500");
 
@@ -174,9 +160,8 @@ if (!app.Environment.IsDevelopment())
     app.UseResponseCompression();
 }
 
-// ------------------------------------------------------------
-// HTTP pipeline
-// ------------------------------------------------------------
+
+
 
 app.UseHttpsRedirection();
 
@@ -197,9 +182,7 @@ app.UseMiddleware<TechnicalLogMiddleware>();
 
 app.UseAuthorization();
 
-// ------------------------------------------------------------
-// Areas
-// ------------------------------------------------------------
+
 
 app.MapControllerRoute(
     name: "areas",
@@ -213,22 +196,21 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Doctors}/{action=Index}/{id?}");
 
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// ------------------------------------------------------------
-// Appointment SignalR Hub
-// ------------------------------------------------------------
+
+app.MapHub<SupportChatHub>("/hubs/support-chat");
+
+
 
 app.MapHub<AppointmentHub>("/hubs/appointments");
 
-// ------------------------------------------------------------
-// Run
-// ------------------------------------------------------------
+
 
 app.Run();
 
-// ------------------------------------------------------------
-// AJAX helper
-// ------------------------------------------------------------
 
 static bool IsAjaxRequest(HttpRequest request)
 {

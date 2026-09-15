@@ -17,15 +17,18 @@ public interface IAppointmentService
         CancellationToken cancellationToken = default);
 
     Task CreateAsync(
-        AppointmentEditDTO dto,
-        CancellationToken cancellationToken = default);
+     AppointmentEditDTO dto,
+     string? userId,
+     CancellationToken cancellationToken = default);
 
     Task UpdateAsync(
         AppointmentEditDTO dto,
+        string? userId,
         CancellationToken cancellationToken = default);
 
     Task ChangeStatusAsync(
         AppointmentStatusDTO dto,
+        string? userId,
         CancellationToken cancellationToken = default);
 
     Task DeleteAsync(

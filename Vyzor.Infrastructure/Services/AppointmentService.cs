@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using Vyzor.Application.Common;
 using Vyzor.Application.DTO.Appointment;
 using Vyzor.Application.DTO.Filters;
 using Vyzor.Application.Interfaces;
 using Vyzor.Domain.Entities;
+using Vyzor.Domain.Enums;
 using Vyzor.Infrastructure.Data;
 
 namespace Vyzor.Infrastructure.Services;
@@ -11,10 +13,14 @@ namespace Vyzor.Infrastructure.Services;
 public class AppointmentService : IAppointmentService
 {
     private readonly AppDbContext _context;
+    private readonly IAuditService _auditService;
 
-    public AppointmentService(AppDbContext context)
+    public AppointmentService(
+        AppDbContext context,
+        IAuditService auditService)
     {
         _context = context;
+        _auditService = auditService;
     }
 
     public async Task<PagedResult<AppointmentListItemDTO>> GetPagedAsync(
@@ -107,6 +113,7 @@ public class AppointmentService : IAppointmentService
 
     public async Task CreateAsync(
         AppointmentEditDTO dto,
+        string? userId,
         CancellationToken cancellationToken = default)
     {
         var appointment = new Appointment
@@ -121,10 +128,24 @@ public class AppointmentService : IAppointmentService
         _context.Appointments.Add(appointment);
 
         await _context.SaveChangesAsync(cancellationToken);
+
+        await _auditService.LogAsync(
+            action: AuditAction.AppointmentCreated,
+            entityName: nameof(Appointment),
+            entityId: appointment.Id.ToString(),
+            userId: userId,
+            details:
+                $"Appointment created. " +
+                $"DoctorId={appointment.DoctorId}; " +
+                $"PatientId={appointment.PatientId}; " +
+                $"AppointmentDate={appointment.AppointmentDate:O}; " +
+                $"Status={appointment.Status}",
+            cancellationToken: cancellationToken);
     }
 
     public async Task UpdateAsync(
         AppointmentEditDTO dto,
+        string? userId,
         CancellationToken cancellationToken = default)
     {
         var appointment = await _context.Appointments
@@ -144,10 +165,24 @@ public class AppointmentService : IAppointmentService
         appointment.About = dto.About;
 
         await _context.SaveChangesAsync(cancellationToken);
+
+        await _auditService.LogAsync(
+            action: AuditAction.AppointmentUpdated,
+            entityName: nameof(Appointment),
+            entityId: appointment.Id.ToString(),
+            userId: userId,
+            details:
+                $"Appointment updated. " +
+                $"DoctorId={appointment.DoctorId}; " +
+                $"PatientId={appointment.PatientId}; " +
+                $"AppointmentDate={appointment.AppointmentDate:O}; " +
+                $"Status={appointment.Status}",
+            cancellationToken: cancellationToken);
     }
 
     public async Task ChangeStatusAsync(
         AppointmentStatusDTO dto,
+        string? userId,
         CancellationToken cancellationToken = default)
     {
         var appointment = await _context.Appointments
@@ -160,9 +195,42 @@ public class AppointmentService : IAppointmentService
             return;
         }
 
+        var oldStatus = appointment.Status;
+
         appointment.Status = dto.Status;
 
         await _context.SaveChangesAsync(cancellationToken);
+
+        if (dto.Status == AppointmentStatus.Cancelled)
+        {
+            await _auditService.LogAsync(
+                action: AuditAction.AppointmentCancelled,
+                entityName: nameof(Appointment),
+                entityId: appointment.Id.ToString(),
+                userId: userId,
+                details:
+                    $"Appointment cancelled. " +
+                    $"PreviousStatus={oldStatus}; " +
+                    $"DoctorId={appointment.DoctorId}; " +
+                    $"PatientId={appointment.PatientId}; " +
+                    $"AppointmentDate={appointment.AppointmentDate:O}",
+                cancellationToken: cancellationToken);
+        }
+        else if (dto.Status == AppointmentStatus.Completed)
+        {
+            await _auditService.LogAsync(
+                action: AuditAction.AppointmentCompleted,
+                entityName: nameof(Appointment),
+                entityId: appointment.Id.ToString(),
+                userId: userId,
+                details:
+                    $"Appointment completed. " +
+                    $"PreviousStatus={oldStatus}; " +
+                    $"DoctorId={appointment.DoctorId}; " +
+                    $"PatientId={appointment.PatientId}; " +
+                    $"AppointmentDate={appointment.AppointmentDate:O}",
+                cancellationToken: cancellationToken);
+        }
     }
 
     public async Task DeleteAsync(
@@ -233,3 +301,4 @@ public class AppointmentService : IAppointmentService
             .ToListAsync(cancellationToken);
     }
 }
+

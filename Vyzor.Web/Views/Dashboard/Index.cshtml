@@ -1,180 +1,1037 @@
-﻿@{
+﻿```cshtml
+@model Vyzor.Application.DTO.Dashboard.DashboardMetricsDTO
+
+@{
     Layout = "~/Views/Shared/Dashboard/_DashboardLayout.cshtml";
 }
 
 <div class="container-fluid">
+
     <div class="d-flex align-items-center justify-content-between mb-3">
+
         <div>
-            <h4 class="fw-semibold mb-1">Sales Dashboard</h4>
-            <p class="text-muted mb-0">Overview of your medical center activity</p>
+            <h4 class="fw-semibold mb-1">
+                Medical Dashboard
+            </h4>
+
+            <p class="text-muted mb-0">
+                Overview of your medical center activity
+            </p>
         </div>
-        <button class="btn btn-primary">
-            <i class="ri-download-2-line me-1"></i> Export Report
-        </button>
+
+        <a asp-area="Admin"
+           asp-controller="Appointments"
+           asp-action="Index"
+           class="btn btn-primary">
+
+            <i class="ri-calendar-check-line me-1"></i>
+
+            View Appointments
+        </a>
+
     </div>
+
+
+    <!-- METRICS -->
 
     <div class="row g-3">
+
+        <!-- DOCTORS -->
+
         <div class="col-xl-2 col-lg-4 col-md-6">
+
             <div class="card custom-card h-100">
+
                 <div class="card-body">
+
                     <div class="d-flex align-items-start justify-content-between">
+
                         <div>
-                            <span class="fs-12 text-muted">Total Sales</span>
-                            <h4 class="fw-semibold mt-2 mb-2">$54,239</h4>
-                            <span class="text-success fs-12"><i class="ti ti-arrow-up"></i> 4.8%</span>
+
+                            <span class="fs-12 text-muted">
+                                Total Doctors
+                            </span>
+
+                            <h4 class="fw-semibold mt-2 mb-2">
+                                @Model.TotalDoctors
+                            </h4>
+
+                            <a asp-area="Admin"
+                               asp-controller="Doctors"
+                               asp-action="Index"
+                               class="text-primary fs-12">
+
+                                View doctors
+
+                            </a>
+
                         </div>
+
                         <span class="avatar avatar-md bg-primary-transparent">
-                            <i class="ri-money-dollar-circle-line fs-20"></i>
+
+                            <i class="ri-stethoscope-line fs-20"></i>
+
                         </span>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
 
+
+        <!-- PATIENTS -->
+
         <div class="col-xl-2 col-lg-4 col-md-6">
+
             <div class="card custom-card h-100">
+
                 <div class="card-body">
+
                     <div class="d-flex align-items-start justify-content-between">
+
                         <div>
-                            <span class="fs-12 text-muted">Total Orders</span>
-                            <h4 class="fw-semibold mt-2 mb-2">1,842</h4>
-                            <span class="text-success fs-12"><i class="ti ti-arrow-up"></i> 3.2%</span>
+
+                            <span class="fs-12 text-muted">
+                                Total Patients
+                            </span>
+
+                            <h4 class="fw-semibold mt-2 mb-2">
+                                @Model.TotalPatients
+                            </h4>
+
+                            <a asp-area="Admin"
+                               asp-controller="Patients"
+                               asp-action="Index"
+                               class="text-primary fs-12">
+
+                                View patients
+
+                            </a>
+
                         </div>
+
                         <span class="avatar avatar-md bg-secondary-transparent">
-                            <i class="ri-shopping-bag-3-line fs-20"></i>
+
+                            <i class="ri-group-line fs-20"></i>
+
                         </span>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
+
+        <!-- APPOINTMENTS -->
 
         <div class="col-xl-2 col-lg-4 col-md-6">
+
             <div class="card custom-card h-100">
+
                 <div class="card-body">
+
                     <div class="d-flex align-items-start justify-content-between">
+
                         <div>
-                            <span class="fs-12 text-muted">Total Visitors</span>
-                            <h4 class="fw-semibold mt-2 mb-2">24,521</h4>
-                            <span class="text-danger fs-12"><i class="ti ti-arrow-down"></i> 1.4%</span>
+
+                            <span class="fs-12 text-muted">
+                                Appointments
+                            </span>
+
+                            <h4 class="fw-semibold mt-2 mb-2">
+                                @Model.TotalAppointments
+                            </h4>
+
+                            <a asp-area="Admin"
+                               asp-controller="Appointments"
+                               asp-action="Index"
+                               class="text-primary fs-12">
+
+                                View appointments
+
+                            </a>
+
                         </div>
+
                         <span class="avatar avatar-md bg-warning-transparent">
-                            <i class="ri-group-line fs-20"></i>
+
+                            <i class="ri-calendar-check-line fs-20"></i>
+
                         </span>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
 
-        <div class="col-xl-6 col-lg-12">
+
+        <!-- SUBSCRIPTIONS -->
+
+        <div class="col-xl-2 col-lg-4 col-md-6">
+
             <div class="card custom-card h-100">
-                <div class="card-header justify-content-between">
-                    <div class="card-title">Sales Overview</div>
-                    <select class="form-select form-select-sm w-auto">
-                        <option>2026</option>
-                        <option>2025</option>
-                    </select>
-                </div>
+
                 <div class="card-body">
+
+                    <div class="d-flex align-items-start justify-content-between">
+
+                        <div>
+
+                            <span class="fs-12 text-muted">
+                                Active Subscriptions
+                            </span>
+
+                            <h4 class="fw-semibold mt-2 mb-2">
+                                @Model.ActiveSubscriptionsCount
+                            </h4>
+
+                            <a asp-area="Admin"
+                               asp-controller="Subscriptions"
+                               asp-action="Index"
+                               class="text-primary fs-12">
+
+                                View subscriptions
+
+                            </a>
+
+                        </div>
+
+                        <span class="avatar avatar-md bg-info-transparent">
+
+                            <i class="ri-vip-crown-line fs-20"></i>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- AUDIT LOGS -->
+
+        <div class="col-xl-2 col-lg-4 col-md-6">
+
+            <div class="card custom-card h-100">
+
+                <div class="card-body">
+
+                    <div class="d-flex align-items-start justify-content-between">
+
+                        <div>
+
+                            <span class="fs-12 text-muted">
+                                Audit Logs
+                            </span>
+
+                            <h4 class="fw-semibold mt-2 mb-2">
+                                @Model.AuditLogsCount
+                            </h4>
+
+                            <a asp-area="Admin"
+                               asp-controller="Logs"
+                               asp-action="Index"
+                               class="text-primary fs-12">
+
+                                View logs
+
+                            </a>
+
+                        </div>
+
+                        <span class="avatar avatar-md bg-primary-transparent">
+
+                            <i class="ri-file-list-3-line fs-20"></i>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- APPOINTMENTS OVERVIEW -->
+
+        <div class="col-xl-7 col-lg-12">
+
+            <div class="card custom-card h-100">
+
+                <div class="card-header justify-content-between">
+
+                    <div class="card-title">
+                        Appointments Overview
+                    </div>
+
+                    <a asp-area="Admin"
+                       asp-controller="Appointments"
+                       asp-action="Index"
+                       class="text-primary fs-12">
+
+                        View all
+
+                    </a>
+
+                </div>
+
+                <div class="card-body">
+
                     <div class="dashboard-chart sales-chart">
+
                         <div class="chart-grid"></div>
+
                         <div class="chart-bars">
-                            <span style="height:34%"></span><span style="height:47%"></span><span style="height:39%"></span>
-                            <span style="height:55%"></span><span style="height:49%"></span><span style="height:66%"></span>
-                            <span style="height:61%"></span><span style="height:76%"></span><span style="height:68%"></span>
-                            <span style="height:86%"></span><span style="height:73%"></span><span style="height:94%"></span>
+
+                            <span style="height:34%"></span>
+                            <span style="height:47%"></span>
+                            <span style="height:39%"></span>
+                            <span style="height:55%"></span>
+                            <span style="height:49%"></span>
+                            <span style="height:66%"></span>
+                            <span style="height:61%"></span>
+                            <span style="height:76%"></span>
+                            <span style="height:68%"></span>
+                            <span style="height:86%"></span>
+                            <span style="height:73%"></span>
+                            <span style="height:94%"></span>
+
                         </div>
-                        <svg class="chart-line" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
-                            <polyline points="0,235 100,205 200,220 300,170 400,180 500,145 600,125 700,115 800,85 900,100 1000,70 1100,92 1200,45" fill="none" stroke="currentColor" stroke-width="4" />
+
+                        <svg class="chart-line"
+                             viewBox="0 0 1200 300"
+                             preserveAspectRatio="none"
+                             aria-hidden="true">
+
+                            <polyline points="0,235 100,205 200,220 300,170 400,180 500,145 600,125 700,115 800,85 900,100 1000,70 1100,92 1200,45"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      stroke-width="4" />
+
                         </svg>
+
                         <div class="chart-labels">
-                            <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+
+                            <span>Jan</span>
+                            <span>Feb</span>
+                            <span>Mar</span>
+                            <span>Apr</span>
+                            <span>May</span>
+                            <span>Jun</span>
+                            <span>Jul</span>
+                            <span>Aug</span>
+                            <span>Sep</span>
+                            <span>Oct</span>
+                            <span>Nov</span>
+                            <span>Dec</span>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
 
-        <div class="col-xl-4 col-lg-6">
+
+        
+
+        <div class="col-xl-5 col-lg-6">
+
             <div class="card custom-card h-100">
+
                 <div class="card-header justify-content-between">
-                    <div class="card-title">Visitors By Device</div>
-                    <span class="text-muted fs-12">This Month</span>
-                </div>
-                <div class="card-body d-flex align-items-center justify-content-center">
-                    <div class="radar-wrap">
-                        <div class="radar-grid"></div>
-                        <div class="radar-shape"></div>
-                        <div class="radar-dot d1"></div><div class="radar-dot d2"></div><div class="radar-dot d3"></div>
-                    </div>
-                    <div class="ms-4">
-                        <div class="mb-3"><span class="badge bg-primary me-2">●</span>Desktop <strong class="ms-2">52%</strong></div>
-                        <div class="mb-3"><span class="badge bg-secondary me-2">●</span>Mobile <strong class="ms-2">34%</strong></div>
-                        <div><span class="badge bg-warning me-2">●</span>Others <strong class="ms-2">14%</strong></div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-xl-4 col-lg-6">
-            <div class="card custom-card h-100">
-                <div class="card-header"><div class="card-title">Top Selling Products</div></div>
-                <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <table class="table text-nowrap mb-0">
-                            <tbody>
-                                <tr><td><div class="d-flex align-items-center"><span class="avatar avatar-sm bg-primary-transparent me-2">01</span><span>General Consultation</span></div></td><td class="text-end fw-semibold">$12,480</td></tr>
-                                <tr><td><div class="d-flex align-items-center"><span class="avatar avatar-sm bg-secondary-transparent me-2">02</span><span>Cardiology Visit</span></div></td><td class="text-end fw-semibold">$9,720</td></tr>
-                                <tr><td><div class="d-flex align-items-center"><span class="avatar avatar-sm bg-warning-transparent me-2">03</span><span>Dental Treatment</span></div></td><td class="text-end fw-semibold">$7,540</td></tr>
-                                <tr><td><div class="d-flex align-items-center"><span class="avatar avatar-sm bg-info-transparent me-2">04</span><span>Neurology Visit</span></div></td><td class="text-end fw-semibold">$5,820</td></tr>
-                            </tbody>
-                        </table>
+                    <div class="card-title">
+                        Medical Center Overview
                     </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-xl-4 col-lg-6">
-            <div class="card custom-card h-100">
-                <div class="card-header"><div class="card-title">Recent Activity</div></div>
+                    <span class="text-muted fs-12">
+                        Current
+                    </span>
+
+                </div>
+
                 <div class="card-body">
+
+                    <div class="mb-3">
+
+                        <div class="d-flex justify-content-between mb-1">
+
+                            <span>
+                                Doctors
+                            </span>
+
+                            <span>
+                                @Model.TotalDoctors
+                            </span>
+
+                        </div>
+
+                        <div class="progress">
+
+                            <div class="progress-bar bg-primary"
+                                 style="width:100%">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <div class="d-flex justify-content-between mb-1">
+
+                            <span>
+                                Patients
+                            </span>
+
+                            <span>
+                                @Model.TotalPatients
+                            </span>
+
+                        </div>
+
+                        <div class="progress">
+
+                            <div class="progress-bar bg-secondary"
+                                 style="width:100%">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <div class="d-flex justify-content-between mb-1">
+
+                            <span>
+                                Appointments
+                            </span>
+
+                            <span>
+                                @Model.TotalAppointments
+                            </span>
+
+                        </div>
+
+                        <div class="progress">
+
+                            <div class="progress-bar bg-warning"
+                                 style="width:100%">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="d-flex justify-content-between mb-1">
+
+                            <span>
+                                Active Subscriptions
+                            </span>
+
+                            <span>
+                                @Model.ActiveSubscriptionsCount
+                            </span>
+
+                        </div>
+
+                        <div class="progress">
+
+                            <div class="progress-bar bg-info"
+                                 style="width:100%">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK LINKS -->
+
+        <div class="col-xl-4 col-lg-6">
+
+            <div class="card custom-card h-100">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+                        Management
+                    </div>
+
+                </div>
+
+                <div class="card-body p-0">
+
+                    <div class="table-responsive">
+
+                        <table class="table text-nowrap mb-0">
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+
+                                        <a asp-area="Admin"
+                                           asp-controller="Doctors"
+                                           asp-action="Index"
+                                           class="d-flex align-items-center">
+
+                                            <span class="avatar avatar-sm bg-primary-transparent me-2">
+                                                01
+                                            </span>
+
+                                            <span>
+                                                Doctors
+                                            </span>
+
+                                        </a>
+
+                                    </td>
+
+                                    <td class="text-end fw-semibold">
+                                        @Model.TotalDoctors
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+
+                                        <a asp-area="Admin"
+                                           asp-controller="Patients"
+                                           asp-action="Index"
+                                           class="d-flex align-items-center">
+
+                                            <span class="avatar avatar-sm bg-secondary-transparent me-2">
+                                                02
+                                            </span>
+
+                                            <span>
+                                                Patients
+                                            </span>
+
+                                        </a>
+
+                                    </td>
+
+                                    <td class="text-end fw-semibold">
+                                        @Model.TotalPatients
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+
+                                        <a asp-area="Admin"
+                                           asp-controller="Appointments"
+                                           asp-action="Index"
+                                           class="d-flex align-items-center">
+
+                                            <span class="avatar avatar-sm bg-warning-transparent me-2">
+                                                03
+                                            </span>
+
+                                            <span>
+                                                Appointments
+                                            </span>
+
+                                        </a>
+
+                                    </td>
+
+                                    <td class="text-end fw-semibold">
+                                        @Model.TotalAppointments
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+
+                                        <a asp-area="Admin"
+                                           asp-controller="Subscriptions"
+                                           asp-action="Index"
+                                           class="d-flex align-items-center">
+
+                                            <span class="avatar avatar-sm bg-info-transparent me-2">
+                                                04
+                                            </span>
+
+                                            <span>
+                                                Subscriptions
+                                            </span>
+
+                                        </a>
+
+                                    </td>
+
+                                    <td class="text-end fw-semibold">
+                                        @Model.ActiveSubscriptionsCount
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- AUDIT -->
+
+        <div class="col-xl-4 col-lg-6">
+
+            <div class="card custom-card h-100">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+                        System Activity
+                    </div>
+
+                </div>
+
+                <div class="card-body">
+
                     <ul class="list-unstyled mb-0 dashboard-activity">
-                        <li><span class="activity-dot bg-primary"></span><div><strong>New appointment</strong><p class="text-muted mb-0 fs-12">Sarah Wilson booked a visit</p></div><span class="ms-auto fs-11 text-muted">5m</span></li>
-                        <li><span class="activity-dot bg-success"></span><div><strong>Payment received</strong><p class="text-muted mb-0 fs-12">$120 payment completed</p></div><span class="ms-auto fs-11 text-muted">18m</span></li>
-                        <li><span class="activity-dot bg-warning"></span><div><strong>New review</strong><p class="text-muted mb-0 fs-12">A patient left a 5-star review</p></div><span class="ms-auto fs-11 text-muted">42m</span></li>
-                        <li><span class="activity-dot bg-info"></span><div><strong>Doctor schedule</strong><p class="text-muted mb-0 fs-12">New time slot was added</p></div><span class="ms-auto fs-11 text-muted">1h</span></li>
+
+                        <li>
+
+                            <span class="activity-dot bg-primary"></span>
+
+                            <div>
+
+                                <strong>
+                                    Appointment management
+                                </strong>
+
+                                <p class="text-muted mb-0 fs-12">
+                                    Manage patient appointments
+                                </p>
+
+                            </div>
+
+                            <a asp-area="Admin"
+                               asp-controller="Appointments"
+                               asp-action="Index"
+                               class="ms-auto fs-11 text-primary">
+
+                                Open
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <span class="activity-dot bg-success"></span>
+
+                            <div>
+
+                                <strong>
+                                    Doctors
+                                </strong>
+
+                                <p class="text-muted mb-0 fs-12">
+                                    Manage doctors and profiles
+                                </p>
+
+                            </div>
+
+                            <a asp-area="Admin"
+                               asp-controller="Doctors"
+                               asp-action="Index"
+                               class="ms-auto fs-11 text-primary">
+
+                                Open
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <span class="activity-dot bg-warning"></span>
+
+                            <div>
+
+                                <strong>
+                                    Patients
+                                </strong>
+
+                                <p class="text-muted mb-0 fs-12">
+                                    Manage patient profiles
+                                </p>
+
+                            </div>
+
+                            <a asp-area="Admin"
+                               asp-controller="Patients"
+                               asp-action="Index"
+                               class="ms-auto fs-11 text-primary">
+
+                                Open
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <span class="activity-dot bg-info"></span>
+
+                            <div>
+
+                                <strong>
+                                    Audit Logs
+                                </strong>
+
+                                <p class="text-muted mb-0 fs-12">
+                                    View system activity
+                                </p>
+
+                            </div>
+
+                            <a asp-area="Admin"
+                               asp-controller="Logs"
+                               asp-action="Index"
+                               class="ms-auto fs-11 text-primary">
+
+                                Open
+
+                            </a>
+
+                        </li>
+
                     </ul>
+
                 </div>
+
             </div>
+
         </div>
 
+
+        <!-- PATIENTS -->
+
         <div class="col-xl-4 col-lg-6">
+
             <div class="card custom-card h-100">
-                <div class="card-header"><div class="card-title">Top Customers</div></div>
-                <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <table class="table text-nowrap mb-0">
-                            <tbody>
-                                <tr><td><div class="d-flex align-items-center"><span class="avatar avatar-sm rounded-circle me-2">JD</span><span>John Doe</span></div></td><td class="text-end">$2,840</td></tr>
-                                <tr><td><div class="d-flex align-items-center"><span class="avatar avatar-sm rounded-circle me-2">AS</span><span>Anna Smith</span></div></td><td class="text-end">$2,410</td></tr>
-                                <tr><td><div class="d-flex align-items-center"><span class="avatar avatar-sm rounded-circle me-2">MW</span><span>Michael Wilson</span></div></td><td class="text-end">$1,980</td></tr>
-                                <tr><td><div class="d-flex align-items-center"><span class="avatar avatar-sm rounded-circle me-2">EL</span><span>Emma Lee</span></div></td><td class="text-end">$1,720</td></tr>
-                            </tbody>
-                        </table>
+
+                <div class="card-header">
+
+                    <div class="card-title">
+                        Medical Statistics
                     </div>
+
                 </div>
+
+                <div class="card-body p-0">
+
+                    <div class="table-responsive">
+
+                        <table class="table text-nowrap mb-0">
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="d-flex align-items-center">
+
+                                            <span class="avatar avatar-sm rounded-circle me-2">
+                                                DR
+                                            </span>
+
+                                            <span>
+                                                Doctors
+                                            </span>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td class="text-end">
+                                        @Model.TotalDoctors
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="d-flex align-items-center">
+
+                                            <span class="avatar avatar-sm rounded-circle me-2">
+                                                PT
+                                            </span>
+
+                                            <span>
+                                                Patients
+                                            </span>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td class="text-end">
+                                        @Model.TotalPatients
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="d-flex align-items-center">
+
+                                            <span class="avatar avatar-sm rounded-circle me-2">
+                                                AP
+                                            </span>
+
+                                            <span>
+                                                Appointments
+                                            </span>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td class="text-end">
+                                        @Model.TotalAppointments
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+
+                                        <div class="d-flex align-items-center">
+
+                                            <span class="avatar avatar-sm rounded-circle me-2">
+                                                LG
+                                            </span>
+
+                                            <span>
+                                                Audit Logs
+                                            </span>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td class="text-end">
+                                        @Model.AuditLogsCount
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
 
+
+        <!-- QUICK NAVIGATION -->
+
         <div class="col-xl-4 col-lg-6">
+
             <div class="card custom-card h-100">
-                <div class="card-header"><div class="card-title">Top User Channels</div></div>
-                <div class="card-body">
-                    <div class="mb-3"><div class="d-flex justify-content-between mb-1"><span>Direct</span><span>42%</span></div><div class="progress"><div class="progress-bar bg-primary" style="width:42%"></div></div></div>
-                    <div class="mb-3"><div class="d-flex justify-content-between mb-1"><span>Search</span><span>31%</span></div><div class="progress"><div class="progress-bar bg-secondary" style="width:31%"></div></div></div>
-                    <div class="mb-3"><div class="d-flex justify-content-between mb-1"><span>Social</span><span>18%</span></div><div class="progress"><div class="progress-bar bg-warning" style="width:18%"></div></div></div>
-                    <div><div class="d-flex justify-content-between mb-1"><span>Referral</span><span>9%</span></div><div class="progress"><div class="progress-bar bg-info" style="width:9%"></div></div></div>
+
+                <div class="card-header">
+
+                    <div class="card-title">
+                        Quick Navigation
+                    </div>
+
                 </div>
+
+                <div class="card-body">
+
+                    <div class="mb-3">
+
+                        <div class="d-flex justify-content-between mb-1">
+
+                            <a asp-area="Admin"
+                               asp-controller="Doctors"
+                               asp-action="Index">
+
+                                Doctors
+
+                            </a>
+
+                            <span>
+                                @Model.TotalDoctors
+                            </span>
+
+                        </div>
+
+                        <div class="progress">
+
+                            <div class="progress-bar bg-primary"
+                                 style="width:100%">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <div class="d-flex justify-content-between mb-1">
+
+                            <a asp-area="Admin"
+                               asp-controller="Patients"
+                               asp-action="Index">
+
+                                Patients
+
+                            </a>
+
+                            <span>
+                                @Model.TotalPatients
+                            </span>
+
+                        </div>
+
+                        <div class="progress">
+
+                            <div class="progress-bar bg-secondary"
+                                 style="width:100%">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <div class="d-flex justify-content-between mb-1">
+
+                            <a asp-area="Admin"
+                               asp-controller="Appointments"
+                               asp-action="Index">
+
+                                Appointments
+
+                            </a>
+
+                            <span>
+                                @Model.TotalAppointments
+                            </span>
+
+                        </div>
+
+                        <div class="progress">
+
+                            <div class="progress-bar bg-warning"
+                                 style="width:100%">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="d-flex justify-content-between mb-1">
+
+                            <a asp-area="Admin"
+                               asp-controller="Logs"
+                               asp-action="Index">
+
+                                Audit Logs
+
+                            </a>
+
+                            <span>
+                                @Model.AuditLogsCount
+                            </span>
+
+                        </div>
+
+                        <div class="progress">
+
+                            <div class="progress-bar bg-info"
+                                 style="width:100%">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
+

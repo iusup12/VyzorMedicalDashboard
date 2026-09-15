@@ -25,6 +25,7 @@ public static class DependencyInjection
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
 
+
         services.Configure<MongoOptions>(
             configuration.GetSection("Mongo"));
 
@@ -41,6 +42,8 @@ public static class DependencyInjection
         services.AddScoped<IReviewService, ReviewService>();
         services.AddScoped<ISubscriptionService, SubscriptionService>();
         services.AddScoped<ISpecializationService, SpecializationService>();
+        services.AddScoped<ISupportChatService, SupportChatService>();
+        services.AddScoped<IDashboardService, DashboardService>();
 
         services.AddScoped<ITechnicalLogService, TechnicalLogService>();
 

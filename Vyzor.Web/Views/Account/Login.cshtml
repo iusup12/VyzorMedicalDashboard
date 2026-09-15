@@ -69,22 +69,39 @@
 
 		</div>
 
-		<!-- Header -->
-		<header class="header header-default">
 
-			<div class="container">
+<header class="header header-default inner-header">
+	<div class="container">
+		<nav class="navbar navbar-expand-lg header-nav">
 
-				<nav class="navbar navbar-expand-lg header-nav">
+			<div class="navbar-header">
 
-					<div class="navbar-header">
+				<a id="mobile_btn" href="#">
+					<i class="fa-solid fa-bars"></i>
+				</a>
 
-						<a id="mobile_btn" href="#">
-							<i class="fa-solid fa-bars"></i>
-						</a>
+				<a asp-controller="Home"
+				   asp-action="Index"
+				   class="navbar-brand logo">
+
+					<img src="~/assets/Doccure/img/logo.svg"
+						 class="img-fluid"
+						 alt="Logo">
+
+				</a>
+
+			</div>
+
+
+			<div class="header-menu">
+
+				<div class="main-menu-wrapper">
+
+					<div class="menu-header">
 
 						<a asp-controller="Home"
 						   asp-action="Index"
-						   class="navbar-brand logo">
+						   class="menu-logo">
 
 							<img src="~/assets/Doccure/img/logo.svg"
 								 class="img-fluid"
@@ -92,1426 +109,1375 @@
 
 						</a>
 
+						<a id="menu_close"
+						   class="menu-close"
+						   href="#">
+
+							<i class="fas fa-times"></i>
+
+						</a>
+
 					</div>
 
-					<div class="header-menu">
 
-						<div class="main-menu-wrapper">
+					<ul class="main-nav">
 
-							<div class="menu-header">
+						<!-- ========================= -->
+						<!-- HOME -->
+						<!-- ========================= -->
 
-								<a asp-controller="Home"
-								   asp-action="Index"
-								   class="menu-logo">
+						<li class="has-submenu megamenu">
 
-									<img src="~/assets/Doccure/img/logo.svg"
-										 class="img-fluid"
-										 alt="Logo">
+							<a href="#"
+							   class="main-menu">
 
-								</a>
+								Home
 
-								<a id="menu_close"
-								   class="menu-close"
-								   href="#">
+								<span>
+									<i class="fa-solid fa-chevron-down"></i>
+								</span>
 
-									<i class="fas fa-times"></i>
+							</a>
 
-								</a>
+							<ul class="submenu mega-submenu">
 
-							</div>
+								<li>
 
-							<ul class="main-nav">
+									<div class="megamenu-wrapper">
 
-								<!-- Home -->
-								<li class="has-submenu megamenu">
+										<div class="row">
 
-									<a href="#"
-									   class="main-menu">
+											<div class="col">
+												<div class="single-demo">
 
-										Home
+													<div class="demo-img">
 
-										<span>
-											<i class="fa-solid fa-chevron-down"></i>
-										</span>
+														<a asp-controller="Home"
+														   asp-action="Index"
+														   class="inner-demo-img">
 
-									</a>
+															<img src="~/assets/Doccure/img/home/home.jpg"
+																 class="img-fluid"
+																 alt="img">
 
-									<ul class="submenu mega-submenu">
-
-										<li>
-
-											<div class="megamenu-wrapper">
-
-												<div class="row">
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a asp-controller="Home"
-																   asp-action="Index"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a asp-controller="Home"
-																   asp-action="Index"
-																   class="inner-demo-img">
-
-																	General Home 1
-
-																</a>
-
-															</div>
-
-														</div>
+														</a>
 
 													</div>
 
-													<div class="col">
+													<div class="demo-info">
 
-														<div class="single-demo">
+														<a asp-controller="Home"
+														   asp-action="Index"
+														   class="inner-demo-img">
 
-															<div class="demo-img">
+															General Home 1
 
-																<a href="index-2.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-01.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-2.html"
-																   class="inner-demo-img">
-
-																	General Home 2
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a href="index-3.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-02.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-3.html"
-																   class="inner-demo-img">
-
-																	Dental
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a href="index-4.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-03.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-4.html"
-																   class="inner-demo-img">
-
-																	Pediatrics
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a href="index-5.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-04.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-5.html"
-																   class="inner-demo-img">
-
-																	ENT
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a href="index-6.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-05.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-6.html"
-																   class="inner-demo-img">
-
-																	Veterinary
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a href="index-7.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-06.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-7.html"
-																   class="inner-demo-img">
-
-																	Cardiology
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a href="index-8.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-07.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-8.html"
-																   class="inner-demo-img">
-
-																	Eye Care
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a href="index-9.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-08.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-9.html"
-																   class="inner-demo-img">
-
-																	Home Care
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a href="index-10.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-09.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-10.html"
-																   class="inner-demo-img">
-
-																	Fertility
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a href="index-11.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-10.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-11.html"
-																   class="inner-demo-img">
-
-																	Cosmetic Surgery
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a href="index-12.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-11.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-12.html"
-																   class="inner-demo-img">
-
-																	Laboratory
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a href="index-13.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-12.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-13.html"
-																   class="inner-demo-img">
-
-																	Pharmacy
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a href="index-14.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-14.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-14.html"
-																   class="inner-demo-img">
-
-																	Dermatology
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<a href="index-15.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-15.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-15.html"
-																   class="inner-demo-img">
-
-																	Mental Health
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<span class="new-badge">New</span>
-
-																<a href="index-16.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-18.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-16.html"
-																   class="inner-demo-img">
-
-																	Nutrition
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<span class="new-badge">New</span>
-
-																<a href="index-17.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-19.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-17.html"
-																   class="inner-demo-img">
-
-																	Healing & Wellness
-
-																</a>
-
-															</div>
-
-														</div>
-
-													</div>
-
-													<div class="col">
-
-														<div class="single-demo">
-
-															<div class="demo-img">
-
-																<span class="new-badge">New</span>
-
-																<a href="index-18.html"
-																   class="inner-demo-img">
-
-																	<img src="~/assets/Doccure/img/home/home-17.jpg"
-																		 class="img-fluid"
-																		 alt="img">
-
-																</a>
-
-															</div>
-
-															<div class="demo-info">
-
-																<a href="index-18.html"
-																   class="inner-demo-img">
-
-																	Physiotherapy
-
-																</a>
-
-															</div>
-
-														</div>
+														</a>
 
 													</div>
 
 												</div>
-
 											</div>
 
-										</li>
 
-									</ul>
+											<div class="col">
+												<div class="single-demo">
 
-								</li>
+													<div class="demo-img">
 
-								<!-- Doctors -->
-								<li class="has-submenu">
+														<a href="#"
+														   class="inner-demo-img">
 
-									<a href="#"
-									   class="main-menu">
+															<img src="~/assets/Doccure/img/home/home-01.jpg"
+																 class="img-fluid"
+																 alt="img">
 
-										Doctors
+														</a>
 
-										<span>
-											<i class="fa-solid fa-chevron-down"></i>
-										</span>
+													</div>
 
-									</a>
+													<div class="demo-info">
 
-									<ul class="submenu sub-menu-one">
+														<a href="#"
+														   class="inner-demo-img">
 
-										<li>
+															General Home 2
 
-											<div class="row">
-
-												<div class="col-lg-6">
-
-													<ul class="sub-menu-list">
-
-														<li>
-															<a href="doctor-dashboard.html">
-																Doctor Dashboard
-															</a>
-														</li>
-
-														<li>
-															<a href="appointments.html">
-																Appointments
-															</a>
-														</li>
-
-														<li>
-															<a href="available-timings.html">
-																Available Timing
-															</a>
-														</li>
-
-														<li>
-															<a href="my-patients.html">
-																Patients List
-															</a>
-														</li>
-
-														<li>
-															<a href="chat-doctor.html">
-																Chat
-															</a>
-														</li>
-
-														<li>
-															<a href="invoices.html">
-																Invoices
-															</a>
-														</li>
-
-														<li>
-															<a href="doctor-profile-settings.html">
-																Profile Settings
-															</a>
-														</li>
-
-													</ul>
-
-												</div>
-
-												<div class="col-lg-6">
-
-													<div class="menu-img">
-
-														<img src="~/assets/Doccure/img/home/menu-img-1.jpg"
-															 alt="listing"
-															 class="img-fluid">
+														</a>
 
 													</div>
 
 												</div>
-
 											</div>
 
-										</li>
 
-									</ul>
+											<div class="col">
+												<div class="single-demo">
 
-								</li>
+													<div class="demo-img">
 
-								<!-- Patients -->
-								<li class="has-submenu">
+														<a href="#"
+														   class="inner-demo-img">
 
-									<a href="#"
-									   class="main-menu">
+															<img src="~/assets/Doccure/img/home/home-02.jpg"
+																 class="img-fluid"
+																 alt="img">
 
-										Patients
+														</a>
 
-										<span>
-											<i class="fa-solid fa-chevron-down"></i>
-										</span>
+													</div>
 
-									</a>
+													<div class="demo-info">
 
-									<ul class="submenu sub-menu-one sub-menu-two">
+														<a href="#"
+														   class="inner-demo-img">
 
-										<li>
+															Dental
 
-											<div class="row">
-
-												<div class="col-lg-4 sub-menu-left">
-
-													<ul class="sub-menu-list">
-
-														<li>
-															<a href="patient-dashboard.html">
-																Patient Dashboard
-															</a>
-														</li>
-
-														<li>
-															<a href="map-grid.html">
-																Doctors Grid
-															</a>
-														</li>
-
-														<li>
-															<a href="map-list.html">
-																Doctors List
-															</a>
-														</li>
-
-														<li>
-															<a href="map-list-availability.html">
-																Doctors Availability
-															</a>
-														</li>
-
-														<li>
-															<a href="booking.html">
-																Booking
-															</a>
-														</li>
-
-														<li>
-															<a href="booking-1.html">
-																Booking 1
-															</a>
-														</li>
-
-														<li>
-															<a href="booking-2.html">
-																Booking 2
-															</a>
-														</li>
-
-														<li>
-															<a href="booking-popup.html">
-																Booking Popup
-															</a>
-														</li>
-
-													</ul>
-
-												</div>
-
-												<div class="col-lg-4">
-
-													<ul class="sub-menu-list">
-
-														<li>
-															<a href="search.html">
-																Search Doctor 1
-															</a>
-														</li>
-
-														<li>
-															<a href="search-2.html">
-																Search Doctor 2
-															</a>
-														</li>
-
-														<li>
-															<a href="doctor-profile.html">
-																Doctor Profile 1
-															</a>
-														</li>
-
-														<li>
-															<a href="doctor-profile-2.html">
-																Doctor Profile 2
-															</a>
-														</li>
-
-														<li>
-															<a href="checkout.html">
-																Checkout
-															</a>
-														</li>
-
-														<li>
-															<a href="favourites.html">
-																Favourites
-															</a>
-														</li>
-
-														<li>
-															<a href="chat.html">
-																Chat
-															</a>
-														</li>
-
-														<li>
-															<a href="profile-settings.html">
-																Profile Settings
-															</a>
-														</li>
-
-													</ul>
-
-												</div>
-
-												<div class="col-lg-4">
-
-													<div class="menu-img">
-
-														<img src="~/assets/Doccure/img/home/menu-img-2.jpg"
-															 alt="listing"
-															 class="img-fluid">
+														</a>
 
 													</div>
 
 												</div>
-
 											</div>
 
-										</li>
 
-									</ul>
+											<div class="col">
+												<div class="single-demo">
 
-								</li>
+													<div class="demo-img">
 
-								<!-- Pharmacy -->
-								<li class="has-submenu">
+														<a href="#"
+														   class="inner-demo-img">
 
-									<a href="#"
-									   class="main-menu">
+															<img src="~/assets/Doccure/img/home/home-03.jpg"
+																 class="img-fluid"
+																 alt="img">
 
-										Pharmacy
+														</a>
 
-										<span>
-											<i class="fa-solid fa-chevron-down"></i>
-										</span>
+													</div>
 
-									</a>
+													<div class="demo-info">
 
-									<ul class="submenu sub-menu-one sub-menu-three">
+														<a href="#"
+														   class="inner-demo-img">
 
-										<li>
+															Pediatrics
 
-											<div class="row">
-
-												<div class="col-lg-6">
-
-													<ul class="sub-menu-list">
-
-														<li>
-															<a href="index-13.html">
-																Pharmacy
-															</a>
-														</li>
-
-														<li>
-															<a href="pharmacy-details.html">
-																Pharmacy Details
-															</a>
-														</li>
-
-														<li>
-															<a href="pharmacy-search.html">
-																Pharmacy Search
-															</a>
-														</li>
-
-														<li>
-															<a href="product-all.html">
-																Product
-															</a>
-														</li>
-
-														<li>
-															<a href="product-description.html">
-																Product Description
-															</a>
-														</li>
-
-														<li>
-															<a href="cart.html">
-																Cart
-															</a>
-														</li>
-
-														<li>
-															<a href="product-checkout.html">
-																Product Checkout
-															</a>
-														</li>
-
-														<li>
-															<a href="payment-success.html">
-																Payment Success
-															</a>
-														</li>
-
-														<li>
-															<a href="pharmacy-register.html">
-																Pharmacy Register
-															</a>
-														</li>
-
-													</ul>
-
-												</div>
-
-												<div class="col-lg-6">
-
-													<div class="menu-img">
-
-														<img src="~/assets/Doccure/img/home/menu-img-3.jpg"
-															 alt="listing"
-															 class="img-fluid">
+														</a>
 
 													</div>
 
 												</div>
-
 											</div>
 
-										</li>
 
-									</ul>
+											<div class="col">
+												<div class="single-demo">
 
-								</li>
+													<div class="demo-img">
 
-								<!-- Pages -->
-								<li class="has-submenu megamenu active">
+														<a href="#"
+														   class="inner-demo-img">
 
-									<a href="#"
-									   class="main-menu">
+															<img src="~/assets/Doccure/img/home/home-04.jpg"
+																 class="img-fluid"
+																 alt="img">
 
-										Pages
-
-										<span>
-											<i class="fa-solid fa-chevron-down"></i>
-										</span>
-
-									</a>
-
-									<ul class="submenu mega-submenu">
-
-										<li>
-
-											<div class="megamenu-wrapper megamenu-wrapper-one">
-
-												<div class="row">
-
-													<div class="col-lg-3 sub-menu-left">
-
-														<ul class="sub-menu-list">
-
-															<li>
-																<a href="about-us.html">
-																	About Us
-																</a>
-															</li>
-
-															<li>
-																<a href="contact-us.html">
-																	Contact Us
-																</a>
-															</li>
-
-															<li>
-																<a href="hospitals.html">
-																	Hospitals
-																</a>
-															</li>
-
-															<li>
-																<a href="speciality.html">
-																	Speciality
-																</a>
-															</li>
-
-															<li>
-																<a href="clinic.html">
-																	Clinic
-																</a>
-															</li>
-
-															<li>
-																<a href="blank-page.html">
-																	Starter Page
-																</a>
-															</li>
-
-															<li>
-																<a href="pricing.html">
-																	Pricing Plan
-																</a>
-															</li>
-
-															<li>
-																<a href="faq.html">
-																	FAQ
-																</a>
-															</li>
-
-														</ul>
+														</a>
 
 													</div>
 
-													<div class="col-lg-3 sub-menu-left">
+													<div class="demo-info">
 
-														<ul class="sub-menu-list">
+														<a href="#"
+														   class="inner-demo-img">
 
-															<li>
-																<a href="login-email.html">
-																	Login Email
-																</a>
-															</li>
+															ENT
 
-															<li>
-																<a href="login-phone.html">
-																	Login Phone
-																</a>
-															</li>
-
-															<li>
-																<a href="doctor-signup.html">
-																	Doctor Signup
-																</a>
-															</li>
-
-															<li>
-																<a href="patient-signup.html">
-																	Patient Signup
-																</a>
-															</li>
-
-															<li>
-																<a href="forgot-password.html">
-																	Forgot Password 1
-																</a>
-															</li>
-
-															<li>
-																<a href="forgot-password2.html">
-																	Forgot Password 2
-																</a>
-															</li>
-
-															<li>
-																<a href="login-email-otp.html">
-																	Email OTP
-																</a>
-															</li>
-
-															<li>
-																<a href="login-phone-otp.html">
-																	Phone OTP
-																</a>
-															</li>
-
-														</ul>
-
-													</div>
-
-													<div class="col-lg-3 sub-menu-left">
-
-														<ul class="sub-menu-list">
-
-															<li>
-																<a href="maintenance.html">
-																	Maintenance
-																</a>
-															</li>
-
-															<li>
-																<a href="coming-soon.html">
-																	Coming Soon
-																</a>
-															</li>
-
-															<li>
-																<a href="terms-condition.html">
-																	Terms & Condition
-																</a>
-															</li>
-
-															<li>
-																<a href="privacy-policy.html">
-																	Privacy Policy
-																</a>
-															</li>
-
-															<li>
-																<a href="components.html">
-																	Components
-																</a>
-															</li>
-
-															<li>
-																<a href="invoices.html">
-																	Invoices
-																</a>
-															</li>
-
-															<li>
-																<a href="invoice-view.html">
-																	Invoice View
-																</a>
-															</li>
-
-														</ul>
-
-													</div>
-
-													<div class="col-lg-3">
-
-														<ul class="sub-menu-list">
-
-															<li>
-																<a href="voice-call.html">
-																	Voice Call
-																</a>
-															</li>
-
-															<li>
-																<a href="video-call.html">
-																	Video Call
-																</a>
-															</li>
-
-															<li>
-																<a href="error-404.html">
-																	404 Error
-																</a>
-															</li>
-
-															<li>
-																<a href="error-500.html">
-																	500 Error
-																</a>
-															</li>
-
-														</ul>
+														</a>
 
 													</div>
 
 												</div>
-
 											</div>
 
-										</li>
 
-									</ul>
+											<div class="col">
+												<div class="single-demo">
 
-								</li>
+													<div class="demo-img">
 
-								<!-- Blog -->
-								<li class="has-submenu">
+														<a href="#"
+														   class="inner-demo-img">
 
-									<a href="#"
-									   class="main-menu">
+															<img src="~/assets/Doccure/img/home/home-05.jpg"
+																 class="img-fluid"
+																 alt="img">
 
-										Blog
+														</a>
 
-										<span>
-											<i class="fa-solid fa-chevron-down"></i>
-										</span>
+													</div>
 
-									</a>
+													<div class="demo-info">
 
-									<ul class="submenu sub-menu-one sub-menu-default">
+														<a href="#"
+														   class="inner-demo-img">
 
-										<li>
-											<a href="blog-list.html">
-												Blog List
-											</a>
-										</li>
+															Veterinary
 
-										<li>
-											<a href="blog-grid.html">
-												Blog Grid
-											</a>
-										</li>
+														</a>
 
-										<li>
-											<a href="blog-details.html">
-												Blog Details
-											</a>
-										</li>
+													</div>
 
-									</ul>
+												</div>
+											</div>
 
-								</li>
 
-								<!-- Admin -->
-								<li class="has-submenu">
+											<div class="col">
+												<div class="single-demo">
 
-									<a href="#"
-									   class="main-menu">
+													<div class="demo-img">
 
-										Admin
+														<a href="#"
+														   class="inner-demo-img">
 
-										<span>
-											<i class="fa-solid fa-chevron-down"></i>
-										</span>
+															<img src="~/assets/Doccure/img/home/home-06.jpg"
+																 class="img-fluid"
+																 alt="img">
 
-									</a>
+														</a>
 
-									<ul class="submenu sub-menu-one sub-menu-default">
+													</div>
 
-										<li>
-											<a href="admin/index.html"
-											   target="_blank">
-												Admin
-											</a>
-										</li>
+													<div class="demo-info">
 
-										<li>
-											<a href="pharmacy/index.html"
-											   target="_blank">
-												Pharmacy Admin
-											</a>
-										</li>
+														<a href="#"
+														   class="inner-demo-img">
 
-									</ul>
+															Cardiology
+
+														</a>
+
+													</div>
+
+												</div>
+											</div>
+
+
+											<div class="col">
+												<div class="single-demo">
+
+													<div class="demo-img">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															<img src="~/assets/Doccure/img/home/home-07.jpg"
+																 class="img-fluid"
+																 alt="img">
+
+														</a>
+
+													</div>
+
+													<div class="demo-info">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															Eye Care
+
+														</a>
+
+													</div>
+
+												</div>
+											</div>
+
+
+											<div class="col">
+												<div class="single-demo">
+
+													<div class="demo-img">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															<img src="~/assets/Doccure/img/home/home-08.jpg"
+																 class="img-fluid"
+																 alt="img">
+
+														</a>
+
+													</div>
+
+													<div class="demo-info">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															Home Care
+
+														</a>
+
+													</div>
+
+												</div>
+											</div>
+
+
+											<div class="col">
+												<div class="single-demo">
+
+													<div class="demo-img">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															<img src="~/assets/Doccure/img/home/home-09.jpg"
+																 class="img-fluid"
+																 alt="img">
+
+														</a>
+
+													</div>
+
+													<div class="demo-info">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															Fertility
+
+														</a>
+
+													</div>
+
+												</div>
+											</div>
+
+
+											<div class="col">
+												<div class="single-demo">
+
+													<div class="demo-img">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															<img src="~/assets/Doccure/img/home/home-10.jpg"
+																 class="img-fluid"
+																 alt="img">
+
+														</a>
+
+													</div>
+
+													<div class="demo-info">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															Cosmetic Surgery
+
+														</a>
+
+													</div>
+
+												</div>
+											</div>
+
+
+											<div class="col">
+												<div class="single-demo">
+
+													<div class="demo-img">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															<img src="~/assets/Doccure/img/home/home-11.jpg"
+																 class="img-fluid"
+																 alt="img">
+
+														</a>
+
+													</div>
+
+													<div class="demo-info">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															Laboratory
+
+														</a>
+
+													</div>
+
+												</div>
+											</div>
+
+
+											<div class="col">
+												<div class="single-demo">
+
+													<div class="demo-img">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															<img src="~/assets/Doccure/img/home/home-12.jpg"
+																 class="img-fluid"
+																 alt="img">
+
+														</a>
+
+													</div>
+
+													<div class="demo-info">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															Pharmacy
+
+														</a>
+
+													</div>
+
+												</div>
+											</div>
+
+
+											<div class="col">
+												<div class="single-demo">
+
+													<div class="demo-img">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															<img src="~/assets/Doccure/img/home/home-14.jpg"
+																 class="img-fluid"
+																 alt="img">
+
+														</a>
+
+													</div>
+
+													<div class="demo-info">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															Dermatology
+
+														</a>
+
+													</div>
+
+												</div>
+											</div>
+
+
+											<div class="col">
+												<div class="single-demo">
+
+													<div class="demo-img">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															<img src="~/assets/Doccure/img/home/home-15.jpg"
+																 class="img-fluid"
+																 alt="img">
+
+														</a>
+
+													</div>
+
+													<div class="demo-info">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															Mental Health
+
+														</a>
+
+													</div>
+
+												</div>
+											</div>
+
+
+											<div class="col">
+												<div class="single-demo">
+
+													<div class="demo-img">
+
+														<span class="new-badge">New</span>
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															<img src="~/assets/Doccure/img/home/home-18.jpg"
+																 class="img-fluid"
+																 alt="img">
+
+														</a>
+
+													</div>
+
+													<div class="demo-info">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															Nutrition
+
+														</a>
+
+													</div>
+
+												</div>
+											</div>
+
+
+											<div class="col">
+												<div class="single-demo">
+
+													<div class="demo-img">
+
+														<span class="new-badge">New</span>
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															<img src="~/assets/Doccure/img/home/home-19.jpg"
+																 class="img-fluid"
+																 alt="img">
+
+														</a>
+
+													</div>
+
+													<div class="demo-info">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															Healing &amp; Wellness
+
+														</a>
+
+													</div>
+
+												</div>
+											</div>
+
+
+											<div class="col">
+												<div class="single-demo">
+
+													<div class="demo-img">
+
+														<span class="new-badge">New</span>
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															<img src="~/assets/Doccure/img/home/home-17.jpg"
+																 class="img-fluid"
+																 alt="img">
+
+														</a>
+
+													</div>
+
+													<div class="demo-info">
+
+														<a href="#"
+														   class="inner-demo-img">
+
+															Physiotherapy
+
+														</a>
+
+													</div>
+
+												</div>
+											</div>
+
+										</div>
+
+									</div>
 
 								</li>
 
 							</ul>
 
-							<div class="header-items">
+						</li>
 
-								<!-- Contact Information -->
-								<div class="about-popup-item border-0 pb-0">
 
-									<h3 class="title">
-										Contact Information
-									</h3>
+						<!-- ========================= -->
+						<!-- DOCTORS -->
+						<!-- ========================= -->
 
-									<div class="support-item mb-3">
+						@if (User.Identity?.IsAuthenticated == true &&
+							 User.IsInRole("Doctor"))
+						{
+							<li class="has-submenu">
 
-										<div class="avatar avatar-lg bg-primary rounded-circle">
+								<a href="#"
+								   class="main-menu">
 
-											<i class="isax isax-messages-3"></i>
+									Doctors
+
+									<span>
+										<i class="fa-solid fa-chevron-down"></i>
+									</span>
+
+								</a>
+
+								<ul class="submenu sub-menu-one">
+
+									<li>
+
+										<div class="row">
+
+											<div class="col-lg-6">
+
+												<ul class="sub-menu-list">
+
+													<li>
+														<a asp-controller="Profile"
+														   asp-action="Index">
+															Profile
+														</a>
+													</li>
+
+													<li>
+														<a asp-controller="Appointment"
+														   asp-action="Index">
+															Appointments
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Available Timing
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Patients List
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Chat
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Invoices
+														</a>
+													</li>
+
+													<li>
+														<a asp-controller="Profile"
+														   asp-action="Index">
+															Profile Settings
+														</a>
+													</li>
+
+												</ul>
+
+											</div>
+
+											<div class="col-lg-6">
+
+												<div class="menu-img">
+
+													<img src="~/assets/Doccure/img/home/menu-img-1.jpg"
+														 alt="listing"
+														 class="img-fluid">
+
+												</div>
+
+											</div>
 
 										</div>
 
-										<div>
+									</li>
 
-											<p class="title">
-												General Inquiries
-											</p>
+								</ul>
 
-											<h5 class="link">
-												info@example.com
-											</h5>
+							</li>
+						}
+
+
+						<!-- ========================= -->
+						<!-- PATIENTS -->
+						<!-- ========================= -->
+
+						@if (User.Identity?.IsAuthenticated == true &&
+							 User.IsInRole("Patient"))
+						{
+							<li class="has-submenu">
+
+								<a href="#"
+								   class="main-menu">
+
+									Patients
+
+									<span>
+										<i class="fa-solid fa-chevron-down"></i>
+									</span>
+
+								</a>
+
+								<ul class="submenu sub-menu-one sub-menu-two">
+
+									<li>
+
+										<div class="row">
+
+											<div class="col-lg-4 sub-menu-left">
+
+												<ul class="sub-menu-list">
+
+													<li>
+														<a asp-controller="Profile"
+														   asp-action="Index">
+															Profile
+														</a>
+													</li>
+
+													<li>
+														<a asp-controller="Doctors"
+														   asp-action="Index">
+															Doctors Grid
+														</a>
+													</li>
+
+													<li>
+														<a asp-controller="Doctors"
+														   asp-action="Index">
+															Doctors List
+														</a>
+													</li>
+
+													<li>
+														<a asp-controller="Doctors"
+														   asp-action="Index">
+															Doctors Availability
+														</a>
+													</li>
+
+													<li>
+														<a asp-controller="Appointment"
+														   asp-action="Create">
+															Booking
+														</a>
+													</li>
+
+													<li>
+														<a asp-controller="Appointment"
+														   asp-action="MyAppointments">
+															My Appointments
+														</a>
+													</li>
+
+												</ul>
+
+											</div>
+
+
+											<div class="col-lg-4">
+
+												<ul class="sub-menu-list">
+
+													<li>
+														<a asp-controller="Doctors"
+														   asp-action="Index">
+															Search Doctor
+														</a>
+													</li>
+
+													<li>
+														<a asp-controller="Doctors"
+														   asp-action="Index">
+															Doctor Profile
+														</a>
+													</li>
+
+													<li>
+														<a asp-controller="SupportChat"
+														   asp-action="Index">
+															Chat
+														</a>
+													</li>
+
+													<li>
+														<a asp-controller="Profile"
+														   asp-action="Index">
+															Profile Settings
+														</a>
+													</li>
+
+												</ul>
+
+											</div>
+
+
+											<div class="col-lg-4">
+
+												<div class="menu-img">
+
+													<img src="~/assets/Doccure/img/home/menu-img-2.jpg"
+														 alt="listing"
+														 class="img-fluid">
+
+												</div>
+
+											</div>
+
+										</div>
+
+									</li>
+
+								</ul>
+
+							</li>
+						}
+
+
+						<!-- ========================= -->
+						<!-- PHARMACY -->
+						<!-- ========================= -->
+
+						<li class="has-submenu">
+
+							<a href="#"
+							   class="main-menu">
+
+								Pharmacy
+
+								<span>
+									<i class="fa-solid fa-chevron-down"></i>
+								</span>
+
+							</a>
+
+							<ul class="submenu sub-menu-one sub-menu-three">
+
+								<li>
+
+									<div class="row">
+
+										<div class="col-lg-6">
+
+											<ul class="sub-menu-list">
+
+												<li>
+													<a href="#">
+														Pharmacy
+													</a>
+												</li>
+
+												<li>
+													<a href="#">
+														Pharmacy Details
+													</a>
+												</li>
+
+												<li>
+													<a href="#">
+														Pharmacy Search
+													</a>
+												</li>
+
+												<li>
+													<a href="#">
+														Product
+													</a>
+												</li>
+
+												<li>
+													<a href="#">
+														Product Description
+													</a>
+												</li>
+
+												<li>
+													<a href="#">
+														Cart
+													</a>
+												</li>
+
+												<li>
+													<a href="#">
+														Product Checkout
+													</a>
+												</li>
+
+												<li>
+													<a href="#">
+														Payment Success
+													</a>
+												</li>
+
+												<li>
+													<a href="#">
+														Pharmacy Register
+													</a>
+												</li>
+
+											</ul>
+
+										</div>
+
+
+										<div class="col-lg-6">
+
+											<div class="menu-img">
+
+												<img src="~/assets/Doccure/img/home/menu-img-3.jpg"
+													 alt="listing"
+													 class="img-fluid">
+
+											</div>
 
 										</div>
 
 									</div>
 
-									<div class="support-item">
+								</li>
 
-										<div class="avatar avatar-lg bg-primary rounded-circle">
+							</ul>
 
-											<i class="isax isax-call-calling"></i>
+						</li>
 
-										</div>
 
-										<div>
+						<!-- ========================= -->
+						<!-- PAGES -->
+						<!-- ========================= -->
 
-											<p class="title">
-												Emergency Cases
-											</p>
+						<li class="has-submenu megamenu">
 
-											<h5 class="link">
-												+1 24565 89856
-											</h5>
+							<a href="#"
+							   class="main-menu">
+
+								Pages
+
+								<span>
+									<i class="fa-solid fa-chevron-down"></i>
+								</span>
+
+							</a>
+
+							<ul class="submenu mega-submenu">
+
+								<li>
+
+									<div class="megamenu-wrapper megamenu-wrapper-one">
+
+										<div class="row">
+
+											<div class="col-lg-3 sub-menu-left">
+
+												<ul class="sub-menu-list">
+
+													<li>
+														<a href="#">
+															About Us
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Contact Us
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Hospitals
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Speciality
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Clinic
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Starter Page
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Pricing Plan
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															FAQ
+														</a>
+													</li>
+
+												</ul>
+
+											</div>
+
+
+											<div class="col-lg-3 sub-menu-left">
+
+												<ul class="sub-menu-list">
+
+													@if (User.Identity?.IsAuthenticated != true)
+													{
+														<li>
+															<a asp-controller="Account"
+															   asp-action="Login">
+																Login
+															</a>
+														</li>
+
+														<li>
+															<a asp-controller="Account"
+															   asp-action="Register">
+																Register
+															</a>
+														</li>
+													}
+
+													<li>
+														<a href="#">
+															Forgot Password
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Email OTP
+														</a>
+													</li>
+
+												</ul>
+
+											</div>
+
+
+											<div class="col-lg-3 sub-menu-left">
+
+												<ul class="sub-menu-list">
+
+													<li>
+														<a href="#">
+															Maintenance
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Coming Soon
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Terms &amp; Condition
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Privacy Policy
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Components
+														</a>
+													</li>
+
+												</ul>
+
+											</div>
+
+
+											<div class="col-lg-3">
+
+												<ul class="sub-menu-list">
+
+													<li>
+														<a href="#">
+															Voice Call
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															Video Call
+														</a>
+													</li>
+
+													<li>
+														<a asp-controller="Errors"
+														   asp-action="NotFound">
+															404 Error
+														</a>
+													</li>
+
+													<li>
+														<a href="#">
+															500 Error
+														</a>
+													</li>
+
+												</ul>
+
+											</div>
 
 										</div>
 
 									</div>
 
+								</li>
+
+							</ul>
+
+						</li>
+
+
+						<!-- ========================= -->
+						<!-- BLOG -->
+						<!-- ========================= -->
+
+						<li class="has-submenu">
+
+							<a href="#"
+							   class="main-menu">
+
+								Blog
+
+								<span>
+									<i class="fa-solid fa-chevron-down"></i>
+								</span>
+
+							</a>
+
+							<ul class="submenu sub-menu-one sub-menu-default">
+
+								<li>
+									<a href="#">
+										Blog List
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										Blog Grid
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										Blog Details
+									</a>
+								</li>
+
+							</ul>
+
+						</li>
+
+
+						<!-- ========================= -->
+						<!-- ADMIN -->
+						<!-- ========================= -->
+
+						@if (User.Identity?.IsAuthenticated == true &&
+							 User.IsInRole("Admin"))
+						{
+							<li class="has-submenu">
+
+								<a href="#"
+								   class="main-menu">
+
+									Admin
+
+									<span>
+										<i class="fa-solid fa-chevron-down"></i>
+									</span>
+
+								</a>
+
+								<ul class="submenu sub-menu-one sub-menu-default">
+
+									<li>
+
+										<a asp-area="Admin"
+										   asp-controller="Dashboard"
+										   asp-action="Index">
+
+											Admin Dashboard
+
+										</a>
+
+									</li>
+
+									<li>
+
+										<a asp-area="Admin"
+										   asp-controller="Doctors"
+										   asp-action="Index">
+
+											Doctors
+
+										</a>
+
+									</li>
+
+									<li>
+
+										<a asp-area="Admin"
+										   asp-controller="Patients"
+										   asp-action="Index">
+
+											Patients
+
+										</a>
+
+									</li>
+
+									<li>
+
+										<a asp-area="Admin"
+										   asp-controller="Appointments"
+										   asp-action="Index">
+
+											Appointments
+
+										</a>
+
+									</li>
+
+									<li>
+
+										<a asp-area="Admin"
+										   asp-controller="Users"
+										   asp-action="Index">
+
+											Users
+
+										</a>
+
+									</li>
+
+									<li>
+
+										<a asp-area="Admin"
+										   asp-controller="Roles"
+										   asp-action="Index">
+
+											Roles
+
+										</a>
+
+									</li>
+
+									<li>
+
+										<a asp-area="Admin"
+										   asp-controller="AuditLogs"
+										   asp-action="Index">
+
+											Audit Logs
+
+										</a>
+
+									</li>
+
+								</ul>
+
+							</li>
+						}
+
+					</ul>
+
+
+					<!-- ========================= -->
+					<!-- HEADER ITEMS -->
+					<!-- ========================= -->
+
+					<div class="header-items">
+
+						<div class="about-popup-item border-0 pb-0">
+
+							<h3 class="title">
+								Contact Information
+							</h3>
+
+							<div class="support-item mb-3">
+
+								<div class="avatar avatar-lg bg-primary rounded-circle">
+
+									<i class="isax isax-messages-3"></i>
+
 								</div>
 
-								<!-- Follow Us -->
-								<div class="about-popup-item border-0 pb-0">
+								<div>
 
-									<h3 class="title">
-										Follow Us
-									</h3>
+									<p class="title">
+										General Inquiries
+									</p>
 
-									<ul class="d-flex align-items-center gap-2 social-iyem">
-
-										<li>
-											<a href="#"
-											   class="social-icon"
-											   aria-label="facebook">
-
-												<i class="fa-brands fa-facebook"></i>
-
-											</a>
-										</li>
-
-										<li>
-											<a href="#"
-											   class="social-icon"
-											   aria-label="twitter">
-
-												<i class="fa-brands fa-x-twitter"></i>
-
-											</a>
-										</li>
-
-										<li>
-											<a href="#"
-											   class="social-icon"
-											   aria-label="instagram">
-
-												<i class="fa-brands fa-instagram"></i>
-
-											</a>
-										</li>
-
-										<li>
-											<a href="#"
-											   class="social-icon"
-											   aria-label="linkedin">
-
-												<i class="fa-brands fa-linkedin"></i>
-
-											</a>
-										</li>
-
-									</ul>
+									<h5 class="link">
+										info@example.com
+									</h5>
 
 								</div>
 
-								<!-- Header Buttons -->
-								<div class="header-items-button">
+							</div>
 
-									<a asp-controller="Account"
-									   asp-action="Login"
-									   class="btn btn-primary btn-primary-gradient">
 
-										<i class="isax isax-lock-1 me-2"></i>
+							<div class="support-item">
 
-										Sign In
+								<div class="avatar avatar-lg bg-primary rounded-circle">
 
-									</a>
+									<i class="isax isax-call-calling"></i>
 
-									<a asp-controller="Account"
-									   asp-action="Register"
-									   class="btn btn-dark">
+								</div>
 
-										<i class="isax isax-user-tick4 me-2"></i>
+								<div>
 
-										Sign Up
+									<p class="title">
+										Emergency Cases
+									</p>
 
-									</a>
+									<h5 class="link">
+										+1 24565 89856
+									</h5>
 
 								</div>
 
@@ -1519,63 +1485,596 @@
 
 						</div>
 
+
+						<div class="about-popup-item border-0 pb-0">
+
+							<h3 class="title">
+								Follow Us
+							</h3>
+
+							<ul class="d-flex align-items-center gap-2 social-iyem">
+
+								<li>
+									<a href="#"
+									   class="social-icon"
+									   aria-label="facebook">
+
+										<i class="fa-brands fa-facebook"></i>
+
+									</a>
+								</li>
+
+								<li>
+									<a href="#"
+									   class="social-icon"
+									   aria-label="twitter">
+
+										<i class="fa-brands fa-x-twitter"></i>
+
+									</a>
+								</li>
+
+								<li>
+									<a href="#"
+									   class="social-icon"
+									   aria-label="instagram">
+
+										<i class="fa-brands fa-instagram"></i>
+
+									</a>
+								</li>
+
+								<li>
+									<a href="#"
+									   class="social-icon"
+									   aria-label="linkedin">
+
+										<i class="fa-brands fa-linkedin"></i>
+
+									</a>
+								</li>
+
+							</ul>
+
+						</div>
+
+
+						<!-- ========================= -->
+						<!-- GUEST BUTTONS -->
+						<!-- ========================= -->
+
+						@if (User.Identity?.IsAuthenticated != true)
+						{
+							<div class="header-items-button">
+
+								<a asp-controller="Account"
+								   asp-action="Login"
+								   class="btn btn-primary btn-primary-gradient">
+
+									<i class="isax isax-lock-1 me-2"></i>
+
+									Sign In
+
+								</a>
+
+
+								<a asp-controller="Account"
+								   asp-action="Register"
+								   class="btn btn-dark">
+
+									<i class="isax isax-user-tick4 me-2"></i>
+
+									Sign Up
+
+								</a>
+
+							</div>
+						}
+						else
+						{
+							<!-- ========================= -->
+							<!-- AUTHENTICATED BUTTON -->
+							<!-- ========================= -->
+
+							<div class="header-items-button">
+
+								<form asp-controller="Account"
+									  asp-action="Logout"
+									  method="post"
+									  class="d-inline">
+
+									@Html.AntiForgeryToken()
+
+									<button type="submit"
+											class="btn btn-primary btn-primary-gradient">
+
+										<i class="isax isax-lock-1 me-2"></i>
+
+										Logout
+
+									</button>
+
+								</form>
+
+							</div>
+						}
+
 					</div>
 
-					<ul class="nav header-navbar-rht">
-
-						<li>
-
-							<a asp-controller="Account"
-							   asp-action="Login"
-							   class="btn btn-md btn-primary-gradient">
-
-								<i class="isax isax-lock-1 me-2"></i>
-
-								<span>
-									Sign In
-								</span>
-
-							</a>
-
-						</li>
-
-						<li>
-
-							<a asp-controller="Account"
-							   asp-action="Register"
-							   class="btn btn-md btn-dark">
-
-								<i class="isax isax-user-tick me-2"></i>
-
-								<span>
-									Register
-								</span>
-
-							</a>
-
-						</li>
-
-						<li>
-
-							<a href="#"
-							   class="details-btn"
-							   data-bs-toggle="offcanvas"
-							   data-bs-target="#support_item"
-							   aria-label="about">
-
-								<i class="isax isax-menu5"></i>
-
-							</a>
-
-						</li>
-
-					</ul>
-
-				</nav>
+				</div>
 
 			</div>
 
-		</header>
+
+			<!-- ========================= -->
+			<!-- RIGHT HEADER -->
+			<!-- ========================= -->
+
+			<ul class="nav header-navbar-rht">
+
+				@if (User.Identity?.IsAuthenticated != true)
+				{
+					<!-- ========================= -->
+					<!-- GUEST -->
+					<!-- ========================= -->
+
+					<li>
+
+						<a asp-controller="Account"
+						   asp-action="Login"
+						   class="btn btn-md btn-primary-gradient">
+
+							<i class="isax isax-lock-1 me-2"></i>
+
+							<span>
+								Sign In
+							</span>
+
+						</a>
+
+					</li>
+
+
+					<li>
+
+						<a asp-controller="Account"
+						   asp-action="Register"
+						   class="btn btn-md btn-dark">
+
+							<i class="isax isax-user-tick me-2"></i>
+
+							<span>
+								Register
+							</span>
+
+						</a>
+
+					</li>
+
+
+					<li>
+
+						<a href="#"
+						   class="details-btn"
+						   data-bs-toggle="offcanvas"
+						   data-bs-target="#support_item"
+						   aria-label="about">
+
+							<i class="isax isax-menu5"></i>
+
+						</a>
+
+					</li>
+				}
+				else
+				{
+					<!-- ========================= -->
+					<!-- AUTHENTICATED -->
+					<!-- ========================= -->
+
+					<li class="search-item">
+
+						<a href="#"
+						   class="details-btn"
+						   tabindex="-1"
+						   data-bs-toggle="offcanvas"
+						   data-bs-target="#search_popup"
+						   aria-controls="search_popup">
+
+							<i class="isax isax-search-normal-1"></i>
+
+						</a>
+
+					</li>
+
+
+					<li class="noti-nav dropdown">
+
+						<a href="#"
+						   class="details-btn"
+						   data-bs-toggle="dropdown"
+						   aria-label="Notification">
+
+							<i class="isax isax-notification-bing"></i>
+
+							<span class="badge"></span>
+
+						</a>
+
+
+						<div class="dropdown-menu notifications dropdown-menu-end">
+
+							<div class="topnav-dropdown-header">
+
+								<span class="notification-title">
+									Notifications
+								</span>
+
+							</div>
+
+
+							<div class="noti-content">
+
+								<ul class="notification-list">
+
+									<li class="notification-message">
+
+										<a href="#">
+
+											<div class="notify-block d-flex">
+
+												<span class="avatar">
+
+													<img class="avatar-img"
+														 alt="Ruby perin"
+														 src="~/assets/Doccure/img/clients/client-01.jpg">
+
+												</span>
+
+												<div class="media-body">
+
+													<h6>
+														Travis Tremble
+
+														<span class="notification-time">
+															18.30 PM
+														</span>
+
+													</h6>
+
+													<p class="noti-details">
+
+														Sent a amount of $210 for his Appointment
+
+														<span class="noti-title">
+															Dr.Ruby perin
+														</span>
+
+													</p>
+
+												</div>
+
+											</div>
+
+										</a>
+
+									</li>
+
+
+									<li class="notification-message">
+
+										<a href="#">
+
+											<div class="notify-block d-flex">
+
+												<span class="avatar">
+
+													<img class="avatar-img"
+														 alt="Hendry Watt"
+														 src="~/assets/Doccure/img/clients/client-02.jpg">
+
+												</span>
+
+												<div class="media-body">
+
+													<h6>
+														Kelly Stevens
+
+														<span class="notification-time">
+															12 Min Ago
+														</span>
+
+													</h6>
+
+													<p class="noti-details">
+
+														has booked her appointment to
+
+														<span class="noti-title">
+															Dr. Hendry Watt
+														</span>
+
+													</p>
+
+												</div>
+
+											</div>
+
+										</a>
+
+									</li>
+
+
+									<li class="notification-message">
+
+										<a href="#">
+
+											<div class="notify-block d-flex">
+
+												<span class="avatar">
+
+													<img class="avatar-img"
+														 alt="Maria Dyen"
+														 src="~/assets/Doccure/img/clients/client-03.jpg">
+
+												</span>
+
+												<div class="media-body">
+
+													<h6>
+														Robert Joe
+
+														<span class="notification-time">
+															6 Min Ago
+														</span>
+
+													</h6>
+
+													<p class="noti-details">
+
+														Sent a amount $210 for his Appointment
+
+														<span class="noti-title">
+															Dr.Maria Dyen
+														</span>
+
+													</p>
+
+												</div>
+
+											</div>
+
+										</a>
+
+									</li>
+
+
+									<li class="notification-message">
+
+										<a href="#">
+
+											<div class="notify-block d-flex">
+
+												<span class="avatar avatar-sm">
+
+													<img class="avatar-img"
+														 alt="client-image"
+														 src="~/assets/Doccure/img/clients/client-04.jpg">
+
+												</span>
+
+												<div class="media-body">
+
+													<h6>
+														Samuel Jord
+
+														<span class="notification-time">
+															8.30 AM
+														</span>
+
+													</h6>
+
+													<p class="noti-details">
+														Send a message to his doctor
+													</p>
+
+												</div>
+
+											</div>
+
+										</a>
+
+									</li>
+
+								</ul>
+
+							</div>
+
+						</div>
+
+					</li>
+
+
+					<li>
+
+						<a href="#"
+						   class="details-btn"
+						   data-bs-toggle="offcanvas"
+						   data-bs-target="#support_item"
+						   aria-label="about">
+
+							<i class="isax isax-menu5"></i>
+
+						</a>
+
+					</li>
+
+
+					<!-- ========================= -->
+					<!-- USER -->
+					<!-- ========================= -->
+
+					<li class="dropdown has-arrow logged-item">
+
+						<a href="#"
+						   data-bs-toggle="dropdown">
+
+							<span class="user-img">
+
+								<img class="rounded-circle"
+									 src="~/assets/Doccure/img/doctor-dashboard/profile-06.jpg"
+									 alt="User">
+
+							</span>
+
+						</a>
+
+
+						<div class="dropdown-menu dropdown-menu-end">
+
+							<div class="user-header">
+
+								<div class="avatar">
+
+									<img src="~/assets/Doccure/img/doctor-dashboard/profile-06.jpg"
+										 alt="User Image"
+										 class="avatar-img rounded-circle">
+
+								</div>
+
+
+								<div class="user-text">
+
+									<h6>
+
+										@(User.Identity?.Name ?? "User")
+
+									</h6>
+
+
+									<p class="text-muted mb-0">
+
+										@if (User.IsInRole("Patient"))
+										{
+											@:Patient
+										}
+										else if (User.IsInRole("Doctor"))
+										{
+											@:Doctor
+										}
+										else if (User.IsInRole("Admin"))
+										{
+											@:Administrator
+										}
+										else
+										{
+											@:User
+										}
+
+									</p>
+
+								</div>
+
+							</div>
+
+
+							<!-- PATIENT -->
+
+							@if (User.IsInRole("Patient"))
+							{
+								<a class="dropdown-item"
+								   asp-controller="Profile"
+								   asp-action="Index">
+
+									Profile Settings
+
+								</a>
+
+								<a class="dropdown-item"
+								   asp-controller="Appointment"
+								   asp-action="MyAppointments">
+
+									My Appointments
+
+								</a>
+
+								<a class="dropdown-item"
+								   asp-controller="SupportChat"
+								   asp-action="Index">
+
+									Support Chat
+
+								</a>
+							}
+
+
+							<!-- DOCTOR -->
+
+							@if (User.IsInRole("Doctor"))
+							{
+								<a class="dropdown-item"
+								   asp-controller="Profile"
+								   asp-action="Index">
+
+									Profile Settings
+
+								</a>
+
+								<a class="dropdown-item"
+								   asp-controller="Appointment"
+								   asp-action="Index">
+
+									Appointments
+
+								</a>
+							}
+
+
+							<!-- ADMIN -->
+
+							@if (User.IsInRole("Admin"))
+							{
+								<a class="dropdown-item"
+								   asp-area="Admin"
+								   asp-controller="Dashboard"
+								   asp-action="Index">
+
+									Admin Dashboard
+
+								</a>
+							}
+
+
+							<!-- LOGOUT -->
+
+							<form asp-controller="Account"
+								  asp-action="Logout"
+								  method="post">
+
+								@Html.AntiForgeryToken()
+
+								<button type="submit"
+										class="dropdown-item">
+
+									Logout
+
+								</button>
+
+							</form>
+
+						</div>
+
+					</li>
+
+				}
+
+			</ul>
+
+		</nav>
+	</div>
+</header>
+
+
 
 		<!-- /Header -->
 		<!-- Page Content -->

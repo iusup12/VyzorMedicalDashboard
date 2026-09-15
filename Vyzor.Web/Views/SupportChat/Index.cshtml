@@ -1,0 +1,1084 @@
+﻿```cshtml
+@model Vyzor.Web.Models.SupportChat.SupportChatViewModel
+
+@{
+    ViewData["Title"] = "Support Chat";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Vyzor - Support Chat</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon"
+          href="~/assets/Doccure/img/favicon.png"
+          type="image/x-icon">
+
+    <link rel="stylesheet"
+          href="~/assets/Doccure/css/bootstrap.min.css">
+
+    <link rel="stylesheet"
+          href="~/assets/Doccure/plugins/fontawesome/css/fontawesome.min.css">
+
+    <link rel="stylesheet"
+          href="~/assets/Doccure/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="~/assets/Doccure/css/iconsax.css">
+
+    <link rel="stylesheet"
+          href="~/assets/Doccure/css/feather.css">
+
+    
+
+    <link rel="stylesheet"
+          href="~/assets/Doccure/css/style.min.css">
+</head>
+
+<body class="main-chat-blk">
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+
+        <!-- Theme -->
+        <div class="header-theme header-theme-two">
+            <button type="button"
+                    id="dark-mode-toggle"
+                    class="theme-toggle moon"
+                    aria-label="dark mode">
+                <i class="isax isax-moon5"></i>
+            </button>
+
+            <button type="button"
+                    id="light-mode-toggle"
+                    class="theme-toggle sun"
+                    aria-label="light mode">
+                <i class="isax isax-sun-15"></i>
+            </button>
+        </div>
+
+        <!-- Header -->
+        <header class="header header-default inner-header">
+
+            <div class="container">
+
+                <nav class="navbar navbar-expand-lg header-nav">
+
+                    <div class="navbar-header">
+
+                        <a id="mobile_btn" href="#">
+                            <i class="fa-solid fa-bars"></i>
+                        </a>
+
+                        <a asp-controller="Home"
+                           asp-action="Index"
+                           class="navbar-brand logo">
+
+                            <img src="~/assets/Doccure/img/logo.svg"
+                                 class="img-fluid"
+                                 alt="Vyzor">
+                        </a>
+
+                    </div>
+
+                    <div class="header-menu">
+
+                        <div class="main-menu-wrapper">
+
+                            <div class="menu-header">
+
+                                <a asp-controller="Home"
+                                   asp-action="Index"
+                                   class="menu-logo">
+
+                                    <img src="~/assets/Doccure/img/logo.svg"
+                                         class="img-fluid"
+                                         alt="Vyzor">
+                                </a>
+
+                                <a id="menu_close"
+                                   class="menu-close"
+                                   href="#">
+
+                                    <i class="fas fa-times"></i>
+
+                                </a>
+
+                            </div>
+
+                            <ul class="main-nav">
+
+                                <li>
+                                    <a asp-controller="Home"
+                                       asp-action="Index">
+                                        Home
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a asp-controller="Doctors"
+                                       asp-action="Index">
+                                        Doctors
+                                    </a>
+                                </li>
+
+                                <li class="active">
+                                    <a asp-controller="SupportChat"
+                                       asp-action="Index">
+                                        Support
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                    <ul class="nav header-navbar-rht">
+
+                        <li class="search-item">
+
+                            <a href="#"
+                               class="details-btn"
+                               data-bs-toggle="offcanvas"
+                               data-bs-target="#search_popup">
+
+                                <i class="isax isax-search-normal-1"></i>
+
+                            </a>
+
+                        </li>
+
+                        <li class="dropdown has-arrow logged-item">
+
+                            <a href="#"
+                               data-bs-toggle="dropdown">
+
+                                <span class="user-img">
+
+                                    <img class="rounded-circle"
+                                         src="~/assets/Doccure/img/doctor-dashboard/profile-06.jpg"
+                                         alt="User">
+
+                                </span>
+
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end">
+
+                                <div class="user-header">
+
+                                    <div class="avatar">
+
+                                        <img src="~/assets/Doccure/img/doctor-dashboard/profile-06.jpg"
+                                             alt="User Image"
+                                             class="avatar-img rounded-circle">
+
+                                    </div>
+
+                                    <div class="user-text">
+
+                                        <h6>Patient</h6>
+
+                                        <p class="text-muted mb-0">
+                                            Vyzor Medical Dashboard
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <a class="dropdown-item"
+                                   asp-controller="Profile"
+                                   asp-action="Index">
+                                    Profile
+                                </a>
+
+                                <a class="dropdown-item"
+                                   asp-controller="SupportChat"
+                                   asp-action="Index">
+                                    Support Chat
+                                </a>
+
+                                <form asp-controller="Account"
+                                      asp-action="Logout"
+                                      method="post">
+
+                                    @Html.AntiForgeryToken()
+
+                                    <button type="submit"
+                                            class="dropdown-item">
+                                        Logout
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+
+        </header>
+        <!-- /Header -->
+
+
+        <!-- Page Wrapper -->
+        <div class="page-wrapper chat-page-wrapper">
+
+            <div class="container">
+
+                <div class="content doctor-content">
+
+                    <div class="chat-sec">
+
+                        <!-- Sidebar -->
+                        <div class="sidebar-group left-sidebar chat_sidebar">
+
+                            <div id="chats"
+                                 class="left-sidebar-wrap sidebar active slimscroll">
+
+                                <div class="slimscroll-active-sidebar">
+
+                                    <!-- Chat title -->
+                                    <div class="left-chat-title all-chats">
+
+                                        <div class="setting-title-head">
+
+                                            <h4>All Chats</h4>
+
+                                        </div>
+
+                                        <div class="add-section">
+
+                                            <form id="chat-search-form">
+
+                                                <div class="user-chat-search">
+
+                                                    <span class="form-control-feedback">
+
+                                                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                                                    </span>
+
+                                                    <input type="text"
+                                                           name="chat-search"
+                                                           placeholder="Search"
+                                                           class="form-control"
+                                                           autocomplete="off">
+
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- /Chat title -->
+
+
+                                    <!-- Online contacts -->
+                                    <div class="top-online-contacts">
+
+                                        <div class="fav-title">
+
+                                            <h6>Online Now</h6>
+
+                                            <a href="javascript:void(0);">
+                                                View All
+                                            </a>
+
+                                        </div>
+
+                                        <div class="swiper-container">
+
+                                            <div class="swiper-wrapper">
+
+                                                <div class="swiper-slide">
+
+                                                    <div class="top-contacts-box">
+
+                                                        <div class="profile-img online">
+
+                                                            <img src="~/assets/Doccure/img/doctor-grid/doctor-grid-05.jpg"
+                                                                 alt="Doctor">
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="swiper-slide">
+
+                                                    <div class="top-contacts-box">
+
+                                                        <div class="profile-img online">
+
+                                                            <img src="~/assets/Doccure/img/doctor-grid/doctor-grid-03.jpg"
+                                                                 alt="Doctor">
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="swiper-slide">
+
+                                                    <div class="top-contacts-box">
+
+                                                        <div class="profile-img online">
+
+                                                            <img src="~/assets/Doccure/img/doctor-grid/doctor-grid-02.jpg"
+                                                                 alt="Doctor">
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="swiper-slide">
+
+                                                    <div class="top-contacts-box">
+
+                                                        <div class="profile-img online">
+
+                                                            <img src="~/assets/Doccure/img/doctor-dashboard/profile-06.jpg"
+                                                                 alt="Doctor">
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- /Online contacts -->
+
+
+                                    <div class="sidebar-body chat-body"
+                                         id="chatsidebar">
+
+                                        <!-- Current support chat -->
+                                        <div class="d-flex justify-content-between align-items-center ps-0 pe-0">
+
+                                            <div class="fav-title pin-chat">
+
+                                                <h6>Support</h6>
+
+                                            </div>
+
+                                        </div>
+
+                                        <ul class="user-list">
+
+                                            <li class="user-list-item active">
+
+                                                <a asp-controller="SupportChat"
+                                                   asp-action="Index">
+
+                                                    <div class="avatar avatar-online">
+
+                                                        <img src="~/assets/Doccure/img/doctor-grid/doctor-grid-01.jpg"
+                                                             alt="Support">
+
+                                                    </div>
+
+                                                    <div class="users-list-body">
+
+                                                        <div>
+
+                                                            <h5>Vyzor Support</h5>
+
+                                                            <p>
+                                                                Medical support
+                                                            </p>
+
+                                                        </div>
+
+                                                        <div class="last-chat-time">
+
+                                                            @if (Model.Messages.Any())
+                                                            {
+                                                                var lastMessage =
+                                                                    Model.Messages.Last();
+
+                                                                <small class="text-muted">
+                                                                    @lastMessage.CreatedAtUtc
+                                                                        .ToLocalTime()
+                                                                        .ToString("HH:mm")
+                                                                </small>
+                                                            }
+                                                            else
+                                                            {
+                                                                <small class="text-muted">
+                                                                    New
+                                                                </small>
+                                                            }
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </a>
+
+                                            </li>
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- /Sidebar -->
+
+
+                        <!-- Chat -->
+                        <div class="chat chat-messages"
+                             id="middle">
+
+                            <div class="slimscroll">
+
+                                <!-- Chat header -->
+                                <div class="chat-inner-header">
+
+                                    <div class="chat-header">
+
+                                        <div class="user-details">
+
+                                            <div class="d-lg-none">
+
+                                                <ul class="list-inline mt-2 me-2">
+
+                                                    <li class="list-inline-item">
+
+                                                        <a class="text-muted px-0 left_sides"
+                                                           href="#"
+                                                           data-chat="open">
+
+                                                            <i class="fas fa-arrow-left"></i>
+
+                                                        </a>
+
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+
+                                            <figure class="avatar avatar-online">
+
+                                                <img src="~/assets/Doccure/img/doctor-grid/doctor-grid-01.jpg"
+                                                     alt="Vyzor Support">
+
+                                            </figure>
+
+                                            <div class="mt-1">
+
+                                                <h5>Vyzor Support</h5>
+
+                                                <small class="last-seen">
+                                                    Online
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="chat-options">
+
+                                            <ul class="list-inline">
+
+                                                <li class="list-inline-item">
+
+                                                    <a href="javascript:void(0)"
+                                                       class="btn btn-outline-light chat-search-btn"
+                                                       data-bs-toggle="tooltip"
+                                                       title="Search">
+
+                                                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                                                    </a>
+
+                                                </li>
+
+                                                <li class="list-inline-item">
+
+                                                    <a class="btn btn-outline-light no-bg"
+                                                       href="#"
+                                                       data-bs-toggle="dropdown">
+
+                                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                                                    </a>
+
+                                                    <div class="dropdown-menu dropdown-menu-end">
+
+                                                        <a href="#"
+                                                           class="dropdown-item"
+                                                           id="close-chat-btn">
+
+                                                            Close Chat
+
+                                                        </a>
+
+                                                        <a href="#"
+                                                           class="dropdown-item">
+
+                                                            Clear Message
+
+                                                        </a>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+
+
+                                        <!-- Chat Search -->
+                                        <div class="chat-search">
+
+                                            <form id="message-search-form">
+
+                                                <span class="form-control-feedback">
+
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                                                </span>
+
+                                                <input type="text"
+                                                       name="chat-search"
+                                                       placeholder="Search Chats"
+                                                       class="form-control"
+                                                       autocomplete="off">
+
+                                                <div class="close-btn-chat">
+
+                                                    <i class="fa fa-close"></i>
+
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+                                        <!-- /Chat Search -->
+
+                                    </div>
+
+                                </div>
+                                <!-- /Chat header -->
+
+
+                                <!-- Messages -->
+                                <div class="chat-body">
+
+                                    <div class="messages"
+                                         id="support-chat-messages">
+
+                                        @if (!Model.Messages.Any())
+                                        {
+                                            <div class="chat-empty-state text-center py-5">
+
+                                                <div class="avatar avatar-lg bg-primary rounded-circle mx-auto mb-3">
+
+                                                    <i class="isax isax-messages-3"></i>
+
+                                                </div>
+
+                                                <h5>Welcome to Vyzor Support</h5>
+
+                                                <p class="text-muted mb-0">
+                                                    Ask us about doctors, specializations
+                                                    or appointments.
+                                                </p>
+
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            DateTime? lastDate = null;
+
+                                            foreach (var message in Model.Messages)
+                                            {
+                                                var localDate =
+                                                    message.CreatedAtUtc.ToLocalTime();
+
+                                                if (!lastDate.HasValue ||
+                                                    lastDate.Value.Date != localDate.Date)
+                                                {
+                                                    <div class="chat-line">
+
+                                                        <span class="chat-date">
+
+                                                            @localDate.ToString("dd.MM.yyyy")
+
+                                                        </span>
+
+                                                    </div>
+
+                                                    lastDate = localDate;
+                                                }
+
+
+                                                @if (message.IsFromSupport)
+                                                {
+                                                    <!-- Support message -->
+                                                    <div class="chats">
+
+                                                        <div class="chat-avatar">
+
+                                                            <img src="~/assets/Doccure/img/doctor-grid/doctor-grid-08.jpg"
+                                                                 class="dreams_chat"
+                                                                 alt="Support">
+
+                                                        </div>
+
+                                                        <div class="chat-content">
+
+                                                            <div class="chat-profile-name">
+
+                                                                <h6>
+                                                                    Vyzor Support
+                                                                    S
+                                                                    <span>
+                                                                        @localDate.ToString("HH:mm")
+                                                                    </span>
+
+                                                                </h6>
+
+                                                            </div>
+
+                                                            <div class="message-content">
+
+                                                                @message.Message
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <!-- Patient message -->
+                                                    <div class="chats chats-right">
+
+                                                        <div class="chat-avatar">
+
+                                                            <img src="~/assets/Doccure/img/doctor-dashboard/profile-06.jpg"
+                                                                 class="dreams_chat"
+                                                                 alt="You">
+
+                                                        </div>
+
+                                                        <div class="chat-content">
+
+                                                            <div class="chat-profile-name text-end justify-content-end">
+
+                                                                <h6>
+                                                                    You
+
+                                                                    <span>
+                                                                        @localDate.ToString("HH:mm")
+                                                                    </span>
+
+                                                                </h6>
+
+                                                            </div>
+
+                                                            <div class="message-content">
+
+                                                                @message.Message
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                }
+                                            }
+                                        }
+
+                                    </div>
+
+                                </div>
+                                <!-- /Messages -->
+
+                            </div>
+
+
+                            <!-- Chat footer -->
+                            <div class="chat-footer">
+
+                                <form id="support-chat-form"
+                                      autocomplete="off">
+
+                                    <div class="smile-foot">
+
+                                        <div class="chat-action-btns">
+
+                                            <div class="chat-action-col">
+
+                                                <a class="action-circle"
+                                                   href="#"
+                                                   data-bs-toggle="dropdown">
+
+                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                                                </a>
+
+                                                <div class="dropdown-menu dropdown-menu-end">
+
+                                                    <a href="#"
+                                                       class="dropdown-item">
+
+                                                        <span>
+                                                            <i class="fa-solid fa-file-lines"></i>
+                                                        </span>
+
+                                                        Document
+
+                                                    </a>
+
+                                                    <a href="#"
+                                                       class="dropdown-item">
+
+                                                        <span>
+                                                            <i class="fa-solid fa-camera"></i>
+                                                        </span>
+
+                                                        Camera
+
+                                                    </a>
+
+                                                    <a href="#"
+                                                       class="dropdown-item">
+
+                                                        <span>
+                                                            <i class="fa-solid fa-image"></i>
+                                                        </span>
+
+                                                        Gallery
+
+                                                    </a>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="smile-foot emoj-action-foot">
+
+                                        <a href="#"
+                                           class="action-circle">
+
+                                            <i class="fa-regular fa-face-smile"></i>
+
+                                        </a>
+
+                                        <div class="emoj-group-list-foot down-emoji-circle">
+
+                                            <ul>
+
+                                                <li>
+                                                    <a href="javascript:void(0);">
+                                                        <i class="fa-regular fa-face-smile"></i>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="javascript:void(0);">
+                                                        ❤️
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="javascript:void(0);">
+                                                        👍
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="javascript:void(0);">
+                                                        😂
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="javascript:void(0);">
+                                                        😢
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="smile-foot">
+
+                                        <a href="#"
+                                           class="action-circle">
+
+                                            <i class="isax isax-microphone-2"></i>
+
+                                        </a>
+
+                                    </div>
+
+
+                                    <!-- IMPORTANT:
+                                         This is the message input.
+                                         Do NOT give it name="chat-search". -->
+                                    <input type="text"
+                                           class="form-control chat_form"
+                                           placeholder="Type your message here..."
+                                           autocomplete="off"
+                                           maxlength="2000">
+
+
+                                    <div class="form-buttons">
+
+                                        <button class="btn send-btn"
+                                                type="submit">
+
+                                            <i class="isax isax-send-25"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <!-- /Chat footer -->
+
+                        </div>
+                        <!-- /Chat -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /Page Wrapper -->
+
+    </div>
+    <!-- /Main Wrapper -->
+
+
+    <!-- Search offcanvas -->
+    <div class="offcanvas offcanvas-top search_popup"
+         tabindex="-1"
+         id="search_popup">
+
+        <div class="offcanvas-header">
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close">
+
+                <i class="isax isax-close-circle"></i>
+
+            </button>
+
+        </div>
+
+        <div class="offcanvas-body">
+
+            <div class="support-item-three w-50">
+
+                <input type="text"
+                       class="inpts"
+                       placeholder="Search Your Keywords">
+
+                <a href="#"
+                   class="submit btn">
+
+                    <i class="isax isax-arrow-right-1"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /Search offcanvas -->
+
+
+    <!-- Support information -->
+    <div class="offcanvas offcanvas-offset offcanvas-end support_popup"
+         tabindex="-1"
+         id="support_item">
+
+        <div class="offcanvas-header">
+
+            <a asp-controller="Home"
+               asp-action="Index">
+
+                <img src="~/assets/Doccure/img/logo.svg"
+                     alt="logo"
+                     class="img-fluid logo">
+
+            </a>
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close">
+
+                <i class="isax isax-close-circle"></i>
+
+            </button>
+
+        </div>
+
+        <div class="offcanvas-body">
+
+            <div class="about-popup-item">
+
+                <h3 class="title">
+                    Vyzor Medical Dashboard
+                </h3>
+
+                <p>
+                    Medical information system for patients,
+                    doctors and medical center management.
+                </p>
+
+            </div>
+
+
+            <div class="about-popup-item">
+
+                <h3 class="title">
+                    Support
+                </h3>
+
+                <div class="support-item mb-3">
+
+                    <div class="avatar avatar-lg bg-primary rounded-circle">
+
+                        <i class="isax isax-messages-3"></i>
+
+                    </div>
+
+                    <div>
+
+                        <p class="title">
+                            General Support
+                        </p>
+
+                        <h5 class="link">
+                            Vyzor Support
+                        </h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-popup-item border-0">
+
+                <h3 class="title">
+                    Quick Links
+                </h3>
+
+                <div class="d-flex flex-column gap-2">
+
+                    <a asp-controller="Doctors"
+                       asp-action="Index">
+
+                        Find a Doctor
+
+                    </a>
+
+                    <a asp-controller="Appointment"
+                       asp-action="Create">
+
+                        Book Appointment
+
+                    </a>
+
+                    <a asp-controller="SupportChat"
+                       asp-action="Index">
+
+                        Support Chat
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /Support information -->
+
+
+    <!-- SignalR -->
+    <script src="~/js/signalr.min.js"></script>
+
+    <!-- Doccure JS -->
+    <script src="~/assets/Doccure/js/bootstrap.bundle.min.js"></script>
+
+    
+
+    <script src="~/assets/Doccure/js/fancybox-vanilla.js"></script>
+
+    <script src="~/assets/Doccure/js/script.min.js"></script>
+
+
+    <!-- Support Chat configuration -->
+    <script>
+        window.supportChatConfig = {
+            hubUrl: '@Url.Content("~/hubs/support-chat")',
+            doctorsUrl: '@Url.Action("Index", "Doctors")',
+            appointmentUrl: '@Url.Action("Create", "Appointment")',
+            initialChatId: @(Model.ChatId?.ToString() ?? "null")
+        };
+    </script>
+
+    <!-- Vyzor Support Chat -->
+    <script src="~/js/support-chat.js"></script>
+
+</body>
+
+</html>
+
+
