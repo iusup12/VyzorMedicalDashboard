@@ -1,0 +1,731 @@
+﻿
+
+
+
+@model IEnumerable<Vyzor.Application.DTO.Specialization.SpecializationListItemDTO>
+ @{ Layout = "~/Views/Shared/Dashboard/_DashboardLayout.cshtml"; }
+
+<div class="page">
+    <div><header class="app-header sticky" id="header"><div class="main-header-container container-fluid"><div class="header-content-left"><div class="header-element"><div class="horizontal-logo"><a class="header-logo" href="/bootstrap/app-router/vyzor-ts/preview/dashboards/sales/"><img alt="logo" loading="lazy" decoding="async" data-nimg="fill" class="desktop-logo" src="/bootstrap/app-router/vyzor-ts/preview/assets/images/brand-logos/desktop-logo.png" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"><img alt="logo" loading="lazy" decoding="async" data-nimg="fill" class="toggle-logo" src="/bootstrap/app-router/vyzor-ts/preview/assets/images/brand-logos/toggle-logo.png" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"><img alt="logo" loading="lazy" decoding="async" data-nimg="fill" class="desktop-dark" src="/bootstrap/app-router/vyzor-ts/preview/assets/images/brand-logos/desktop-dark.png" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"><img alt="logo" loading="lazy" decoding="async" data-nimg="fill" class="toggle-dark" src="/bootstrap/app-router/vyzor-ts/preview/assets/images/brand-logos/toggle-dark.png" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"></a></div></div><div class="header-element mx-lg-0 mx-2"><a aria-label="Hide Sidebar" class="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle" data-bs-toggle="sidebar" href="#!"><span></span></a></div><div class="header-element header-search d-md-block d-none my-auto auto-complete-search"><div class="autoComplete_wrapper"><input class="header-search-bar form-control" id="header-search" placeholder="Search" spellcheck="false" autocomplete="off" autocapitalize="off" type="text" value=""></div><a href="#!;" class="header-search-icon border-0"><i class="bi bi-search fs-12"></i></a></div></div><ul class="header-content-right"><li class="header-element d-md-none d-block"><a class="header-link" data-bs-toggle="modal" data-bs-target="#header-responsive-search" href="#!"><svg xmlns="http://www.w3.org/2000/svg" class="header-link-icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="112" cy="112" r="80" opacity="0.2"></circle><circle cx="112" cy="112" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><line x1="168.57" y1="168.57" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg></a></li><div class="header-element country-selector d-sm-block d-none dropdown"><a class="header-link dropdown-toggle dropdown-toggle" id="react-aria5274464329-«r1»" aria-expanded="false" variant="" data-bs-auto-close="outside" data-bs-toggle="dropdown"><svg xmlns="http://www.w3.org/2000/svg" class="header-link-icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M215,168.71a96.42,96.42,0,0,1-30.54,37l-9.36-9.37a8,8,0,0,0-3.63-2.09L150,188.59a8,8,0,0,1-5.88-8.9l2.38-16.2a8,8,0,0,1,4.85-6.22l30.45-12.66a8,8,0,0,1,8.47,1.49Z" opacity="0.2"></path><path d="M184,74a8,8,0,0,1-1.94,5.22L159.89,105a8,8,0,0,1-5,2.71l-31.46,4.26a8.06,8.06,0,0,1-5.77-1.45l-19.81-13a8,8,0,0,0-11.34,2l-20.94,31.3a8.06,8.06,0,0,0-1.35,4.41L64,171.49a8,8,0,0,1-3.61,6.64l-9.92,6.52A96,96,0,0,1,184,50Z" opacity="0.2"></path><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><path d="M184.42,205.68l-9.36-9.37a8,8,0,0,0-3.63-2.09L150,188.59a8,8,0,0,1-5.88-8.9l2.38-16.2a8,8,0,0,1,4.85-6.22l30.45-12.66a8,8,0,0,1,8.47,1.49L215,168.71" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M50.49,184.65l9.92-6.52A8,8,0,0,0,64,171.49l.21-36.23a8.06,8.06,0,0,1,1.35-4.41l20.94-31.3a8,8,0,0,1,11.34-2l19.81,13a8.06,8.06,0,0,0,5.77,1.45l31.46-4.26a8,8,0,0,0,5-2.71L182.06,79.2A8,8,0,0,0,184,74V50" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg></a></div><li class="header-element header-theme-mode"><a href="#!" class="header-link layout-setting"><span class="light-layout"><svg xmlns="http://www.w3.org/2000/svg" class="header-link-icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M108.11,28.11A96.09,96.09,0,0,0,227.89,147.89,96,96,0,1,1,108.11,28.11Z" opacity="0.2"></path><path d="M108.11,28.11A96.09,96.09,0,0,0,227.89,147.89,96,96,0,1,1,108.11,28.11Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg></span><span class="dark-layout"><svg xmlns="http://www.w3.org/2000/svg" class="header-link-icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="56" opacity="0.2"></circle><line x1="128" y1="40" x2="128" y2="32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><circle cx="128" cy="128" r="56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><line x1="64" y1="64" x2="56" y2="56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="64" y1="192" x2="56" y2="200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="192" y1="64" x2="200" y2="56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="192" y1="192" x2="200" y2="200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="40" y1="128" x2="32" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="128" y1="216" x2="128" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="216" y1="128" x2="224" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg></span></a></li><div class="header-element notifications-dropdown d-xl-inline-flex dropdown dropdown"><a class="header-link dropdown-toggle dropdown-toggle" id="messageDropdown" aria-expanded="false" href="#!" variant="" data-bs-toggle="dropdown" data-bs-auto-close="outside"><svg xmlns="http://www.w3.org/2000/svg" class="header-link-icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M70.55,144H196.1a16,16,0,0,0,15.74-13.14L224,64H56Z" opacity="0.2"></path><path d="M188,184H91.17a16,16,0,0,1-15.74-13.14L48.73,24H24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="92" cy="204" r="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><circle cx="188" cy="204" r="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><path d="M70.55,144H196.1a16,16,0,0,0,15.74-13.14L224,64H56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class="badge bg-primary rounded-pill header-icon-badge" id="cart-icon-badge">5</span></a></div><div class="header-element notifications-dropdown d-xl-block d-none dropdown dropdown"><a class="header-link dropdown-toggle dropdown-toggle" id="messageDropdown" aria-expanded="false" variant="" href="#!" data-bs-toggle="dropdown" data-bs-auto-close="outside"><svg xmlns="http://www.w3.org/2000/svg" class="header-link-icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M56,104a72,72,0,0,1,144,0c0,35.82,8.3,64.6,14.9,76A8,8,0,0,1,208,192H48a8,8,0,0,1-6.88-12C47.71,168.6,56,139.81,56,104Z" opacity="0.2"></path><path d="M96,192a32,32,0,0,0,64,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M56,104a72,72,0,0,1,144,0c0,35.82,8.3,64.6,14.9,76A8,8,0,0,1,208,192H48a8,8,0,0,1-6.88-12C47.71,168.6,56,139.81,56,104Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class="header-icon-pulse bg-secondary rounded pulse pulse-secondary"></span></a></div><li class="header-element header-fullscreen"><a class="header-link" href="#!"><svg xmlns="http://www.w3.org/2000/svg" class="full-screen-open header-link-icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="48" y="48" width="160" height="160" opacity="0.2"></rect><polyline points="168 48 208 48 208 88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><polyline points="88 208 48 208 48 168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><polyline points="208 168 208 208 168 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><polyline points="48 88 48 48 88 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg></a></li><div class="header-element dropdown dropdown"><a class="header-link dropdown-toggle dropdown-toggle" id="mainHeaderProfile" aria-expanded="false" variant="" href="#!" data-bs-toggle="dropdown" data-bs-auto-close="outside"><div><img alt="img" loading="lazy" width="36" height="36" decoding="async" data-nimg="1" class="header-link-icon" src="/bootstrap/app-router/vyzor-ts/preview/assets/images/faces/12.jpg" style="color: transparent;"></div></a></div><li class="header-element"><a class="header-link switcher-icon" data-bs-toggle="offcanvas" data-bs-target="#switcher-canvas" href="#!"><svg xmlns="http://www.w3.org/2000/svg" class="header-link-icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M207.86,123.18l16.78-21a99.14,99.14,0,0,0-10.07-24.29l-26.7-3a81,81,0,0,0-6.81-6.81l-3-26.71a99.43,99.43,0,0,0-24.3-10l-21,16.77a81.59,81.59,0,0,0-9.64,0l-21-16.78A99.14,99.14,0,0,0,77.91,41.43l-3,26.7a81,81,0,0,0-6.81,6.81l-26.71,3a99.43,99.43,0,0,0-10,24.3l16.77,21a81.59,81.59,0,0,0,0,9.64l-16.78,21a99.14,99.14,0,0,0,10.07,24.29l26.7,3a81,81,0,0,0,6.81,6.81l3,26.71a99.43,99.43,0,0,0,24.3,10l21-16.77a81.59,81.59,0,0,0,9.64,0l21,16.78a99.14,99.14,0,0,0,24.29-10.07l3-26.7a81,81,0,0,0,6.81-6.81l26.71-3a99.43,99.43,0,0,0,10-24.3l-16.77-21A81.59,81.59,0,0,0,207.86,123.18ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z" opacity="0.2"></path><circle cx="128" cy="128" r="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><path d="M41.43,178.09A99.14,99.14,0,0,1,31.36,153.8l16.78-21a81.59,81.59,0,0,1,0-9.64l-16.77-21a99.43,99.43,0,0,1,10.05-24.3l26.71-3a81,81,0,0,1,6.81-6.81l3-26.7A99.14,99.14,0,0,1,102.2,31.36l21,16.78a81.59,81.59,0,0,1,9.64,0l21-16.77a99.43,99.43,0,0,1,24.3,10.05l3,26.71a81,81,0,0,1,6.81,6.81l26.7,3a99.14,99.14,0,0,1,10.07,24.29l-16.78,21a81.59,81.59,0,0,1,0,9.64l16.77,21a99.43,99.43,0,0,1-10,24.3l-26.71,3a81,81,0,0,1-6.81,6.81l-3,26.7a99.14,99.14,0,0,1-24.29,10.07l-21-16.78a81.59,81.59,0,0,1-9.64,0l-21,16.77a99.43,99.43,0,0,1-24.3-10l-3-26.71a81,81,0,0,1-6.81-6.81Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg></a></li></ul></div></header></div><div id="responsive-overlay"></div><aside class="app-sidebar sticky" id="sidebar">
+    <div class="main-sidebar-header"><a class="header-logo" href="/bootstrap/app-router/vyzor-ts/preview/dashboards/sales/"><img alt="logo" loading="lazy" decoding="async" data-nimg="fill" class="desktop-logo" src="/bootstrap/app-router/vyzor-ts/preview/assets/images/brand-logos/desktop-logo.png" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"><img alt="logo" loading="lazy" decoding="async" data-nimg="fill" class="toggle-dark" src="/bootstrap/app-router/vyzor-ts/preview/assets/images/brand-logos/toggle-dark.png" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"><img alt="logo" loading="lazy" decoding="async" data-nimg="fill" class="desktop-dark" src="/bootstrap/app-router/vyzor-ts/preview/assets/images/brand-logos/desktop-dark.png" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"><img alt="logo" loading="lazy" decoding="async" data-nimg="fill" class="toggle-logo" src="/bootstrap/app-router/vyzor-ts/preview/assets/images/brand-logos/toggle-logo.png" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"></a></div><div data-simplebar="init" class="main-sidebar simplebar-scrollable-x" id="sidebar-scroll">
+    <div class="simplebar-wrapper" style="margin: -8px 0px -240px;">
+        <div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask">
+        <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+            <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: scroll hidden;">
+                <div class="simplebar-content" style="padding: 8px 0px 240px;">
+                    <nav class="main-menu-container nav nav-pills flex-column sub-open">
+                        <div class="slide-left" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"> <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path> </svg></div>
+                        <ul class="main-menu">
+                            <li class=" slide__category       "><span class="category-name">MAIN</span></li>
+                            <li class="   slide has-sub open  active  ">
+                                <a class="side-menu__item active" href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M133.66,34.34a8,8,0,0,0-11.32,0L40,116.69V216h64V152h48v64h64V116.69Z" opacity="0.2"></path><line x1="16" y1="216" x2="240" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="152 216 152 152 104 152 104 216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="40" y1="116.69" x2="40" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="216" y1="216" x2="216" y2="116.69" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M24,132.69l98.34-98.35a8,8,0,0,1,11.32,0L232,132.69" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg></div></span><span class="side-menu__label"> Dashboards </span></a>
+                                <ul class="slide-menu child1
+                                    double-menu-active
+                                    " style="display: block;">
+                                    <li class="slide side-menu__label1"><a href="#!">Dashboards  </a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/sales/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M54.46,201.54c-9.2-9.2-3.1-28.53-7.78-39.85C41.82,150,24,140.5,24,128s17.82-22,22.68-33.69C51.36,83,45.26,63.66,54.46,54.46S83,51.36,94.31,46.68C106.05,41.82,115.5,24,128,24S150,41.82,161.69,46.68c11.32,4.68,30.65-1.42,39.85,7.78s3.1,28.53,7.78,39.85C214.18,106.05,232,115.5,232,128S214.18,150,209.32,161.69c-4.68,11.32,1.42,30.65-7.78,39.85s-28.53,3.1-39.85,7.78C150,214.18,140.5,232,128,232s-22-17.82-33.69-22.68C83,204.64,63.66,210.74,54.46,201.54Z" opacity="0.2"></path><path d="M54.46,201.54c-9.2-9.2-3.1-28.53-7.78-39.85C41.82,150,24,140.5,24,128s17.82-22,22.68-33.69C51.36,83,45.26,63.66,54.46,54.46S83,51.36,94.31,46.68C106.05,41.82,115.5,24,128,24S150,41.82,161.69,46.68c11.32,4.68,30.65-1.42,39.85,7.78s3.1,28.53,7.78,39.85C214.18,106.05,232,115.5,232,128S214.18,150,209.32,161.69c-4.68,11.32,1.42,30.65-7.78,39.85s-28.53,3.1-39.85,7.78C150,214.18,140.5,232,128,232s-22-17.82-33.69-22.68C83,204.64,63.66,210.74,54.46,201.54Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="96" cy="96" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><circle cx="160" cy="160" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><line x1="88" y1="168" x2="168" y2="88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg><span class=""> Sales </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/analytics/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M33.6,145.5A96,96,0,0,1,96,37.5v72Z" opacity="0.2"></path><path d="M33.6,145.5A96,96,0,0,1,96,37.5v72Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M128,128.42V32A96,96,0,1,1,45.22,176.64Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> Analytics </span></a></li>
+                                    <li class="   slide has-sub open active">
+                                        <a class="side-menu__item active" href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" width="32" height="32" viewBox="0 0 256 256"><path d="M224,56V200a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V56a8,8,0,0,1,8-8H216A8,8,0,0,1,224,56Z" opacity="0.2"></path><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM176,88a48,48,0,0,1-96,0,8,8,0,0,1,16,0,32,32,0,0,0,64,0,8,8,0,0,1,16,0Z"></path></svg></div></span><span class=""> Ecommerce <span> <span class="badge bg-primary-transparent ms-2 badge">9</span> </span></span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: block;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/ecommerce/dashboard/"><span class=""> Dashboard </span></a></li>
+                                            <li class="  slide  open active"><a class="side-menu__item active" href="/bootstrap/app-router/vyzor-ts/preview/dashboards/ecommerce/products/"><span class=""> Products </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/ecommerce/product-details/"><span class=""> Product Details </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/ecommerce/cart/"><span class=""> Cart </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/ecommerce/checkout/"><span class=""> Checkout </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/ecommerce/customers/"><span class=""> Customers </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/ecommerce/orders/"><span class=""> Orders </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/ecommerce/order-details/"><span class=""> Order Details </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/ecommerce/add-product/"><span class=""> Add Product </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polygon points="40 128 128 240 216 128 128 168 40 128" opacity="0.2"></polygon><line x1="128" y1="16" x2="128" y2="240" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="216 128 128 168 40 128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><polygon points="128 16 216 128 128 240 40 128 128 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polygon></svg></div></span><span class=""> Crypto <span> <span class="badge bg-success-transparent ms-2 badge">6</span> </span></span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/crypto/dashboard/"><span class=""> Dashboard </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/crypto/transactions/"><span class=""> Transactions </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/crypto/currency-exchange/"><span class=""> Currency Exchange </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/crypto/buy-sell/"><span class=""> Buy &amp; Sell </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/crypto/market-cap/"><span class=""> Marketcap </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/crypto/wallet/"><span class=""> Wallet </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M128,32A96,96,0,0,0,63.8,199.38h0A72,72,0,0,1,128,160a40,40,0,1,1,40-40,40,40,0,0,1-40,40,72,72,0,0,1,64.2,39.37A96,96,0,0,0,128,32Z" opacity="0.2"></path><path d="M63.8,199.37a72,72,0,0,1,128.4,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><circle cx="128" cy="120" r="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle></svg></div></span><span class=""> CRM <span> <span class="badge bg-warning-transparent ms-2 badge">5</span> </span></span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/crm/dashboard/"><span class=""> Dashboard </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/crm/contacts/"><span class=""> Contacts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/crm/companies/"><span class=""> Companies </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/crm/deals/"><span class=""> Deals </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/crm/leads/"><span class="">  Leads </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M224,88V200.89a7.11,7.11,0,0,1-7.11,7.11H40a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H93.33a8,8,0,0,1,4.8,1.6L128,80h88A8,8,0,0,1,224,88Z" opacity="0.2"></path><path d="M224,88V200.89a7.11,7.11,0,0,1-7.11,7.11H40a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H93.33a8,8,0,0,1,4.8,1.6L128,80h88A8,8,0,0,1,224,88Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg></div></span><span class=""> Projects <span> <span class="badge bg-info-transparent ms-2 badge">4</span> </span></span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/projects/dashboard/"><span class=""> Dashboard </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/projects/projects-list/"><span class=""> Project List </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/projects/project-overview/"><span class=""> Project Overview </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/projects/create-project/"><span class=""> Create Project </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/hrm/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M208,40H48a8,8,0,0,0-8,8V208a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V48A8,8,0,0,0,208,40ZM57.78,216A72,72,0,0,1,128,160a40,40,0,1,1,40-40,40,40,0,0,1-40,40,72,72,0,0,1,70.22,56Z" opacity="0.2"></path><circle cx="128" cy="120" r="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><rect x="40" y="40" width="176" height="176" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><path d="M57.78,216a72,72,0,0,1,140.44,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> HRM </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/courses/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M48,216a24,24,0,0,1,24-24H208V32H72A24,24,0,0,0,48,56Z" opacity="0.2"></path><path d="M48,216a24,24,0,0,1,24-24H208V32H72A24,24,0,0,0,48,56Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><polyline points="48 216 48 224 192 224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg><span class=""> Courses </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/stocks/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M32,48H208a16,16,0,0,1,16,16V208a0,0,0,0,1,0,0H32a0,0,0,0,1,0,0V48A0,0,0,0,1,32,48Z" opacity="0.2"></path><polyline points="224 208 32 208 32 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><polyline points="224 96 160 152 96 104 32 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg><span class=""> Stocks </span></a></li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M236.53,198.59A8,8,0,0,0,240,192V64A8,8,0,0,0,230,56.27C212.65,60.89,174.56,72,128,72S43.35,60.89,26.05,56.27A8,8,0,0,0,16,64v96.68l54.34-54.35a8,8,0,0,1,11.32,0L131.31,156,157,130.34a8,8,0,0,1,11.31,0Z" opacity="0.2"></path><path d="M16,64a8,8,0,0,1,10.05-7.74C43.35,60.89,81.44,72,128,72S212.65,60.89,230,56.27A8,8,0,0,1,240,64V192a8,8,0,0,1-10.06,7.73C212.63,195.08,174.55,184,128,184S43.37,195.08,26.06,199.72A8,8,0,0,1,16,192Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="204" cy="108" r="12"></circle><path d="M16,160.69l54.34-54.35a8,8,0,0,1,11.32,0l79.46,79.46" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M131.31,156,157,130.34a8,8,0,0,1,11.31,0l68.25,68.25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg></div></span><span class=""> NFT <span> <span class="badge bg-danger-transparent ms-2 badge">6</span> </span></span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/nft/dashboard/"><span class=""> Dashboard </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/nft/market-place/"><span class=""> Market Place </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/nft/nft-details/"><span class=""> NFT Details </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/nft/create-nft/"><span class=""> Create NFT </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/nft/wallet-integration/"><span class="">  Wallet Integration </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/nft/live-auction/"><span class=""> Live Auction </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M128,144a191.14,191.14,0,0,1-96-25.68h0V200a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8V118.31A191.08,191.08,0,0,1,128,144Z" opacity="0.2"></path><line x1="112" y1="112" x2="144" y2="112" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><rect x="32" y="64" width="192" height="144" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><path d="M168,64V48a16,16,0,0,0-16-16H104A16,16,0,0,0,88,48V64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M224,118.31A191.09,191.09,0,0,1,128,144a191.14,191.14,0,0,1-96-25.68" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg></div></span><span class=""> Jobs <span> <span class="badge bg-success-transparent ms-2 badge">8</span> </span></span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/jobs/dashboard/"><span class=""> Dashboard </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/jobs/job-details/"><span class=""> Job Details </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/jobs/search-company/"><span class=""> Search Company </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/jobs/search-jobs/"><span class=""> Search Jobs </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/jobs/job-post/"><span class="">  Job Post </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/jobs/jobs-list/"><span class="">  Jobs List </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/jobs/search-candidate/"><span class="">  Search Candidate </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/jobs/candidate-details/"><span class=""> Candidate Details </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/podcast/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="88" y="24" width="80" height="144" rx="40" opacity="0.2"></rect><rect x="88" y="24" width="80" height="144" rx="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="128" y1="200" x2="128" y2="240" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M200,128a72,72,0,0,1-144,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> Podcast </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/social-media/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M163.94,80.11h0A71.83,71.83,0,0,1,168,104h0a72,72,0,0,1-72,72H92.1A72,72,0,0,0,160,224h64a8,8,0,0,0,8-8V152A72,72,0,0,0,163.94,80.11Z" opacity="0.2"></path><path d="M96,176H32a8,8,0,0,1-8-8V104A72,72,0,0,1,96,32h0a72,72,0,0,1,72,72h0A72,72,0,0,1,96,176Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M92.1,176A72,72,0,0,0,160,224h64a8,8,0,0,0,8-8V152a72,72,0,0,0-68.06-71.89" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> Social Media </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/school/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polygon points="120 168 192 168 192 80 64 80 64 200 120 200 120 168" opacity="0.2"></polygon><path d="M32,200V56a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="16" y1="200" x2="240" y2="200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="120 200 120 168 192 168 192 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><polyline points="64 200 64 80 192 80 192 136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg><span class=""> School </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/medical/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polygon points="56 128 96 40 160 208 200 128 56 128" opacity="0.2"></polygon><polyline points="24 128 56 128 96 40 160 208 200 128 232 128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg><span class=""> Medical </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/dashboards/pos-system/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M24,88H232L216.93,201.06A8,8,0,0,1,209,208H47a8,8,0,0,1-7.93-6.94Z" opacity="0.2"></path><line x1="128" y1="120" x2="128" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="184 88 128 24 72 88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="180.8" y1="120" x2="175.2" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="75.2" y1="120" x2="80.8" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M24,88H232L216.93,201.06A8,8,0,0,1,209,208H47a8,8,0,0,1-7.93-6.94Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> POS System </span></a></li>
+                                </ul>
+                            </li>
+                            <li class=" slide__category       "><span class="category-name">WEB APPS</span></li>
+                            <li class="   slide has-sub     ">
+                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="48" y="48" width="64" height="64" rx="8" opacity="0.2"></rect><rect x="144" y="48" width="64" height="64" rx="8" opacity="0.2"></rect><rect x="48" y="144" width="64" height="64" rx="8" opacity="0.2"></rect><rect x="144" y="144" width="64" height="64" rx="8" opacity="0.2"></rect><rect x="144" y="144" width="64" height="64" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><rect x="48" y="48" width="64" height="64" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><rect x="144" y="48" width="64" height="64" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><rect x="48" y="144" width="64" height="64" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect></svg></div></span><span class="side-menu__label"> Applications </span></a>
+                                <ul class="slide-menu child1
+
+                                    " style="display: none;">
+                                    <li class="slide side-menu__label1"><a href="#!">Applications  </a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/applications/chat/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="12"></circle><circle cx="84" cy="128" r="12"></circle><circle cx="172" cy="128" r="12"></circle><path d="M45.15,230.11A8,8,0,0,1,32,224V64a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V192a8,8,0,0,1-8,8H80Z" opacity="0.2"></path><path d="M45.15,230.11A8,8,0,0,1,32,224V64a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V192a8,8,0,0,1-8,8H80Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> Chat </span></a></li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polygon points="224 56 128 144 32 56 224 56" opacity="0.2"></polygon><path d="M32,56H224a0,0,0,0,1,0,0V192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V56A0,0,0,0,1,32,56Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><polyline points="224 56 128 144 32 56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg></div></span><span class=""> Email </span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/applications/email/mail-app/"><span class=""> Mail-App </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/applications/email/mail-settings/"><span class=""> Mail-Settings </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/applications/file-manager/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M98.34,50.34,128,80H32V56a8,8,0,0,1,8-8H92.69A8,8,0,0,1,98.34,50.34Z" opacity="0.2"></path><path d="M216.89,208H39.38A7.4,7.4,0,0,1,32,200.62V80H216a8,8,0,0,1,8,8V200.89A7.11,7.11,0,0,1,216.89,208Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M32,80V56a8,8,0,0,1,8-8H92.69a8,8,0,0,1,5.65,2.34L128,80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> File Manager </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/applications/full-calendar/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M40,88H216V48a8,8,0,0,0-8-8H48a8,8,0,0,0-8,8Z" opacity="0.2"></path><rect x="40" y="40" width="176" height="176" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="176" y1="24" x2="176" y2="56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="80" y1="24" x2="80" y2="56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="40" y1="88" x2="216" y2="88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="88 128 104 120 104 184" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><path d="M138.14,128a16,16,0,1,1,26.64,17.63L136,184h32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> Full Calendar </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/applications/gallery/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M64,128.69l38.34-38.35a8,8,0,0,1,11.32,0L163.31,140,189,114.34a8,8,0,0,1,11.31,0L224,138.06V56a8,8,0,0,0-8-8H72a8,8,0,0,0-8,8Z" opacity="0.2"></path><rect x="64" y="48" width="160" height="128" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><circle cx="172" cy="84" r="12"></circle><path d="M64,128.69l38.34-38.35a8,8,0,0,1,11.32,0L163.31,140,189,114.34a8,8,0,0,1,11.31,0L224,138.06" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M192,176v24a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V88a8,8,0,0,1,8-8H64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> Gallery </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/applications/sweet-alerts/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="52.13" y="52.13" width="151.73" height="151.73" rx="7.95" transform="translate(-53.02 128) rotate(-45)" opacity="0.2"></rect><line x1="128" y1="136" x2="128" y2="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><circle cx="128" cy="172" r="12"></circle><rect x="52.13" y="52.13" width="151.73" height="151.73" rx="7.95" transform="translate(-53.02 128) rotate(-45)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect></svg><span class=""> Sweet Alerts </span></a></li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M216,56v64H160V56ZM40,208a8,8,0,0,0,8,8H88a8,8,0,0,0,8-8V120H40Z" opacity="0.2"></path><path d="M216,48H40a8,8,0,0,0-8,8V208a16,16,0,0,0,16,16H88a16,16,0,0,0,16-16V160h48v16a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V56A8,8,0,0,0,216,48Zm-8,64H168V64h40ZM88,64v48H48V64Zm0,144H48V128H88Zm16-64V64h48v80Zm64,32V128h40v48Z"></path></svg></div></span><span class=""> Task </span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/applications/task/kanban-board/"><span class=""> Kanban Board </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/applications/task/list-view/"><span class=""> List View </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/applications/to-do-list/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="128" y="64" width="88" height="128" opacity="0.2"></rect><line x1="128" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="128" y1="64" x2="216" y2="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="128" y1="192" x2="216" y2="192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="40 64 56 80 88 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><polyline points="40 128 56 144 88 112" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><polyline points="40 192 56 208 88 176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg><span class=""> To Do List </span></a></li>
+                                </ul>
+                            </li>
+                            <li class="   slide has-sub     ">
+                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polygon points="32 80 128 136 224 80 128 24 32 80" opacity="0.2"></polygon><polyline points="32 176 128 232 224 176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><polyline points="32 128 128 184 224 128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><polygon points="32 80 128 136 224 80 128 24 32 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polygon></svg></div></span><span class="side-menu__label"> Nested Menu </span></a>
+                                <ul class="slide-menu child1
+
+                                    " style="display: none;">
+                                    <li class="slide side-menu__label1"><a href="#!">Nested Menu  </a></li>
+                                    <li class=" slide    "><a class="side-menu__item" href="#!"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="32" y="80" width="160" height="128" rx="8" opacity="0.2"></rect><rect x="32" y="80" width="160" height="128" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><path d="M64,48H216a8,8,0,0,1,8,8V176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>Nested-1</a></li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="40" y="96" width="176" height="112" rx="8" opacity="0.2"></rect><rect x="40" y="96" width="176" height="112" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="56" y1="64" x2="200" y2="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="72" y1="32" x2="184" y2="32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg></div></span><span class=""> Nested-2 </span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class=" slide    "><a class="side-menu__item" href="#!">Nested-2-1</a></li>
+                                            <li class=" slide    "><a class="side-menu__item" href="#!">Nested-2-2</a></li>
+                                            <li class=" slide    "><a class="side-menu__item" href="#!">Nested-2-3</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class=" slide__category       "><span class="category-name">PAGES</span></li>
+                            <li class="   slide has-sub     ">
+                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polygon points="152 32 152 88 208 88 152 32" opacity="0.2"></polygon><path d="M200,224H56a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96l56,56V216A8,8,0,0,1,200,224Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><polyline points="152 32 152 88 208 88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg></div></span><span class="side-menu__label"> Pages </span></a>
+                                <ul class="slide-menu child1
+
+                                    " style="display: none;">
+                                    <li class="slide side-menu__label1"><a href="#!">Pages  </a></li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M128,128V48H48a8,8,0,0,0-8,8v56a146.29,146.29,0,0,0,.87,16Z" opacity="0.2"></path><path d="M128,128V232s78.06-21.3,87.13-104Z" opacity="0.2"></path><path d="M216,112V56a8,8,0,0,0-8-8H48a8,8,0,0,0-8,8v56c0,96,88,120,88,120S216,208,216,112Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="128" y1="232" x2="128" y2="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="40.86" y1="128" x2="215.14" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg></div></span><span class="">  Authentication </span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/coming-soon/"><span class=""> Coming Soon </span></a></li>
+                                            <li class="   slide has-sub  ">
+                                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div></div></span><span class=""> Create Password </span></a>
+                                                <ul class="slide-menu child3
+
+                                                    " style="display: none;">
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/create-password/basic/"><span class=""> Basic </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/create-password/cover/"><span class=""> Cover </span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="   slide has-sub  ">
+                                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div></div></span><span class=""> Lock Screen </span></a>
+                                                <ul class="slide-menu child3
+
+                                                    " style="display: none;">
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/lock-screen/basic/"><span class=""> Basic </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/lock-screen/cover/"><span class=""> Cover </span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="   slide has-sub  ">
+                                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div></div></span><span class=""> Reset Password </span></a>
+                                                <ul class="slide-menu child3
+
+                                                    " style="display: none;">
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/reset-password/basic/"><span class=""> Basic </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/reset-password/cover/"><span class=""> Cover </span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="   slide has-sub  ">
+                                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div></div></span><span class=""> Sign Up </span></a>
+                                                <ul class="slide-menu child3
+
+                                                    " style="display: none;">
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/sign-up/basic/"><span class=""> Basic </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/sign-up/cover/"><span class=""> Cover </span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="   slide has-sub  ">
+                                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div></div></span><span class=""> Sign In </span></a>
+                                                <ul class="slide-menu child3
+
+                                                    " style="display: none;">
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/sign-in/basic/"><span class=""> Basic </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/sign-in/cover/"><span class=""> Cover </span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="   slide has-sub  ">
+                                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div></div></span><span class=""> Two Step Verification </span></a>
+                                                <ul class="slide-menu child3
+
+                                                    " style="display: none;">
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/two-step-verification/basic/"><span class=""> Basic </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/two-step-verification/cover/"><span class=""> Cover </span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/under-maintainance/"><span class=""> Under Maintainance </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" opacity="0.2"></circle><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="16"></circle><line x1="128" y1="136" x2="128" y2="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><circle cx="128" cy="172" r="12"></circle></svg></div></span><span class=""> Error </span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/error/401-error/"><span class=""> 401-Error </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/error/404-error/"><span class=""> 404-Error </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/authentication/error/500-error/"><span class=""> 500-Error </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M32,96H224V56a8,8,0,0,0-8-8H40a8,8,0,0,0-8,8Z" opacity="0.2"></path><rect x="32" y="48" width="192" height="160" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="32" y1="96" x2="224" y2="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg></div></span><span class=""> Blog </span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/blog/blog/"><span class=""> Blog </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/blog/blog-details/"><span class=""> Blog-Details </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/blog/create-blog/"><span class=""> Create-Blog </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/empty/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="88" opacity="0.2"></circle><circle cx="128" cy="128" r="88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><line x1="208" y1="40" x2="48" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg><span class=""> Empty </span></a></li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polygon points="152 32 152 88 208 88 152 32" opacity="0.2"></polygon><path d="M200,224H56a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96l56,56V216A8,8,0,0,1,200,224Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><polyline points="152 32 152 88 208 88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="96" y1="136" x2="160" y2="136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="96" y1="168" x2="160" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg></div></span><span class=""> Forms </span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/form-advanced/"><span class=""> Form Advanced </span></a></li>
+                                            <li class="   slide has-sub  ">
+                                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div></div></span><span class=""> Form Elements </span></a>
+                                                <ul class="slide-menu child3
+
+                                                    " style="display: none;">
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/form-elements/inputs/"><span class=""> Inputs </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/form-elements/checks-radios/"><span class=""> Checks &amp; Radios  </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/form-elements/input-group/"><span class=""> Input Group </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/form-elements/form-select/"><span class=""> Form Select </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/form-elements/range-slider/"><span class=""> Range Slider </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/form-elements/input-masks/"><span class=""> Input Masks </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/form-elements/file-uploads/"><span class=""> File Uploads </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/form-elements/date-time-picker/"><span class=""> Date,Time Picker </span></a></li>
+                                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/form-elements/color-picker/"><span class=""> Color Pickers </span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/floating-labels/"><span class=""> Floating Labels </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/form-layouts/"><span class=""> Form Layouts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/form-wizards/"><span class=""> Form Wizards </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/sun-editor/"><span class=""> Sun Editor </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/validation/"><span class=""> Validation </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/forms/select2/"><span class=""> Select2 </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/faqs/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" opacity="0.2"></circle><circle cx="128" cy="180" r="12"></circle><path d="M128,144v-8c17.67,0,32-12.54,32-28s-14.33-28-32-28S96,92.54,96,108v4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle></svg><span class=""> FAQ's </span></a></li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M168,200V104h56v88a8,8,0,0,1-8,8Z" opacity="0.2"></path><path d="M64,56H40A16,16,0,0,0,24,72h0A16,16,0,0,0,40,88H56a16,16,0,0,1,16,16h0a16,16,0,0,1-16,16H28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="48" y1="48" x2="48" y2="56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="48" y1="120" x2="48" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M96,56H224V192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V152" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="104" y1="104" x2="224" y2="104" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="80" y1="152" x2="224" y2="152" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="168" y1="104" x2="168" y2="200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg></div></span><span class=""> Invoice </span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/invoice/create-invoice/"><span class=""> Create Invoice </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/invoice/invoice-details/"><span class=""> Invoice Details </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/invoice/invoice-list/"><span class=""> Invoice List </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/landing/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M41.85,147.24a8,8,0,0,0-1.66,6.86l12.36,55.63a8,8,0,0,0,12.81,4.51L94.81,192C76.7,161.43,71,134.25,72.16,110.91Z" opacity="0.2"></path><path d="M183.84,110.91c1.21,23.34-4.54,50.52-22.65,81.09l29.45,22.24a8,8,0,0,0,12.81-4.51l12.36-55.63a8,8,0,0,0-1.66-6.86Z" opacity="0.2"></path><line x1="144" y1="224" x2="112" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><circle cx="128" cy="100" r="12"></circle><path d="M94.81,192C37.52,95.32,103.87,32.53,123.09,17.68a8,8,0,0,1,9.82,0C152.13,32.53,218.48,95.32,161.19,192Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M183.84,110.88l30.31,36.36a8,8,0,0,1,1.66,6.86l-12.36,55.63a8,8,0,0,1-12.81,4.51L161.19,192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M72.16,110.88,41.85,147.24a8,8,0,0,0-1.66,6.86l12.36,55.63a8,8,0,0,0,12.81,4.51L94.81,192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> Landing </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/pricing/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M128,128h24a40,40,0,0,1,0,80H128Z" opacity="0.2"></path><path d="M128,48H112a40,40,0,0,0,0,80h16Z" opacity="0.2"></path><line x1="128" y1="24" x2="128" y2="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="128" y1="208" x2="128" y2="232" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M184,88a40,40,0,0,0-40-40H112a40,40,0,0,0,0,80h40a40,40,0,0,1,0,80H104a40,40,0,0,1-40-40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> Pricing </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/profile/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M128,32A96,96,0,0,0,63.8,199.38h0A72,72,0,0,1,128,160a40,40,0,1,1,40-40,40,40,0,0,1-40,40,72,72,0,0,1,64.2,39.37A96,96,0,0,0,128,32Z" opacity="0.2"></path><path d="M63.8,199.37a72,72,0,0,1,128.4,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><circle cx="128" cy="120" r="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle></svg><span class=""> Profile </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/profile-settings/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M205.31,71.08a16,16,0,0,1-20.39-20.39A96,96,0,0,0,63.8,199.38h0A72,72,0,0,1,128,160a40,40,0,1,1,40-40,40,40,0,0,1-40,40,72,72,0,0,1,64.2,39.37A96,96,0,0,0,205.31,71.08Z" opacity="0.2"></path><line x1="200" y1="40" x2="200" y2="28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><circle cx="200" cy="56" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><line x1="186.14" y1="48" x2="175.75" y2="42" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="186.14" y1="64" x2="175.75" y2="70" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="200" y1="72" x2="200" y2="84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="213.86" y1="64" x2="224.25" y2="70" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="213.86" y1="48" x2="224.25" y2="42" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><circle cx="128" cy="120" r="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><path d="M63.8,199.37a72,72,0,0,1,128.4,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M222.67,112A95.92,95.92,0,1,1,144,33.33" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> Profile Settings </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/testimonials/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M105.07,192l16,28a8,8,0,0,0,13.9,0l16-28H216a8,8,0,0,0,8-8V56a8,8,0,0,0-8-8H40a8,8,0,0,0-8,8V184a8,8,0,0,0,8,8Z" opacity="0.2"></path><line x1="96" y1="104" x2="160" y2="104" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="96" y1="136" x2="160" y2="136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M105.07,192l16,28a8,8,0,0,0,13.9,0l16-28H216a8,8,0,0,0,8-8V56a8,8,0,0,0-8-8H40a8,8,0,0,0-8,8V184a8,8,0,0,0,8,8Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> Testimonials </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/search/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="112" cy="112" r="80" opacity="0.2"></circle><circle cx="112" cy="112" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><line x1="168.57" y1="168.57" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="80" y1="112" x2="144" y2="112" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="112" y1="80" x2="112" y2="144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg><span class=""> Search </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/team/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="144" r="40" opacity="0.2"></circle><circle cx="64" cy="88" r="32" opacity="0.2"></circle><circle cx="192" cy="88" r="32" opacity="0.2"></circle><path d="M192,120a59.91,59.91,0,0,1,48,24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M16,144a59.91,59.91,0,0,1,48-24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="128" cy="144" r="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><path d="M72,216a65,65,0,0,1,112,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M161,80a32,32,0,1,1,31,40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M64,120A32,32,0,1,1,95,80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> Team </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/terms-conditions/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polygon points="152 32 152 88 208 88 152 32" opacity="0.2"></polygon><path d="M200,224H56a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96l56,56V216A8,8,0,0,1,200,224Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><polyline points="152 32 152 88 208 88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="96" y1="136" x2="160" y2="136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="96" y1="168" x2="160" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg><span class=""> Terms &amp; Conditions </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/pages/timeline/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><polygon points="240 160 176 200 176 120 240 160" opacity="0.2"></polygon><line x1="40" y1="64" x2="216" y2="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="40" y1="128" x2="136" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="40" y1="192" x2="136" y2="192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polygon points="240 160 176 200 176 120 240 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polygon></svg><span class=""> Timeline </span></a></li>
+                                </ul>
+                            </li>
+                            <li class=" slide__category       "><span class="category-name">GENERAL</span></li>
+                            <li class="   slide has-sub     ">
+                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="99.72" y="35.72" width="56.57" height="56.57" transform="translate(-7.76 109.25) rotate(-45)" opacity="0.2"></rect><rect x="99.72" y="163.72" width="56.57" height="56.57" transform="translate(-98.27 146.75) rotate(-45)" opacity="0.2"></rect><rect x="163.72" y="99.72" width="56.57" height="56.57" transform="translate(-34.27 173.25) rotate(-45)" opacity="0.2"></rect><rect x="35.72" y="99.72" width="56.57" height="56.57" transform="translate(-71.76 82.75) rotate(-45)" opacity="0.2"></rect><rect x="99.72" y="35.72" width="56.57" height="56.57" transform="translate(-7.76 109.25) rotate(-45)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><rect x="99.72" y="163.72" width="56.57" height="56.57" transform="translate(-98.27 146.75) rotate(-45)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><rect x="163.72" y="99.72" width="56.57" height="56.57" transform="translate(-34.27 173.25) rotate(-45)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><rect x="35.72" y="99.72" width="56.57" height="56.57" transform="translate(-71.76 82.75) rotate(-45)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect></svg></div></span><span class="side-menu__label"> General </span></a>
+                                <ul class="slide-menu child1
+
+                                    " style="display: none;">
+                                    <li class="slide side-menu__label1"><a href="#!">General  </a></li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M216,96v96a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V96Z" opacity="0.2"></path><rect x="24" y="56" width="208" height="40" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><path d="M216,96v96a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="104" y1="136" x2="152" y2="136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg></div></span><span class=""> Ui Elements </span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/alerts/"><span class=""> Alerts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/badge/"><span class=""> Badge </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/breadcrumb/"><span class=""> Breadcrumb </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/buttons/"><span class=""> Buttons </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/button-group/"><span class=""> Button Group </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/cards/"><span class=""> Cards </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/dropdowns/"><span class=""> Dropdowns </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/images-figures/"><span class=""> Images &amp; Figures </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/links-interactions/"><span class=""> Links &amp; Interactions </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/list-group/"><span class=""> List Group </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/navs-tabs/"><span class=""> Navs &amp; Tabs </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/object-fit/"><span class=""> Object Fit </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/pagination/"><span class=""> Pagination </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/popovers/"><span class=""> Popovers </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/progress/"><span class=""> Progress </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/spinners/"><span class=""> Spinners </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/toasts/"><span class=""> Toasts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/tooltips/"><span class=""> Tooltips </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/ui-elements/typography/"><span class=""> Typography </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M128,192a24,24,0,0,1,24-24h46.21a24,24,0,0,0,23.4-18.65A96.48,96.48,0,0,0,224,127.17c-.45-52.82-44.16-95.7-97-95.17a96,96,0,0,0-95,96c0,41.81,26.73,73.44,64,86.61A24,24,0,0,0,128,192Z" opacity="0.2"></path><path d="M128,192a24,24,0,0,1,24-24h46.21a24,24,0,0,0,23.4-18.65A96.48,96.48,0,0,0,224,127.17c-.45-52.82-44.16-95.7-97-95.17a96,96,0,0,0-95,96c0,41.81,26.73,73.44,64,86.61A24,24,0,0,0,128,192Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="128" cy="76" r="12"></circle><circle cx="84" cy="100" r="12"></circle><circle cx="84" cy="156" r="12"></circle><circle cx="172" cy="100" r="12"></circle></svg></div></span><span class=""> Utilities </span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/utilities/avatars/"><span class=""> Avatars </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/utilities/borders/"><span class=""> Borders </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/utilities/breakpoints/"><span class=""> Breakpoints </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/utilities/colors/"><span class=""> Colors </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/utilities/columns/"><span class=""> Columns </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/utilities/css-grid/"><span class=""> Css Grid </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/utilities/flex/"><span class=""> Flex </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/utilities/gutters/"><span class=""> Gutters </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/utilities/helpers/"><span class=""> Helpers </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/utilities/position/"><span class=""> Position </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/utilities/additional-content/"><span class=""> Additional Content </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="40" y="144" width="176" height="64" rx="8" opacity="0.2"></rect><rect x="40" y="48" width="176" height="64" rx="8" opacity="0.2"></rect><rect x="40" y="144" width="176" height="64" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><rect x="40" y="48" width="176" height="64" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><circle cx="180" cy="80" r="12"></circle><circle cx="180" cy="176" r="12"></circle></svg></div></span><span class=""> Advanced Ui </span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/advanced-ui/accordions-collapse/"><span class=""> Accordions &amp; collapse </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/advanced-ui/carousel/"><span class=""> Carousel </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/advanced-ui/draggable-cards/"><span class=""> Draggable Cards </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/advanced-ui/media-player/"><span class=""> Media Player </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/advanced-ui/modals-closes/"><span class=""> Modals &amp; Closes </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/advanced-ui/navbar/"><span class=""> Navbar </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/advanced-ui/offcanvas/"><span class=""> Offcanvas </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/advanced-ui/placeholders/"><span class=""> Placeholders </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/advanced-ui/ratings/"><span class=""> Ratings </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/advanced-ui/ribbons/"><span class=""> Ribbons </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/advanced-ui/sortable-js/"><span class=""> Sortable Js </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/advanced-ui/swiper-js/"><span class=""> Swiper JS </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/general/advanced-ui/tour/"><span class=""> Tour </span></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="  slide      "><a class="side-menu__item  " href="/bootstrap/app-router/vyzor-ts/preview/widgets/"><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M208,128v72a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8V128Z" opacity="0.2"></path><rect x="32" y="80" width="192" height="48" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><path d="M208,128v72a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8V128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="128" y1="80" x2="128" y2="208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M176.79,31.21c9.34,9.34,9.89,25.06,0,33.82C159.88,80,128,80,128,80s0-31.88,15-48.79C151.73,21.32,167.45,21.87,176.79,31.21Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M79.21,31.21c-9.34,9.34-9.89,25.06,0,33.82C96.12,80,128,80,128,80s0-31.88-15-48.79C104.27,21.32,88.55,21.87,79.21,31.21Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg></div></span><span class="side-menu__label">widgets </span></a></li>
+                            <li class=" slide__category       "><span class="category-name">MAPS &amp; ICONS</span></li>
+                            <li class="   slide has-sub     ">
+                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M128,32a96,96,0,1,0,96,96A96,96,0,0,0,128,32Zm16,112L80,176l32-64,64-32Z" opacity="0.2"></path><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><polygon points="176 80 112 112 80 176 144 144 176 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polygon></svg></div></span><span class="side-menu__label"> Maps </span></a>
+                                <ul class="slide-menu child1
+
+                                    " style="display: none;">
+                                    <li class="slide side-menu__label1"><a href="#!">Maps  </a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/maps/pigeon-maps/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M184,80c0,56-56,88-56,88S72,136,72,80a56,56,0,0,1,112,0Z" opacity="0.2"></path><circle cx="128" cy="80" r="16"></circle><path d="M184,80c0,56-56,88-56,88S72,136,72,80a56,56,0,0,1,112,0Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M200,155.14c19.72,7.28,32,17.52,32,28.86,0,22.09-46.56,40-104,40S24,206.09,24,184c0-11.34,12.28-21.58,32-28.86" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class=""> Pigeon Maps </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/maps/leaflet-maps/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M63.81,192.19c-47.89-79.81,16-159.62,151.64-151.64C223.43,176.23,143.62,240.08,63.81,192.19Z" opacity="0.2"></path><path d="M63.81,192.19c-47.89-79.81,16-159.62,151.64-151.64C223.43,176.23,143.62,240.08,63.81,192.19Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="160" y1="96" x2="40" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg><span class=""> Leaflet Maps </span></a></li>
+                                </ul>
+                            </li>
+                            <li class="  slide      "><a class="side-menu__item  " href="/bootstrap/app-router/vyzor-ts/preview/icons/"><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M54,40H202a8,8,0,0,1,7.69,5.8L224,96H32L46.34,45.8A8,8,0,0,1,54,40Z" opacity="0.2"></path><path d="M96,96v16a32,32,0,0,1-64,0V96Z" opacity="0.2"></path><path d="M224,96v16a32,32,0,0,1-64,0V96Z" opacity="0.2"></path><polyline points="48 139.59 48 216 208 216 208 139.59" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><path d="M54,40H202a8,8,0,0,1,7.69,5.8L224,96H32L46.34,45.8A8,8,0,0,1,54,40Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M96,96v16a32,32,0,0,1-64,0V96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M160,96v16a32,32,0,0,1-64,0V96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M224,96v16a32,32,0,0,1-64,0V96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg></div></span><span class="side-menu__label">Icons </span></a></li>
+                            <li class=" slide__category       "><span class="category-name">TABLES &amp; CHARTS</span></li>
+                            <li class="   slide has-sub     ">
+                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M32,48H208a16,16,0,0,1,16,16V208a0,0,0,0,1,0,0H32a0,0,0,0,1,0,0V48A0,0,0,0,1,32,48Z" opacity="0.2"></path><polyline points="224 208 32 208 32 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><polyline points="200 72 128 144 96 112 32 176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><polyline points="200 112 200 72 160 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg></div></span><span class="side-menu__label"> Charts </span></a>
+                                <ul class="slide-menu child1
+
+                                    " style="display: none;">
+                                    <li class="slide side-menu__label1"><a href="#!">Charts  </a></li>
+                                    <li class="   slide has-sub  ">
+                                        <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="152" y="40" width="56" height="168" opacity="0.2"></rect><polyline points="48 208 48 136 96 136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="224" y1="208" x2="32" y2="208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="96 208 96 88 152 88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><polyline points="152 208 152 40 208 40 208 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg></div></span><span class=""> Apex Charts </span></a>
+                                        <ul class="slide-menu child2
+
+                                            " style="display: none;">
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/line-chart/"><span class=""> Line Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/area-chart/"><span class=""> Area Charts  </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/column-chart/"><span class=""> Column Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/bar-chart/"><span class=""> Bar Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/mixed-chart/"><span class=""> Mixed Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/range-area-chart/"><span class=""> Range Area Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/timeline-chart/"><span class=""> Timeline Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/funnel-chart/"><span class=""> Funnel Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/candlestick-chart/"><span class=""> CandleStick Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/boxplot-chart/"><span class=""> Boxplot Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/bubble-chart/"><span class=""> Bubble Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/scatter-chart/"><span class=""> Scatter Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/heatmap-chart/"><span class=""> Heatmap Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/treemap-chart/"><span class=""> Treemap Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/pie-chart/"><span class=""> Pie Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/radialbar-chart/"><span class=""> Radialbar Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/radar-chart/"><span class=""> Radar Charts </span></a></li>
+                                            <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/apex-charts/polararea-chart/"><span class=""> Polararea Charts </span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/chartjs-charts/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M128,128,44.86,176h0A96,96,0,0,1,128,32Z" opacity="0.2"></path><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><line x1="128" y1="128" x2="128" y2="32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="211.14" y1="80" x2="44.86" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg><span class=""> Chartjs Charts </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/charts/echart-charts/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M128,224a96,96,0,0,0,0-192V88a40,40,0,0,1,0,80Z" opacity="0.2"></path><line x1="128" y1="168" x2="128" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M44.85,80A96,96,0,1,0,128,32V88a40,40,0,1,1-34.65,20Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="89.35" y1="138.36" x2="35.25" y2="152.85" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg><span class=""> Echart Charts </span></a></li>
+                                </ul>
+                            </li>
+                            <li class="   slide has-sub     ">
+                                <a class="side-menu__item " href="#!"><i class="ri-arrow-right-s-line side-menu__angle"></i><span class=""><div><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="32" y="104" width="56" height="96" opacity="0.2"></rect><path d="M32,56H224a0,0,0,0,1,0,0V192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V56A0,0,0,0,1,32,56Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="32" y1="104" x2="224" y2="104" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="32" y1="152" x2="224" y2="152" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="88" y1="104" x2="88" y2="200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg></div></span><span class="side-menu__label"> Tables </span></a>
+                                <ul class="slide-menu child1
+
+                                    " style="display: none;">
+                                    <li class="slide side-menu__label1"><a href="#!">Tables  </a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/tables/tables/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="48" y="48" width="160" height="160" rx="8" opacity="0.2"></rect><rect x="48" y="48" width="160" height="160" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="128" y1="48" x2="128" y2="208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="48" y1="128" x2="208" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg><span class=""> Tables </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/tables/grid-js-tables/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="32" y="56" width="192" height="144" rx="8" opacity="0.2"></rect><rect x="32" y="56" width="192" height="144" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="96" y1="56" x2="96" y2="200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="160" y1="56" x2="160" y2="200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="32" y1="104" x2="224" y2="104" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="32" y1="152" x2="224" y2="152" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg><span class=""> Grid JS Tables </span></a></li>
+                                    <li class="  slide   "><a class="side-menu__item " href="/bootstrap/app-router/vyzor-ts/preview/tables/data-tables/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu-doublemenu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M40,128h88a0,0,0,0,1,0,0v88a0,0,0,0,1,0,0H48a8,8,0,0,1-8-8V128A0,0,0,0,1,40,128Z" opacity="0.2"></path><path d="M128,40h80a8,8,0,0,1,8,8v80a0,0,0,0,1,0,0H128a0,0,0,0,1,0,0V40A0,0,0,0,1,128,40Z" opacity="0.2"></path><rect x="40" y="40" width="176" height="176" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="128" y1="40" x2="128" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="216" y1="128" x2="40" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg><span class=""> Data Tables </span></a></li>
+                                </ul>
+                            </li>
+                            <li><ul class="slide-menu child1 doublemenu_slide-menu"><li class="text-center p-3 text-fixed-white"><div class="doublemenu_slide-menu-background"><img alt="" loading="lazy" decoding="async" data-nimg="fill" class="" src="/bootstrap/app-router/vyzor-ts/preview/assets/images/media/backgrounds/13.png" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"></div><div class="d-flex flex-column align-items-center justify-content-between h-100"><div class="fs-15 fw-medium">Dashboard AI Helper</div><div><span class="avatar avatar-lg p-1"><img alt="" loading="lazy" decoding="async" data-nimg="fill" class="" src="/bootstrap/app-router/vyzor-ts/preview/assets/images/media/media-80.png" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"><span class="top-right"></span><span class="bottom-right"></span></span></div><div class="d-grid w-100"><button class="btn btn-white border-0">Try Now</button></div></div></li></ul></li>
+                        </ul>
+                        <ul class="doublemenu_bottom-menu main-menu mb-0 border-top"><li class="slide"><a href="#!;" class="side-menu__item layout-setting-doublemenu"><span class="light-layout"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M108.11,28.11A96.09,96.09,0,0,0,227.89,147.89,96,96,0,1,1,108.11,28.11Z" opacity="0.2"></path><path d="M108.11,28.11A96.09,96.09,0,0,0,227.89,147.89,96,96,0,1,1,108.11,28.11Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg></span><span class="dark-layout"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="56" opacity="0.2"></circle><line x1="128" y1="40" x2="128" y2="32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><circle cx="128" cy="128" r="56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><line x1="64" y1="64" x2="56" y2="56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="64" y1="192" x2="56" y2="200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="192" y1="64" x2="200" y2="56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="192" y1="192" x2="200" y2="200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="40" y1="128" x2="32" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="128" y1="216" x2="128" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="216" y1="128" x2="224" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg></span><span class="side-menu__label">Theme Settings</span></a></li><li class="slide"><a class="side-menu__item" href="/bootstrap/app-router/vyzor-ts/preview/authentication/sign-in/cover/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M48,40H208a16,16,0,0,1,16,16V200a16,16,0,0,1-16,16H48a0,0,0,0,1,0,0V40A0,0,0,0,1,48,40Z" opacity="0.2"></path><polyline points="112 40 48 40 48 216 112 216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="112" y1="128" x2="224" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="184 88 224 128 184 168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg><span class="side-menu__label">Logout</span></a></li><li class="slide"><a class="side-menu__item" href="/bootstrap/app-router/vyzor-ts/preview/pages/profile-settings/"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M205.31,71.08a16,16,0,0,1-20.39-20.39A96,96,0,0,0,63.8,199.38h0A72,72,0,0,1,128,160a40,40,0,1,1,40-40,40,40,0,0,1-40,40,72,72,0,0,1,64.2,39.37A96,96,0,0,0,205.31,71.08Z" opacity="0.2"></path><line x1="200" y1="40" x2="200" y2="28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><circle cx="200" cy="56" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><line x1="186.14" y1="48" x2="175.75" y2="42" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="186.14" y1="64" x2="175.75" y2="70" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="200" y1="72" x2="200" y2="84" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="213.86" y1="64" x2="224.25" y2="70" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="213.86" y1="48" x2="224.25" y2="42" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><circle cx="128" cy="120" r="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><path d="M63.8,199.37a72,72,0,0,1,128.4,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M222.67,112A95.92,95.92,0,1,1,144,33.33" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg><span class="side-menu__label">Profile Settings</span></a></li><li class="slide"><a class="side-menu__item p-1 rounded-circle mb-0" href="/bootstrap/app-router/vyzor-ts/preview/pages/profile/"><span class="avatar avatar-md avatar-rounded"><img alt="" loading="lazy" decoding="async" data-nimg="fill" class="" src="/bootstrap/app-router/vyzor-ts/preview/assets/images/faces/10.jpg" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"></span></a></li></ul><div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path></svg></div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div><div class="simplebar-placeholder" style="width: 63px; height: 888px;"></div>
+</div><div class="simplebar-track simplebar-horizontal" style="visibility: visible;"><div class="simplebar-scrollbar" style="width: 25px; transform: translate3d(0px, 0px, 0px); display: block;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div>
+</div>
+</aside><div class="main-content app-content">
+<div class="container-fluid page-container main-body-container">
+    <div class="mb-3 page-header-breadcrumb"><div class="d-flex align-center justify-content-between flex-wrap gap-2"><h1 class="page-title fw-medium fs-18 mb-0">Products</h1><ol class="breadcrumb mb-0"><li class="breadcrumb-item"><a href="#!">Dashboards</a></li><li class="breadcrumb-item"><a href="#!">Ecommerce</a></li><li class="breadcrumb-item active" aria-current="page">Products</li></ol></div></div><div class="row">
+    <div class="col-xl-12">
+        <div class="custom-card card">
+           <div class="p-0 card-body">
+            <div id="product-table" class="grid-card-table">
+                <div>
+                    <div role="complementary" class="gridjs gridjs-container" style="width: 100%;">
+                        <div class="gridjs-wrapper" style="height: auto;">
+                            <table role="grid" class="gridjs-table" style="height: auto;">
+                                    
+                                    <thead class="gridjs-thead">
+                                        <tr class="gridjs-tr">
+
+                                            <!-- # -->
+                                            <th data-column-id="#"
+                                                class="gridjs-th gridjs-th-sort"
+                                                tabindex="0"
+                                                style="min-width: 37px; width: 37px;">
+
+                                                <div class="gridjs-th-content">
+                                                    #
+                                                </div>
+
+                                                <button tabindex="-1"
+                                                        aria-label="Sort column ascending"
+                                                        title="Sort column ascending"
+                                                        class="gridjs-sort gridjs-sort-neutral">
+                                                </button>
+                                            </th>
+
+
+                                            <!-- Specialization ID -->
+                                            <th data-column-id="specializationId"
+                                                class="gridjs-th gridjs-th-sort"
+                                                tabindex="0"
+                                                style="min-width: 120px; width: 120px;">
+
+                                                <div class="gridjs-th-content">
+                                                    Specialization ID
+                                                </div>
+
+                                                <button tabindex="-1"
+                                                        aria-label="Sort column ascending"
+                                                        title="Sort column ascending"
+                                                        class="gridjs-sort gridjs-sort-neutral">
+                                                </button>
+                                            </th>
+
+
+                                            <!-- Name -->
+                                            <th data-column-id="name"
+                                                class="gridjs-th gridjs-th-sort"
+                                                tabindex="0"
+                                                style="min-width: 220px; width: 220px;">
+
+                                                <div class="gridjs-th-content">
+                                                    Name
+                                                </div>
+
+                                                <button tabindex="-1"
+                                                        aria-label="Sort column ascending"
+                                                        title="Sort column ascending"
+                                                        class="gridjs-sort gridjs-sort-neutral">
+                                                </button>
+                                            </th>
+
+
+                                          
+                                            
+
+                                            <!-- Status -->
+                                            <th data-column-id="status"
+                                                class="gridjs-th gridjs-th-sort"
+                                                tabindex="0"
+                                                style="min-width: 100px; width: 100px;">
+
+                                                <div class="gridjs-th-content">
+                                                    Status
+                                                </div>
+
+                                                <button tabindex="-1"
+                                                        aria-label="Sort column ascending"
+                                                        title="Sort column ascending"
+                                                        class="gridjs-sort gridjs-sort-neutral">
+                                                </button>
+                                            </th>
+
+
+                                            <!-- Actions -->
+                                            <th data-column-id="actions"
+                                                class="gridjs-th gridjs-th-sort"
+                                                tabindex="0"
+                                                style="min-width: 120px; width: 120px;">
+
+                                                <div class="gridjs-th-content">
+                                                    Actions
+                                                </div>
+
+                                                <button tabindex="-1"
+                                                        aria-label="Sort column ascending"
+                                                        title="Sort column ascending"
+                                                        class="gridjs-sort gridjs-sort-neutral">
+                                                </button>
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    
+                                   
+                                  
+
+<tbody class="gridjs-tbody">
+
+    @if (Model != null && Model.Any())
+    {
+        foreach (var specialization in Model)
+        {
+            <tr class="gridjs-tr">
+
+                <!-- # -->
+                <td data-column-id="#" class="gridjs-td">
+                    <span>
+                        <input class="form-check-input"
+                               type="checkbox"
+                               id="specialization-@specialization.Id"
+                               value="@specialization.Id"
+                               aria-label="Select specialization">
+                    </span>
+                </td>
+
+                <!-- Specialization ID -->
+                <td data-column-id="specializationId" class="gridjs-td">
+                    <span>
+                        @specialization.Id
+                    </span>
+                </td>
+
+                <!-- Name -->
+                <td data-column-id="name" class="gridjs-td">
+                    <span>
+
+                        <a href="/Admin/Specializations/Edit/@specialization.Id"
+                           class="text-decoration-none">
+
+                            <div class="d-flex align-items-center gap-3">
+
+                                <div class="lh-1">
+                                    <span class="avatar avatar-lg bg-primary-transparent">
+                                        <span class="fw-semibold">
+                                            @if (!string.IsNullOrWhiteSpace(specialization.Name))
+                                            {
+                                                @specialization.Name.Substring(0, 1).ToUpper()
+                                            }
+                                            else
+                                            {
+                                                @:?
+                                            }
+                                        </span>
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <span class="d-block fw-semibold">
+                                        @specialization.Name
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </a>
+
+                    </span>
+                </td>
+
+                <!-- Status -->
+                <td data-column-id="status" class="gridjs-td">
+
+                    @if (specialization.IsActive)
+                    {
+                        <span class="badge bg-success-transparent">
+                            Active
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger-transparent">
+                            Inactive
+                        </span>
+                    }
+
+                </td>
+
+                <!-- Actions -->
+                <td data-column-id="actions" class="gridjs-td">
+
+                    <span>
+
+                        <!-- Edit -->
+                        <a href="/Admin/Specializations/Edit/@specialization.Id"
+                           class="btn btn-sm btn-warning-transparent"
+                           title="Edit">
+
+                            <i class="ri-edit-line"></i>
+
+                        </a>
+
+                        <!-- Delete -->
+                        <form action="/Admin/Specializations/Delete/@specialization.Id"
+                              method="post"
+                              class="d-inline">
+
+                            @Html.AntiForgeryToken()
+
+                            <button type="submit"
+                                    class="btn btn-sm btn-danger-transparent"
+                                    title="Delete"
+                                    onclick="return confirm('Are you sure you want to delete this specialization?');">
+
+                                <i class="ri-delete-bin-line"></i>
+
+                            </button>
+                            
+<a href="/Admin/Specializations/Create"
+   class="btn btn-primary">
+
+    <i class="ri-add-line me-1"></i>
+
+    Add Specialization
+
+</a>
+
+
+                        </form>
+
+                    </span>
+
+                </td>
+
+            </tr>
+        }
+    }
+    else
+    {
+        <tr class="gridjs-tr">
+
+            <td colspan="5"
+                class="gridjs-td text-center py-5">
+
+                <span class="text-muted">
+                    No specializations found.
+                </span>
+
+            </td>
+
+        </tr>
+    }
+
+</tbody>
+
+
+
+
+                                </table>
+                            </div><div class="gridjs-footer"></div><div id="gridjs-temp" class="gridjs-temp"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div><footer class="footer mt-auto py-3 text-center"><div class="container"><span class="text-muted"> Copyright © <span id="year"> 2025 </span> <a class="text-dark fw-medium" href="#!;">Vyzor</a>. Designed with <span class="bi bi-heart-fill text-danger"></span> by <a target="_blank" href="https://spruko.com/"><span class="fw-medium text-primary">Spruko</span></a> All rights reserved</span></div></footer>
+</div>
