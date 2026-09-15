@@ -25,7 +25,9 @@ public interface IAppointmentService
         AppointmentEditDTO dto,
         string? userId,
         CancellationToken cancellationToken = default);
-
+    Task<AppointmentEditDTO?> GetForEditAsync(
+    int id,
+    CancellationToken cancellationToken = default);
     Task ChangeStatusAsync(
         AppointmentStatusDTO dto,
         string? userId,

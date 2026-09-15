@@ -1,0 +1,296 @@
+﻿
+@using Vyzor.Domain.Enums
+@model Vyzor.Application.DTO.Appointment.AppointmentEditDTO
+
+@{
+    Layout = "~/Views/Shared/Dashboard/_DashboardLayout.cshtml";
+
+    var doctors = ViewBag.Doctors as IEnumerable<dynamic>;
+    var patients = ViewBag.Patients as IEnumerable<dynamic>;
+}
+
+<div class="content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row align-items-center">
+
+            <div class="col-sm-12">
+
+                <h3 class="page-title">
+                    Edit Appointment
+                </h3>
+
+                <ul class="breadcrumb">
+
+                    <li class="breadcrumb-item">
+                        <a asp-area="Admin"
+                           asp-controller="Dashboard"
+                           asp-action="Index">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="breadcrumb-item">
+                        <a asp-area="Admin"
+                           asp-controller="Appointments"
+                           asp-action="Index">
+                            Appointments
+                        </a>
+                    </li>
+
+                    <li class="breadcrumb-item active">
+                        Edit
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- /Page Header -->
+    <!-- Appointment Form -->
+    <div class="row">
+
+        <div class="col-lg-8">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h5 class="card-title mb-0">
+                        Appointment Information
+                    </h5>
+                </div>
+
+
+                <div class="card-body">
+
+                    <form asp-area="Admin"
+                          asp-controller="Appointments"
+                          asp-action="Edit"
+                          method="post">
+
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden"
+                               asp-for="Id" />
+
+
+                        <!-- Validation -->
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+
+                        
+                        
+                        <!-- Doctor -->
+                        <div class="mb-3">
+
+                            <label for="DoctorId" class="form-label">
+                                Doctor
+                            </label>
+
+                            <select id="DoctorId"
+                                    name="DoctorId"
+                                    class="form-control"
+                                    style="height: 45px; cursor: pointer;">
+
+                                <option value="">-- Select doctor --</option>
+
+                                @foreach (var doctor in (IEnumerable<SelectListItem>)ViewBag.Doctors)
+                                {
+                                    if (doctor.Value == Model.DoctorId.ToString())
+                                    {
+                                        <option value="@doctor.Value" selected>
+                                            @doctor.Text
+                                        </option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@doctor.Value">
+                                            @doctor.Text
+                                        </option>
+                                    }
+                                }
+
+                            </select>
+
+                            <span asp-validation-for="DoctorId"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <!-- Patient -->
+                        <div class="mb-3">
+
+                            <label for="PatientId" class="form-label">
+                                Patient
+                            </label>
+
+                            <select id="PatientId"
+                                    name="PatientId"
+                                    class="form-control"
+                                    style="height: 45px; cursor: pointer;">
+
+                                <option value="">-- Select patient --</option>
+
+                                @foreach (var patient in (IEnumerable<SelectListItem>)ViewBag.Patients)
+                                {
+                                    if (patient.Value == Model.PatientId.ToString())
+                                    {
+                                        <option value="@patient.Value" selected>
+                                            @patient.Text
+                                        </option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@patient.Value">
+                                            @patient.Text
+                                        </option>
+                                    }
+                                }
+
+                            </select>
+
+                            <span asp-validation-for="PatientId"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+                        
+
+
+                        
+
+
+
+                        <!-- Appointment Date -->
+                       
+@{
+    var appointmentDateValue = Model.AppointmentDate == default
+        ? ""
+        : Model.AppointmentDate.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+}
+
+<div class="mb-3">
+    <label asp-for="AppointmentDate"
+           class="form-label">
+        Appointment Date
+        <span class="text-danger">*</span>
+    </label>
+
+    <input type="datetime-local"
+           id="AppointmentDate"
+           name="AppointmentDate"
+           class="form-control"
+           value="@appointmentDateValue"
+           required />
+
+    <span asp-validation-for="AppointmentDate"
+          class="text-danger"></span>
+</div>
+
+
+
+
+
+                        <!-- Status -->
+                        <div class="mb-3">
+
+                            <label asp-for="Status"
+                                   class="form-label">
+
+                                Status
+
+                            </label>
+
+                            <select asp-for="Status"
+                                    class="form-select">
+
+                                <option value="@AppointmentStatus.Scheduled">
+                                    Scheduled
+                                </option>
+
+                                <option value="@AppointmentStatus.Completed">
+                                    Completed
+                                </option>
+
+                                <option value="@AppointmentStatus.Cancelled">
+                                    Cancelled
+                                </option>
+
+                            </select>
+
+                            <span asp-validation-for="Status"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <!-- About -->
+                        <div class="mb-4">
+
+                            <label asp-for="About"
+                                   class="form-label">
+
+                                Notes
+
+                            </label>
+
+                            <textarea asp-for="About"
+                                      class="form-control"
+                                      rows="5"
+                                      maxlength="1000"
+                                      placeholder="Appointment notes...">
+                            </textarea>
+
+                            <span asp-validation-for="About"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <!-- Buttons -->
+                        <div class="d-flex gap-2">
+
+                            <button type="submit"
+                                    class="btn btn-primary">
+
+                                <i class="ri-save-line me-1"></i>
+
+                                Save Changes
+
+                            </button>
+
+
+                            <a asp-area="Admin"
+                               asp-controller="Appointments"
+                               asp-action="Index"
+                               class="btn btn-light">
+
+                                Cancel
+
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
