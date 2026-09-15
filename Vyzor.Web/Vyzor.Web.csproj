@@ -12,6 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Views\Dashboard\" />
     <Folder Include="wwwroot\assets\Vyzor\Новая папка\" />
   </ItemGroup>
 

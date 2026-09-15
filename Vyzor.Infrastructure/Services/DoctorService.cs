@@ -351,191 +351,104 @@ public class DoctorService : IDoctorService
 
 
     public async Task<DoctorEditDTO?> GetForEditAsync(
-        int id,
-        CancellationToken cancellationToken = default)
+ int id,
+ CancellationToken cancellationToken = default)
     {
-
         return await _context.Doctors
-
-            .Include(x => x.Specialization)
-
-            .Where(x => x.Id == id)
-
-
-            .Select(x => new DoctorEditDTO
-            {
-
-                Id = x.Id,
-
-
-                FullName =
-                    x.FullName,
-
-
-                About =
-                    x.About,
-
-
-                ExperienceYears =
-                    x.ExperienceYears,
-
-
-                AppointmentPrice =
-                    x.AppointmentPrice,
-
-
-                ImageUrl =
-                    x.ImageUrl,
-
-
-                SpecializationName =
-                    x.Specialization != null
-                    ? x.Specialization.Name
-                    : ""
-
-            })
-
-
-            .FirstOrDefaultAsync(cancellationToken);
-
+        .AsNoTracking()
+        .Where(x => x.Id == id)
+        .Select(x => new DoctorEditDTO
+        {
+            Id = x.Id,
+            FullName = x.FullName,
+            About = x.About,
+            ExperienceYears = x.ExperienceYears,
+            AppointmentPrice = x.AppointmentPrice,
+            ImageUrl = x.ImageUrl,
+            SpecializationId = x.SpecializationId
+        })
+        .FirstOrDefaultAsync(cancellationToken);
     }
-
-
-
 
 
     public async Task CreateAsync(
-        DoctorEditDTO dto,
-        CancellationToken cancellationToken = default)
+DoctorEditDTO dto,
+CancellationToken cancellationToken = default)
     {
-
-
         var specialization =
-            await _context.Specializations
-
-            .FirstOrDefaultAsync(
-                x => x.Name == dto.SpecializationName,
-                cancellationToken);
-
+        await _context.Specializations
+        .FirstOrDefaultAsync(
+        x => x.Id == dto.SpecializationId,
+        cancellationToken);
 
 
-        if (specialization == null)
-        {
-            throw new Exception(
-                "Specialization not found");
-        }
-
-
+if (specialization == null)
+            throw new Exception("Specialization not found.");
 
         var doctor = new Doctor
         {
+            FullName = dto.FullName,
+            About = dto.About ?? string.Empty,
 
-            FullName =
-                dto.FullName,
+            ExperienceYears = dto.ExperienceYears,
 
+            AppointmentPrice = dto.AppointmentPrice,
 
-            About =
-                dto.About ?? "",
+            ImageUrl = dto.ImageUrl ?? string.Empty,
 
+            SpecializationId = dto.SpecializationId,
 
-            ExperienceYears =
-                dto.ExperienceYears,
+         
+            Clinic = string.Empty,
+            Email = string.Empty,
 
-
-            AppointmentPrice =
-                dto.AppointmentPrice,
-
-
-            ImageUrl =
-                dto.ImageUrl ?? "",
-
-
-            SpecializationId =
-                specialization.Id,
-
-
-            IsActive =
-                true
-
+            
+            Rating = 0,
+            IsActive = true
         };
-
-
 
         _context.Doctors.Add(doctor);
 
+        await _context.SaveChangesAsync(cancellationToken);
 
-        await _context.SaveChangesAsync(
-            cancellationToken);
-
-    }
-
+}
 
 
 
 
     public async Task UpdateAsync(
-        DoctorEditDTO dto,
-        CancellationToken cancellationToken = default)
+     DoctorEditDTO dto,
+     CancellationToken cancellationToken = default)
     {
-
         var doctor =
             await _context.Doctors
-            .FirstOrDefaultAsync(
-                x => x.Id == dto.Id,
-                cancellationToken);
-
-
+                .FirstOrDefaultAsync(
+                    x => x.Id == dto.Id,
+                    cancellationToken);
 
         if (doctor == null)
             return;
 
-
-
         var specialization =
             await _context.Specializations
-
-            .FirstOrDefaultAsync(
-                x => x.Name == dto.SpecializationName,
-                cancellationToken);
-
-
+                .FirstOrDefaultAsync(
+                    x => x.Id == dto.SpecializationId,
+                    cancellationToken);
 
         if (specialization == null)
         {
-            throw new Exception(
-                "Specialization not found");
+            throw new Exception("Specialization not found.");
         }
 
+        doctor.FullName = dto.FullName;
+        doctor.About = dto.About ?? string.Empty;
+        doctor.ExperienceYears = dto.ExperienceYears;
+        doctor.AppointmentPrice = dto.AppointmentPrice;
+        doctor.ImageUrl = dto.ImageUrl ?? string.Empty;
 
+        doctor.SpecializationId = dto.SpecializationId;
 
-        doctor.FullName =
-            dto.FullName;
-
-
-        doctor.About =
-            dto.About ?? "";
-
-
-        doctor.ExperienceYears =
-            dto.ExperienceYears;
-
-
-        doctor.AppointmentPrice =
-            dto.AppointmentPrice;
-
-
-        doctor.ImageUrl =
-            dto.ImageUrl ?? "";
-
-
-        doctor.SpecializationId =
-            specialization.Id;
-
-
-
-        await _context.SaveChangesAsync(
-            cancellationToken);
-
+        await _context.SaveChangesAsync(cancellationToken);
     }
 
 
@@ -543,31 +456,20 @@ public class DoctorService : IDoctorService
 
 
     public async Task DeleteAsync(
-        int id,
-        CancellationToken cancellationToken = default)
+    int id,
+    CancellationToken cancellationToken = default)
     {
-
-        var doctor =
-            await _context.Doctors
-
+        var doctor = await _context.Doctors
             .FirstOrDefaultAsync(
                 x => x.Id == id,
                 cancellationToken);
 
-
-
         if (doctor == null)
-            return;
+            throw new Exception("Doctor not found.");
 
+        doctor.IsActive = false;
 
-
-        _context.Doctors.Remove(doctor);
-
-
-
-        await _context.SaveChangesAsync(
-            cancellationToken);
-
+        await _context.SaveChangesAsync(cancellationToken);
     }
 
 }

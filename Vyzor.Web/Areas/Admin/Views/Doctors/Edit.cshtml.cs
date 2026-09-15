@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Vyzor.Web.Views.Dashboard
+namespace Vyzor.Web.Areas.Admin.Views.Doctors
 {
-    public class IndexModel : PageModel
+    public class EditModel : PageModel
     {
         public void OnGet()
         {
