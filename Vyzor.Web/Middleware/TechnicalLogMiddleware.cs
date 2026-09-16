@@ -1,16 +1,13 @@
-﻿
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using Vyzor.Application.Interfaces;
+using Vyzor.Infrastructure.Interfaces;
 
 namespace Vyzor.Web.Middleware;
 
 public class TechnicalLogMiddleware
 {
-    private static readonly TimeSpan LogTimeout =
-        TimeSpan.FromSeconds(2);
-
-    private readonly ILogger<TechnicalLogMiddleware> _logger;
     private readonly RequestDelegate _next;
+    private readonly ILogger<TechnicalLogMiddleware> _logger;
 
     public TechnicalLogMiddleware(
         RequestDelegate next,
@@ -28,67 +25,72 @@ public class TechnicalLogMiddleware
         {
             await _next(context);
 
-            if (context.Response.StatusCode >=
-                StatusCodes.Status500InternalServerError)
+            var statusCode = context.Response.StatusCode;
+
+            // Пока не логируем статические файлы
+            if (IsStaticFile(context.Request.Path))
+                return;
+
+            var level = statusCode switch
             {
-                await WriteLogAsync(
-                    context,
-                    technicalLogService,
-                    "Error",
-                    $"HTTP {context.Response.StatusCode}",
-                    details: null);
-            }
+                >= 500 => "Error",
+                >= 400 => "Warning",
+                _ => "Information"
+            };
+
+            await technicalLogService.LogAsync(
+                level,
+                $"HTTP {statusCode}",
+                $"{context.Request.Method} {context.Request.Path}{context.Request.QueryString}",
+                context.User.FindFirstValue(ClaimTypes.NameIdentifier),
+                null,
+                CancellationToken.None);
         }
         catch (Exception exception)
         {
-            await WriteLogAsync(
-                context,
-                technicalLogService,
-                "Error",
-                "Unhandled exception",
-                exception.ToString());
+            _logger.LogError(
+                exception,
+                "Unhandled exception in request.");
 
+            try
+            {
+                await technicalLogService.LogAsync(
+                    "Error",
+                    "Unhandled exception",
+                    $"{context.Request.Method} {context.Request.Path}",
+                    context.User.FindFirstValue(
+                        ClaimTypes.NameIdentifier),
+                    exception.ToString(),
+                    CancellationToken.None);
+            }
+            catch (Exception logException)
+            {
+                _logger.LogWarning(
+                    logException,
+                    "Failed to save technical log.");
+            }
+
+            // Очень важно — не пытаться здесь менять Response
             throw;
         }
     }
 
-    private async Task WriteLogAsync(
-        HttpContext context,
-        ITechnicalLogService technicalLogService,
-        string level,
-        string message,
-        string? details)
+    private static bool IsStaticFile(PathString path)
     {
-        try
-        {
-            using var timeout =
-                CancellationTokenSource.CreateLinkedTokenSource(
-                    context.RequestAborted);
+        var value = path.Value;
 
-            timeout.CancelAfter(LogTimeout);
+        if (string.IsNullOrWhiteSpace(value))
+            return false;
 
-            await technicalLogService.LogAsync(
-                level,
-                message,
-                GetPath(context),
-                context.User.FindFirstValue(
-                    ClaimTypes.NameIdentifier),
-                details,
-                timeout.Token);
-        }
-        catch (Exception exception)
-        {
-            _logger.LogWarning(
-                exception,
-                "Failed to write technical log.");
-        }
-    }
-
-    private static string GetPath(HttpContext context)
-    {
-        return $"{context.Request.Method} " +
-               $"{context.Request.Path}" +
-               $"{context.Request.QueryString}";
+        return value.EndsWith(".css", StringComparison.OrdinalIgnoreCase)
+            || value.EndsWith(".js", StringComparison.OrdinalIgnoreCase)
+            || value.EndsWith(".png", StringComparison.OrdinalIgnoreCase)
+            || value.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase)
+            || value.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase)
+            || value.EndsWith(".gif", StringComparison.OrdinalIgnoreCase)
+            || value.EndsWith(".svg", StringComparison.OrdinalIgnoreCase)
+            || value.EndsWith(".ico", StringComparison.OrdinalIgnoreCase)
+            || value.EndsWith(".woff", StringComparison.OrdinalIgnoreCase)
+            || value.EndsWith(".woff2", StringComparison.OrdinalIgnoreCase);
     }
 }
-

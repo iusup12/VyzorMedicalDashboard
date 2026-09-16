@@ -1,0 +1,291 @@
+﻿
+@using Vyzor.Infrastructure.Mongo
+@model IReadOnlyList<TechnicalLogDocument>
+
+@{
+    ViewData["Title"] = "Technical Logs";
+    Layout = "~/Views/Shared/Dashboard/_DashboardLayout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="content">
+        <nav class="main-menu-container nav nav-pills flex-column sub-open">
+
+    <div class="side-menu__label">
+        MAIN
+    </div>
+
+    <!-- Dashboard -->
+    <a asp-area="Admin"
+       asp-controller="Dashboard"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-dashboard-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Dashboard
+        </span>
+    </a>
+
+    <!-- Doctors -->
+    <a asp-area="Admin"
+       asp-controller="Doctors"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-stethoscope-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Doctors
+        </span>
+    </a>
+
+   
+
+    <!-- Appointments -->
+    <a asp-area="Admin"
+       asp-controller="Appointments"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-calendar-check-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Appointments
+        </span>
+    </a>
+
+    <!-- Appointment Cart -->
+    <a asp-area="Admin"
+       asp-controller="AppointmentCart"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-shopping-cart-2-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Appointment Cart
+        </span>
+    </a>
+
+    <!-- Specializations -->
+    <a asp-area="Admin"
+       asp-controller="Specializations"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-heart-pulse-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Specializations
+        </span>
+    </a>
+
+   
+
+    <!-- Subscriptions -->
+    <a asp-area="Admin"
+       asp-controller="Subscriptions"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-vip-crown-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Subscriptions
+        </span>
+    </a>
+
+
+    <div class="side-menu__label mt-3">
+        MANAGEMENT
+    </div>
+
+   
+
+   
+    <!-- Technical Logs -->
+    <a asp-area="Admin"
+       asp-controller="TechnicalLogs"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-terminal-box-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Technical Logs
+        </span>
+    </a>
+
+
+    <!-- AI Helper -->
+    <div class="ai-helper-card mt-4 mx-2 p-3 rounded-3">
+
+        <div class="fw-semibold mb-1">
+            AI Helper
+        </div>
+
+        <div class="text-muted fs-11 mb-2">
+            Ask AI to help you manage your dashboard.
+        </div>
+
+        <button type="button"
+                class="btn btn-primary btn-sm w-100">
+            Open Helper
+        </button>
+
+    </div>
+
+</nav>
+        <!-- Page Header -->
+        <div class="mb-3 page-header-breadcrumb">
+    <div class="d-flex align-center justify-content-between flex-wrap gap-2">
+
+        <h1 class="page-title fw-medium fs-18 mb-0">
+            Appointment Cart
+        </h1>
+
+        <ol class="breadcrumb mb-0">
+
+            <!-- Dashboard -->
+            <li class="breadcrumb-item">
+                <a asp-area="Admin"
+                   asp-controller="Dashboard"
+                   asp-action="Index">
+                    Dashboard
+                </a>
+            </li>
+
+         <a asp-area="Admin"
+                   asp-controller="Dashboard"
+                   asp-action="Index">
+                    Dashboard
+                </ class="side-menu__item"><i class="ri-line-chart-line side-menu__icon"></i><span class="side-menu__label">Analytics</span></a>
+
+            <!-- Current page -->
+            <li class="breadcrumb-item active"
+                aria-current="page">
+                Technical Logs
+            </li>
+
+        </ol>
+
+    </div>
+</div>
+
+        <!-- Logs -->
+        <div class="card">
+            <div class="card-body p-0">
+
+                @if (Model.Count == 0)
+                {
+                    <div class="text-center py-5">
+                        <i class="ti ti-file-search fs-1 text-muted"></i>
+
+                        <h5 class="mt-3">
+                            No technical logs
+                        </h5>
+
+                        <p class="text-muted mb-0">
+                            There are no technical logs in MongoDB yet.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Level</th>
+                                    <th>Message</th>
+                                    <th>Path</th>
+                                    <th>User ID</th>
+                                    <th>Created</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var log in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @if (log.Level == "Error")
+                                            {
+                                                <span class="badge bg-danger">
+                                                    Error
+                                                </span>
+                                            }
+                                            else if (log.Level == "Warning")
+                                            {
+                                                <span class="badge bg-warning text-dark">
+                                                    Warning
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-info">
+                                                    @log.Level
+                                                </span>
+                                            }
+                                        </td>
+
+                                        <td>
+                                            <span class="fw-medium">
+                                                @log.Message
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            @if (!string.IsNullOrWhiteSpace(log.Path))
+                                            {
+                                                <code>
+                                                    @log.Path
+                                                </code>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">—</span>
+                                            }
+                                        </td>
+
+                                        <td>
+                                            @if (!string.IsNullOrWhiteSpace(log.UserId))
+                                            {
+                                                <span>
+                                                    @log.UserId
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">
+                                                    Anonymous
+                                                </span>
+                                            }
+                                        </td>
+
+                                        <td>
+                                            <span>
+                                                @log.CreatedAtUtc.ToLocalTime()
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            @if (!string.IsNullOrWhiteSpace(log.Details))
+                                            {
+                                                <details>
+                                                    <summary class="text-primary"
+                                                             style="cursor: pointer;">
+                                                        Show
+                                                    </summary>
+
+                                                    <pre class="mt-2 mb-0 small"
+                                                         style="max-width: 500px; white-space: pre-wrap; word-break: break-word;">@log.Details</pre>
+                                                </details>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">—</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>
+

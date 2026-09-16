@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
+using Vyzor.Infrastructure.Mongo;
 
-namespace Vyzor.Application.Interfaces;
+namespace Vyzor.Infrastructure.Interfaces;
 
 public interface ITechnicalLogService
 {
@@ -13,4 +12,8 @@ public interface ITechnicalLogService
         string? userId = null,
         string? details = null,
         CancellationToken cancellationToken = default);
+
+    Task<IReadOnlyList<TechnicalLogDocument>> GetAllAsync(
+        CancellationToken cancellationToken = default);
 }
+

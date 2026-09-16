@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using Vyzor.Application.Interfaces;
+using Vyzor.Infrastructure.Interfaces;
 using Vyzor.Infrastructure.Mongo;
 using Vyzor.Infrastructure.Options;
 
@@ -27,6 +27,16 @@ public class TechnicalLogService : ITechnicalLogService
         _logs = database.GetCollection<TechnicalLogDocument>(
             CollectionName);
     }
+    
+public async Task<IReadOnlyList<TechnicalLogDocument>> GetAllAsync(
+    CancellationToken cancellationToken = default)
+    {
+        return await _logs
+            .Find(FilterDefinition<TechnicalLogDocument>.Empty)
+            .SortByDescending(x => x.CreatedAtUtc)
+            .ToListAsync(cancellationToken);
+    }
+
 
     public async Task LogAsync(
         string level,

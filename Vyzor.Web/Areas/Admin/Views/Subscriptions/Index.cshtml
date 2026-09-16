@@ -9,6 +9,121 @@
 
 <div class="main-content app-content">
     <div class="container-fluid">
+        <nav class="main-menu-container nav nav-pills flex-column sub-open">
+
+    <div class="side-menu__label">
+        MAIN
+    </div>
+
+    <!-- Dashboard -->
+    <a asp-area="Admin"
+       asp-controller="Dashboard"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-dashboard-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Dashboard
+        </span>
+    </a>
+
+    <!-- Doctors -->
+    <a asp-area="Admin"
+       asp-controller="Doctors"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-stethoscope-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Doctors
+        </span>
+    </a>
+
+   
+
+    <!-- Appointments -->
+    <a asp-area="Admin"
+       asp-controller="Appointments"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-calendar-check-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Appointments
+        </span>
+    </a>
+
+    <!-- Appointment Cart -->
+    <a asp-area="Admin"
+       asp-controller="AppointmentCart"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-shopping-cart-2-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Appointment Cart
+        </span>
+    </a>
+
+    <!-- Specializations -->
+    <a asp-area="Admin"
+       asp-controller="Specializations"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-heart-pulse-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Specializations
+        </span>
+    </a>
+
+   
+
+    <!-- Subscriptions -->
+    <a asp-area="Admin"
+       asp-controller="Subscriptions"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-vip-crown-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Subscriptions
+        </span>
+    </a>
+
+
+    <div class="side-menu__label mt-3">
+        MANAGEMENT
+    </div>
+
+   
+
+   
+    <!-- Technical Logs -->
+    <a asp-area="Admin"
+       asp-controller="TechnicalLogs"
+       asp-action="Index"
+       class="side-menu__item">
+        <i class="ri-terminal-box-line side-menu__icon"></i>
+        <span class="side-menu__label">
+            Technical Logs
+        </span>
+    </a>
+
+
+    <!-- AI Helper -->
+    <div class="ai-helper-card mt-4 mx-2 p-3 rounded-3">
+
+        <div class="fw-semibold mb-1">
+            AI Helper
+        </div>
+
+        <div class="text-muted fs-11 mb-2">
+            Ask AI to help you manage your dashboard.
+        </div>
+
+        <button type="button"
+                class="btn btn-primary btn-sm w-100">
+            Open Helper
+        </button>
+
+    </div>
+
+</nav>
 
         <!-- Page Header -->
         <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">

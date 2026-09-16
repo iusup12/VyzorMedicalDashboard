@@ -18,9 +18,7 @@ builder.Services.AddLocalization(options =>
     options.ResourcesPath = "Resources";
 });
 
-// ------------------------------------------------------------
-// MVC
-// ------------------------------------------------------------
+
 
 builder.Services
     .AddControllersWithViews(options =>
@@ -31,15 +29,10 @@ builder.Services
     .AddViewLocalization()
     .AddDataAnnotationsLocalization();
 
-// ------------------------------------------------------------
-// SignalR
-// ------------------------------------------------------------
 
 builder.Services.AddSignalR();
 
-// ------------------------------------------------------------
-// Response Compression
-// ------------------------------------------------------------
+
 
 builder.Services.AddResponseCompression();
 
@@ -152,22 +145,32 @@ localizationOptions.RequestCultureProviders =
 
 
 
-app.UseExceptionHandler("/Errors/500");
+app.UseExceptionHandler("/Error");
 
 if (!app.Environment.IsDevelopment())
 {
     app.UseHsts();
     app.UseResponseCompression();
 }
+app.UseStatusCodePages(async context =>
+{
+    var response = context.HttpContext.Response;
 
+    if (response.StatusCode == StatusCodes.Status404NotFound)
+    {
+        response.Redirect("/Error/404");
+    }
+    else if (response.StatusCode == StatusCodes.Status403Forbidden)
+    {
+        response.Redirect("/Error/403");
+    }
+});
 
 
 
 app.UseHttpsRedirection();
 
-app.UseStatusCodePagesWithReExecute(
-    "/Errors/StatusCode",
-    "?code={0}");
+
 
 app.UseRequestLocalization(localizationOptions);
 
@@ -178,10 +181,9 @@ app.UseRouting();
 app.UseAuthentication();
 
 
-app.UseMiddleware<TechnicalLogMiddleware>();
 
 app.UseAuthorization();
-
+app.UseMiddleware<TechnicalLogMiddleware>();
 
 
 app.MapControllerRoute(

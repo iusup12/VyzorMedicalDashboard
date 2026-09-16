@@ -4,6 +4,7 @@
 @model PagedResult<DoctorCardDTO>
 @{
 	ViewData["Title"] = "Doctors";
+	
 
 	var search = Context.Request.Query["Search"].ToString();
 	var specializationId = Context.Request.Query["SpecializationId"].ToString();
@@ -1317,11 +1318,11 @@
 
 									<li>
 
-										<a asp-area="Admin"
-										   asp-controller="Patients"
+										<a 
+										   asp-controller="Home"
 										   asp-action="Index">
 
-											Patients
+											Home
 
 										</a>
 
@@ -1341,39 +1342,17 @@
 
 									<li>
 
-										<a asp-area="Admin"
-										   asp-controller="Users"
-										   asp-action="Index">
-
-											Users
-
-										</a>
+										
 
 									</li>
 
 									<li>
 
-										<a asp-area="Admin"
-										   asp-controller="Roles"
-										   asp-action="Index">
-
-											Roles
-
-										</a>
+										
 
 									</li>
 
-									<li>
-
-										<a asp-area="Admin"
-										   asp-controller="AuditLogs"
-										   asp-action="Index">
-
-											Audit Logs
-
-										</a>
-
-									</li>
+									
 
 								</ul>
 

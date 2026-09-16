@@ -14,35 +14,42 @@
 
         <!-- Page Header -->
         <div class="mb-3 page-header-breadcrumb">
-            <div class="d-flex align-center justify-content-between flex-wrap gap-2">
+    <div class="d-flex align-center justify-content-between flex-wrap gap-2">
 
-                <h1 class="page-title fw-medium fs-18 mb-0">
-                    Appointment Cart
-                </h1>
+        <h1 class="page-title fw-medium fs-18 mb-0">
+            Appointment Cart
+        </h1>
 
-                <ol class="breadcrumb mb-0">
+        <ol class="breadcrumb mb-0">
 
-                    <li class="breadcrumb-item">
-                        <a asp-area="Admin"
-                           asp-controller="Dashboard"
-                           asp-action="Index">
-                            Dashboard
-                        </a>
-                    </li>
+            <!-- Dashboard -->
+            <li class="breadcrumb-item">
+                <a asp-area="Admin"
+                   asp-controller="Dashboard"
+                   asp-action="Index">
+                    Dashboard
+                </a>
+            </li>
 
-                    <li class="breadcrumb-item">
-                        Appointments
-                    </li>
+            <!-- Appointments -->
+            <li class="breadcrumb-item">
+                <a asp-area="Admin"
+                   asp-controller="Appointments"
+                   asp-action="Index">
+                    Appointments
+                </a>
+            </li>
 
-                    <li class="breadcrumb-item active"
-                        aria-current="page">
-                        Cart
-                    </li>
+            <!-- Current page -->
+            <li class="breadcrumb-item active"
+                aria-current="page">
+                Appointment Cart
+            </li>
 
-                </ol>
+        </ol>
 
-            </div>
-        </div>
+    </div>
+</div>
 
         <div class="row">
 

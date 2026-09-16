@@ -1,13 +1,15 @@
-﻿using Vyzor.Application.Interfaces;
-using Vyzor.Infrastructure.Data;
-using Vyzor.Infrastructure.Identity;
-using Vyzor.Infrastructure.Options;
-using Vyzor.Infrastructure.Services;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
+using Vyzor.Application.Interfaces;
+using Vyzor.Infrastructure.Data;
+using Vyzor.Infrastructure.Identity;
+using Vyzor.Infrastructure.Interfaces;
+using Vyzor.Infrastructure.Options;
+using Vyzor.Infrastructure.Services;
+using Vyzor.Infrastructure.Interfaces;
 
 namespace Vyzor.Infrastructure;
 
@@ -54,4 +56,5 @@ public static class DependencyInjection
 
         return services;
     }
+
 }
