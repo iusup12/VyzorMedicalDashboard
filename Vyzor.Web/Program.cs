@@ -180,9 +180,9 @@ app.UseRouting();
 
 app.UseAuthentication();
 
-
-
 app.UseAuthorization();
+
+
 app.UseMiddleware<TechnicalLogMiddleware>();
 
 

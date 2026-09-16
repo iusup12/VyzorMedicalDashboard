@@ -4,7 +4,7 @@
 @model PagedResult<DoctorCardDTO>
 @{
 	ViewData["Title"] = "Doctors";
-	
+
 
 	var search = Context.Request.Query["Search"].ToString();
 	var specializationId = Context.Request.Query["SpecializationId"].ToString();
@@ -13,6 +13,7 @@
 	var maxPrice = Context.Request.Query["MaxPrice"].ToString();
 	var minRating = Context.Request.Query["MinRating"].ToString();
 	var sort = Context.Request.Query["Sort"].ToString();
+	 Layout = "_Layout";
 }
 <!-- Main Wrapper -->
 <div class="main-wrapper">
