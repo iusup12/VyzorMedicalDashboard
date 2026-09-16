@@ -1,0 +1,241 @@
+﻿
+@model Vyzor.Application.DTO.Subscription.SubscriptionPlanDTO
+
+@{
+    ViewData["Title"] = "Create Subscription Plan";
+     Layout = "~/Views/Shared/Dashboard/_DashboardLayout.cshtml";
+}
+
+<div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
+    <div>
+        <h1 class="page-title fw-semibold fs-18 mb-0">
+            Create Subscription Plan
+        </h1>
+
+        <span class="text-muted">
+            Add a new subscription plan
+        </span>
+    </div>
+
+    <div class="ms-md-1 ms-0">
+        <a asp-area="Admin"
+           asp-controller="Subscriptions"
+           asp-action="Index"
+           class="btn btn-light">
+            <i class="ri-arrow-left-line me-1"></i>
+            Back to Plans
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-8 col-lg-10">
+        <div class="card custom-card">
+
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Subscription Plan Details
+                </div>
+            </div>
+
+            <div class="card-body">
+
+                <form asp-area="Admin"
+                      asp-controller="Subscriptions"
+                      asp-action="Create"
+                      method="post">
+
+                    @Html.AntiForgeryToken()
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="alert alert-danger"
+                         role="alert">
+                    </div>
+
+                    <div class="row gy-3">
+
+                        <!-- Name -->
+                        <div class="col-md-6">
+                            <label asp-for="Name"
+                                   class="form-label">
+                                Plan Name
+                            </label>
+
+                            <input asp-for="Name"
+                                   class="form-control"
+                                   placeholder="e.g. Premium" />
+
+                            <span asp-validation-for="Name"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <!-- Slug -->
+                        <div class="col-md-6">
+                            <label asp-for="Slug"
+                                   class="form-label">
+                                Slug
+                            </label>
+
+                            <input asp-for="Slug"
+                                   class="form-control"
+                                   placeholder="e.g. premium" />
+
+                            <span asp-validation-for="Slug"
+                                  class="text-danger">
+                            </span>
+
+                            <small class="text-muted">
+                                URL-friendly identifier for the plan.
+                            </small>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="col-12">
+                            <label asp-for="Description"
+                                   class="form-label">
+                                Description
+                            </label>
+
+                            <textarea asp-for="Description"
+                                      class="form-control"
+                                      rows="4"
+                                      placeholder="Describe what this subscription plan provides..."></textarea>
+
+                            <span asp-validation-for="Description"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="col-md-6">
+                            <label asp-for="Price"
+                                   class="form-label">
+                                Price
+                            </label>
+
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    €
+                                </span>
+
+                                <input asp-for="Price"
+                                       class="form-control"
+                                       type="number"
+                                       min="0"
+                                       step="0.01"
+                                       placeholder="0.00" />
+                            </div>
+
+                            <span asp-validation-for="Price"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <!-- Duration -->
+                        <div class="col-md-6">
+                            <label asp-for="DurationDays"
+                                   class="form-label">
+                                Duration
+                            </label>
+
+                            <div class="input-group">
+                                <input asp-for="DurationDays"
+                                       class="form-control"
+                                       type="number"
+                                       min="1"
+                                       placeholder="30" />
+
+                                <span class="input-group-text">
+                                    days
+                                </span>
+                            </div>
+
+                            <span asp-validation-for="DurationDays"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <!-- Discount -->
+                        <div class="col-md-6">
+                            <label asp-for="DiscountPercent"
+                                   class="form-label">
+                                Discount
+                            </label>
+
+                            <div class="input-group">
+                                <input asp-for="DiscountPercent"
+                                       class="form-control"
+                                       type="number"
+                                       min="0"
+                                       max="100"
+                                       step="0.01"
+                                       placeholder="0" />
+
+                                <span class="input-group-text">
+                                    %
+                                </span>
+                            </div>
+
+                            <span asp-validation-for="DiscountPercent"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <!-- Active -->
+                        <div class="col-md-6">
+                            <label class="form-label d-block">
+                                Status
+                            </label>
+
+                            <div class="form-check form-switch mt-2">
+                                <input asp-for="IsActive"
+                                       class="form-check-input"
+                                       type="checkbox"
+                                       role="switch" />
+
+                                <label asp-for="IsActive"
+                                       class="form-check-label">
+                                    Active plan
+                                </label>
+                            </div>
+
+                            <span asp-validation-for="IsActive"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="d-flex justify-content-end gap-2">
+
+                        <a asp-area="Admin"
+                           asp-controller="Subscriptions"
+                           asp-action="Index"
+                           class="btn btn-light">
+                            Cancel
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-primary">
+                            <i class="ri-add-line me-1"></i>
+                            Create Plan
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}
+

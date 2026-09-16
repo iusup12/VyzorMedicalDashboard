@@ -907,14 +907,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // ОБЯЗАТЕЛЬНОЕ ПОДТВЕРЖДЕНИЕ
+            
             const confirmed = window.confirm(
                 "Вы уверены, что хотите изменить статус записи?"
             );
 
             console.log("User confirmation:", confirmed);
 
-            // Нажал Cancel
+            
             if (!confirmed) {
 
                 selectElement.value =

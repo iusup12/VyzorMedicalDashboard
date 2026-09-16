@@ -29,9 +29,7 @@ public class Patient
     public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
     public DateTime? UpdatedAtUtc { get; set; }
 
-    // =========================
-    // Navigation properties
-    // =========================
+  
 
     public ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
