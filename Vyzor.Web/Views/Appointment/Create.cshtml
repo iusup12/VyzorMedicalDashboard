@@ -1,4 +1,5 @@
-﻿@model Vyzor.Application.DTO.Appointment.AppointmentEditDTO
+﻿
+@model Vyzor.Application.DTO.Appointment.AppointmentEditDTO
 
 @using Vyzor.Application.DTO.Doctor
 
@@ -14,7 +15,11 @@
         <div class="row">
             <div class="col-lg-8 mx-auto">
 
-                <form asp-action="Create" method="post">
+                <form id="appointment-booking-form"
+                      asp-action="Create"
+                      method="post">
+
+                    @Html.AntiForgeryToken()
 
                     <input asp-for="DoctorId" type="hidden" />
 
@@ -26,22 +31,18 @@
                                 <div class="card mb-0">
                                     <div class="card-body">
 
-                                        <div>
+                                        <h4 class="mb-1">
+                                            @doctor?.FullName
+                                        </h4>
 
-                                            <h4 class="mb-1">
-                                                @doctor?.FullName
-                                            </h4>
+                                        <p class="text-indigo fw-medium mb-2">
+                                            @doctor?.SpecializationName
+                                        </p>
 
-                                            <p class="text-indigo fw-medium mb-2">
-                                                @doctor?.SpecializationName
-                                            </p>
-
-                                            <p class="mb-0">
-                                                <i class="isax isax-location me-2"></i>
-                                                @doctor?.Clinic
-                                            </p>
-
-                                        </div>
+                                        <p class="mb-0">
+                                            <i class="isax isax-location me-2"></i>
+                                            @doctor?.Clinic
+                                        </p>
 
                                     </div>
                                 </div>
@@ -50,6 +51,11 @@
                         </div>
 
                         <div class="card-body booking-body">
+
+                            <div id="appointment-cart-message"
+                                 class="alert d-none"
+                                 role="alert">
+                            </div>
 
                             <div class="card">
                                 <div class="card-body">
@@ -66,6 +72,7 @@
                                         </label>
 
                                         <input asp-for="AppointmentDate"
+                                               id="appointment-date"
                                                class="form-control"
                                                type="datetime-local" />
 
@@ -103,11 +110,20 @@
                             <div class="d-flex justify-content-end">
 
                                 <button type="submit"
+                                        id="add-to-cart-button"
                                         class="btn btn-primary-gradient rounded-pill">
 
-                                    Confirm Appointment
+                                    <span id="add-to-cart-text">
+                                        Add to Cart
+                                    </span>
 
-                                    <i class="isax isax-arrow-right-3 ms-2"></i>
+                                    <span id="add-to-cart-loading"
+                                          class="d-none">
+                                        Adding...
+                                    </span>
+
+                                    <i id="add-to-cart-icon"
+                                       class="isax isax-shopping-cart ms-2"></i>
 
                                 </button>
 
@@ -129,4 +145,6 @@
 
     <partial name="_ValidationScriptsPartial" />
 
+    <script src="~/js/appointment-create.js" asp-append-version="true"></script> }
 }
+

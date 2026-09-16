@@ -46,7 +46,8 @@ public static class SubscriptionMappings
             PlanName = subscription.SubscriptionPlan?.Name ?? string.Empty,
             StartsAtUtc = subscription.StartsAtUtc,
             EndsAtUtc = subscription.EndsAtUtc,
-            Status = subscription.Status
+            Status = subscription.Status,
+            DiscountPercent = subscription.SubscriptionPlan?.DiscountPercent ?? 0m
         };
     }
 

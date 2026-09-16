@@ -18,6 +18,11 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
 
     public DbSet<Doctor> Doctors => Set<Doctor>();
     public DbSet<Patient> Patients => Set<Patient>();
+    
+public DbSet<AppointmentCartItem> AppointmentCartItems
+    => Set<AppointmentCartItem>();
+
+
     public DbSet<DoctorSchedule> DoctorSchedules => Set<DoctorSchedule>();
     public DbSet<SupportChat> SupportChats => Set<SupportChat>();
     public DbSet<SupportChatMessage> SupportChatMessages => Set<SupportChatMessage>();

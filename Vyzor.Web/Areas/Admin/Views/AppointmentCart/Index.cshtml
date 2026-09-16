@@ -1,0 +1,354 @@
+﻿
+@using Vyzor.Application.DTO.AppointmentCart
+@model IEnumerable<AppointmentCartItemDTO>
+
+@{
+    ViewData["Title"] = "Appointment Cart";
+    Layout = "~/Views/Shared/Dashboard/_DashboardLayout.cshtml";
+    var cartItems = Model?.ToList() ?? new List<AppointmentCartItemDTO>();
+    var cartTotal = cartItems.Sum(x => x.Price);
+}
+
+<div class="main-content app-content">
+    <div class="container-fluid page-container main-body-container">
+
+        <!-- Page Header -->
+        <div class="mb-3 page-header-breadcrumb">
+            <div class="d-flex align-center justify-content-between flex-wrap gap-2">
+
+                <h1 class="page-title fw-medium fs-18 mb-0">
+                    Appointment Cart
+                </h1>
+
+                <ol class="breadcrumb mb-0">
+
+                    <li class="breadcrumb-item">
+                        <a asp-area="Admin"
+                           asp-controller="Dashboard"
+                           asp-action="Index">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="breadcrumb-item">
+                        Appointments
+                    </li>
+
+                    <li class="breadcrumb-item active"
+                        aria-current="page">
+                        Cart
+                    </li>
+
+                </ol>
+
+            </div>
+        </div>
+
+        <div class="row">
+
+            <!-- LEFT SIDE -->
+            <div class="col-xl-9">
+
+                <div class="custom-card overflow-hidden card">
+
+                    <div class="p-0 card-body">
+
+                        @if (!cartItems.Any())
+                        {
+                            <div class="text-center py-5">
+
+                                <div class="mb-4">
+                                    <span class="avatar avatar-xxl bg-primary-transparent">
+                                        <i class="ti ti-calendar-event fs-1"></i>
+                                    </span>
+                                </div>
+
+                                <h5 class="fw-semibold mb-2">
+                                    Your appointment cart is empty
+                                </h5>
+
+                                <p class="text-muted mb-4">
+                                    Choose a doctor and appointment time
+                                    to add an appointment to your cart.
+                                </p>
+
+                                <a asp-area=""
+                                   asp-controller="Doctors"
+                                   asp-action="Index"
+                                   class="btn btn-primary">
+                                    Find a Doctor
+                                </a>
+
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="table-responsive custom-sales-table">
+
+                                <table class="text-nowrap table">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Doctor</th>
+                                            <th>Specialization</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Price</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        @foreach (var item in cartItems)
+                                        {
+                                            <tr class="appointment-cart-item"
+                                                data-cart-item-id="@item.Id"
+                                                data-price="@item.Price.ToString(System.Globalization.CultureInfo.InvariantCulture)">
+
+                                                <!-- Doctor -->
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-3">
+
+                                                        <div class="lh-1">
+
+                                                            <span class="avatar avatar-xxl">
+
+                                                                @if (!string.IsNullOrWhiteSpace(item.DoctorImageUrl))
+                                                                {
+                                                                    <img src="@item.DoctorImageUrl"
+                                                                         alt="@item.DoctorName"
+                                                                         width="80"
+                                                                         height="80"
+                                                                         loading="lazy" />
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="avatar avatar-xxl bg-primary-transparent">
+                                                                        <i class="ti ti-user fs-2"></i>
+                                                                    </span>
+                                                                }
+
+                                                            </span>
+
+                                                        </div>
+
+                                                        <div>
+
+                                                            <span class="d-block text-muted mb-1">
+                                                                Doctor
+                                                            </span>
+
+                                                            <h6 class="fw-semibold mb-0">
+                                                                @item.DoctorName
+                                                            </h6>
+
+                                                        </div>
+
+                                                    </div>
+                                                </td>
+
+                                                <!-- Specialization -->
+                                                <td>
+                                                    <span class="badge bg-primary-transparent fs-13">
+                                                        @item.SpecializationName
+                                                    </span>
+                                                </td>
+
+                                                <!-- Date -->
+                                                <td>
+                                                    <div class="fw-medium">
+                                                        @item.AppointmentDate.ToString("dd.MM.yyyy")
+                                                    </div>
+                                                </td>
+
+                                                <!-- Time -->
+                                                <td>
+                                                    <div class="fw-medium">
+                                                        @item.AppointmentDate.ToString("HH:mm")
+                                                    </div>
+                                                </td>
+
+                                                <!-- Price -->
+                                                <td>
+                                                    <div class="fw-medium">
+                                                        @item.Price.ToString("F2") €
+                                                    </div>
+                                                </td>
+
+                                                <!-- Delete -->
+                                                <td>
+                                                    <button type="button"
+                                                            class="btn btn-link text-muted p-0 js-remove-appointment"
+                                                            data-id="@item.Id">
+
+                                                        <i class="ti ti-trash me-1"></i>
+                                                        Delete
+
+                                                    </button>
+                                                </td>
+
+                                            </tr>
+                                        }
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="col-xl-3">
+
+                <div class="custom-card card">
+
+                    <div class="justify-content-between card-header">
+
+                        <div class="card-title">
+                            Appointment Summary
+                        </div>
+
+                    </div>
+
+                    @if (cartItems.Any())
+                    {
+                        <div class="card-body">
+
+                            <ul class="list-unstyled cart-order-summary-list">
+
+                                <!-- Appointments -->
+                                <li>
+                                    <div class="d-flex align-items-center justify-content-between">
+
+                                        <div>
+                                            Appointments
+                                        </div>
+
+                                        <div class="fw-medium"
+                                             id="appointment-cart-count">
+                                            @cartItems.Count
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <!-- Sub Total -->
+                                <li>
+                                    <div class="d-flex align-items-center justify-content-between">
+
+                                        <div>
+                                            Sub Total
+                                        </div>
+
+                                        <div class="fw-medium"
+                                             id="appointment-cart-total">
+                                            @cartTotal.ToString("F2") €
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <!-- Discount -->
+                                <li>
+                                    <div class="d-flex align-items-center justify-content-between">
+
+                                        <div>
+                                            Discount
+                                        </div>
+
+                                        <div class="fw-medium text-success">
+                                            0.00 €
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <!-- Tax -->
+                                <li>
+                                    <div class="d-flex align-items-center justify-content-between">
+
+                                        <div>
+                                            Tax
+                                        </div>
+
+                                        <div class="fw-medium">
+                                            0.00 €
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <!-- Total -->
+                                <li>
+                                    <div class="d-flex align-items-center justify-content-between">
+
+                                        <div class="fw-semibold">
+                                            Total
+                                        </div>
+
+                                        <div class="fw-semibold"
+                                             id="appointment-cart-final-total">
+                                            @cartTotal.ToString("F2") €
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <div class="d-grid card-footer">
+
+                            <button type="button"
+        id="appointment-cart-pay"
+        class="btn btn-primary d-inline-flex align-items-center justify-content-center">
+
+    Pay & Book Appointments
+
+    <i class="ti ti-credit-card ms-1"></i>
+
+</button>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+
+                            <p class="text-muted mb-0">
+                                No appointments selected.
+                            </p>
+
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Anti-forgery token for AJAX -->
+<form id="appointment-cart-antiforgery">
+    @Html.AntiForgeryToken()
+</form>
+<div id="appointment-cart-message"
+     class="alert d-none mt-3"
+     role="alert">
+</div>
+@section Scripts {
+    <script src="~/js/appointment-cart.js"
+            asp-append-version="true"></script>
+}
+

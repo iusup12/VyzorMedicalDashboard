@@ -1,0 +1,160 @@
+﻿
+@model Vyzor.Application.DTO.Appointment.AppointmentEditDTO
+
+@{
+    ViewData["Title"] = "Book Appointment";
+    Layout = "~/Views/Shared/Dashboard/_DashboardLayout.cshtml";
+}
+
+<div class="main-content app-content">
+
+    <div class="container-fluid page-container main-body-container">
+
+        <!-- Page Header -->
+        <div class="mb-3 page-header-breadcrumb">
+
+            <div class="d-flex align-center justify-content-between flex-wrap gap-2">
+
+                <h1 class="page-title fw-medium fs-18 mb-0">
+                    Book Appointment
+                </h1>
+
+                <ol class="breadcrumb mb-0">
+
+                    <li class="breadcrumb-item">
+                        <a asp-controller="Doctors"
+                           asp-action="Index">
+                            Doctors
+                        </a>
+                    </li>
+
+                    <li class="breadcrumb-item active"
+                        aria-current="page">
+                        Book Appointment
+                    </li>
+
+                </ol>
+
+            </div>
+
+        </div>
+
+
+        <div class="row justify-content-center">
+
+            <div class="col-xl-8">
+
+                <div class="custom-card card">
+
+                    <div class="card-header">
+
+                        <div class="card-title">
+                            Appointment Details
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+                        <form id="appointment-cart-add-form">
+
+                            @Html.AntiForgeryToken()
+
+                            <!-- Doctor -->
+                            <input type="hidden"
+                                   id="appointment-doctor-id"
+                                   name="doctorId"
+                                   value="@Model.DoctorId" />
+
+
+                            <!-- Date -->
+                            <div class="mb-4">
+
+                                <label for="appointment-date"
+                                       class="form-label">
+                                    Appointment Date
+                                </label>
+
+                                <input type="date"
+                                       id="appointment-date"
+                                       class="form-control"
+                                       required />
+
+                            </div>
+
+
+                            <!-- Time -->
+                            <div class="mb-4">
+
+                                <label for="appointment-time"
+                                       class="form-label">
+                                    Appointment Time
+                                </label>
+
+                                <input type="time"
+                                       id="appointment-time"
+                                       class="form-control"
+                                       required />
+
+                            </div>
+
+
+                            <!-- About -->
+                            <div class="mb-4">
+
+                                <label for="appointment-about"
+                                       class="form-label">
+                                    About your visit
+                                </label>
+
+                                <textarea id="appointment-about"
+                                          class="form-control"
+                                          rows="4"
+                                          placeholder="Describe the reason for your appointment..."></textarea>
+
+                            </div>
+
+
+                            <!-- Submit -->
+                            <div class="d-flex justify-content-end gap-2">
+
+                                <a asp-controller="Doctors"
+                                   asp-action="Index"
+                                   class="btn btn-light">
+                                    Cancel
+                                </a>
+
+                                <button type="submit"
+                                        id="add-appointment-to-cart"
+                                        class="btn btn-primary">
+
+                                    <i class="ti ti-shopping-cart me-1"></i>
+
+                                    Add to Cart
+
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    <<script src="~/js/appointment-create.js" asp-append-version="true"></script> }
+
+}
+
